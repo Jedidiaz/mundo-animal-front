@@ -1,0 +1,106 @@
+.container{
+  padding: 70px 100px;
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+
+.container-images img{
+  width: 80%;
+}
+
+.container-info{
+  margin: 0px 60px;
+}
+
+.products-name{
+  font-size: 1.6rem;
+}
+
+.add-to-cart{
+  display: flex;
+  justify-content: center;
+}
+
+.product-price{
+  font-size: 4rem;
+  padding-bottom: 20px;
+}
+
+.container-properties{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+:host ::ng-deep .container-properties .p-button{
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+:host ::ng-deep .p-rating.p-readonly{
+  text-align: end;
+  padding: 15px 0;
+}
+
+:host ::ng-deep .p-inputnumber-input, :host ::ng-deep .p-inputnumber-button{
+  width: 40px;
+}
+
+
+:host ::ng-deep .p-inputnumber.p-component.p-inputnumber-buttons-horizontal{
+  height: 40px;
+}
+
+:host ::ng-deep .p-galleria-thumbnail-item{
+  margin-right: 15px;
+}
+
+:host ::ng-deep .p-galleria-thumbnail-prev, :host ::ng-deep .p-galleria-thumbnail-next{
+  display: none;
+}
+
+:host ::ng-deep .p-galleria-thumbnail-items{
+  justify-content: end;
+}
+
+:host ::ng-deep .p-galleria .p-galleria-thumbnail-container{
+  background-color: transparent;
+}
+
+
+:host ::ng-deep .p-ripple.p-element.p-button.p-component{
+  padding: 9px;
+  margin-right: 7px;
+  border-radius: 5px;
+  border-color: #b3b3b3;
+  border-right: 1px solid #b3b3b3 !important;
+}
+
+:host ::ng-deep .p-inputnumber.p-component.p-inputnumber-buttons-horizontal{
+  height: 40px;
+}
+
+.properties{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+}
+
+.description{
+  padding: 40px 0;
+}
+
+.add-to-cart{
+  width: 65%;
+  align-items: end;
+}
+
+.add-to-cart button{
+  font-size: 1.5rem;
+}

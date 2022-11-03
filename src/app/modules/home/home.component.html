@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="container-social-media">
+    <!-- Facebook -->
+    <i class="pi pi-facebook social-icon" style="color: #3b5998;"></i>
+    <!-- Instagram -->
+    <i class="pi pi-instagram social-icon" style="color: #ac2bac;"></i>
+    <!-- Whatsapp -->
+    <i class="pi pi-whatsapp social-icon" style="color: #25d366;"></i>
+  </div>
+  <app-slider></app-slider>
+
+  <div class="container">
+    <h2>Categorias</h2>
+    <p-carousel [value]="subcategories" [numVisible]="5" [numScroll]="1" [responsiveOptions]="responsiveOptions" [circular]="false">
+      <ng-template let-data pTemplate="item">
+        <div class="images-categories">
+          <img class="img" style="border-radius:100px" src="./../../../../assets/img1.jpg" alt="">
+        </div>
+        <span class="categorie-name">{{data.name}}</span>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>
+
