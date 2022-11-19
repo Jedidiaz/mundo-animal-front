@@ -1,27 +1,128 @@
 <div class="container">
-  <div routerLink=""lass="col content-img">
-    <img src="./../../../../assets/dog-category.png" alt="" height="auto" width="85%">
+  <div routerLink="" lass="col content-img">
+    <img
+      src="./../../../../assets/Logo_MA-07.png"
+      alt=""
+      height="auto"
+      width="100%"
+    />
   </div>
   <div class="col content-options">
     <div class="col content-button">
-      <div class="container-search" style="position: relative; width: 50%;">
-        <p-autoComplete styleClass="p-autocomplete-list-item" [(ngModel)]="products" [suggestions]="results" field="name" (completeMethod)="search($event)"></p-autoComplete>
+      <div class="container-search" style="position: relative; width: 50%">
+        <p-autoComplete
+          styleClass="p-autocomplete-list-item"
+          [(ngModel)]="products"
+          [suggestions]="results"
+          field="name"
+          (completeMethod)="search($event)"
+        ></p-autoComplete>
         <i class="pi pi-search icon-search"></i>
       </div>
+      <!-- Acount buttons  -->
       <div class="content-actions-user">
         <div class="my-account">
-          <p-dropdown [options]="user" [(ngModel)]="userSelect" optionLabel="name" optionValue="code"></p-dropdown>
-          <i class="pi pi-user user-icon"></i>
+          <p-overlayPanel
+            [showTransitionOptions]="'100ms'"
+            [hideTransitionOptions]="'100ms'"
+            #op
+            [dismissable]="true"
+            [showCloseIcon]="false"
+          >
+            <ng-template pTemplate>
+              <div class="dropDown-user">
+                <h3>Login</h3>
+                <span class="p-float-label">
+                  <input id="float-username" type="text" pInputText />
+                  <label for="float-username">Username</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-password" type="text" pInputText />
+                  <label for="float-password">Password</label>
+                </span>
+                <button pButton label="Login" ></button>
+                <p>Forgot password?</p>
+              </div>
+            </ng-template>
+          </p-overlayPanel>
+          <p
+            type="text"
+            (click)="op.toggle($event)"
+            style="color: white; font-family: 'Nunito'; cursor: pointer"
+          >
+            Login
+          </p>
+          <!-- <i class="pi pi-user user-icon"></i> -->
+        </div>
+        <!-- separador -->
+        <div
+          style="border-left: 1px solid white; height: 20px; margin: 0px 10px 0px 10px"
+        ></div>
+        <!-- --------------- -->
+        <!-- Register content -->
+        <div class="my-account">
+          <p-overlayPanel
+            [showTransitionOptions]="'100ms'"
+            [hideTransitionOptions]="'100ms'"
+            #op2
+            [dismissable]="true"
+            [showCloseIcon]="false"
+          >
+            <ng-template pTemplate>
+              <div class="dropDown-user">
+                <h3>Register</h3>
+                <span class="p-float-label">
+                  <input id="float-username" type="text" pInputText />
+                  <label for="float-username">Username</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-password" type="text" pInputText />
+                  <label for="float-password">Password</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-email" type="text" pInputText />
+                  <label for="float-email">Email</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-name" type="text" pInputText />
+                  <label for="float-name">Name</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-last_name" type="text" pInputText />
+                  <label for="float-last_name">Last name</label>
+                </span>
+                <span class="p-float-label">
+                  <input id="float-phone" type="text" pInputText />
+                  <label for="float-phone">Phone number</label>
+                </span>
+                <button pButton label="Register" ></button>
+              </div>
+            </ng-template>
+        </p-overlayPanel>
+          <p
+            type="text"
+            (click)="op2.toggle($event)"
+            style="color: white; font-family: 'Nunito'; cursor: pointer; margin-right: 40px;"
+          >
+            Register
+          </p>
         </div>
         <div class="my-cart">
-          <p-dropdown [options]="user" [(ngModel)]="userSelect" optionLabel="name" optionValue="code"></p-dropdown>
-          <i style="color: #AEB422;" class="pi pi-shopping-cart cart-icon"></i>
+          <p-dropdown
+            [options]="user"
+            [(ngModel)]="userSelect"
+            optionLabel="name"
+            optionValue="code"
+          ></p-dropdown>
+          <i style="color: #aeb422; cursor: pointer;" class="pi pi-shopping-cart cart-icon" [routerLink]="['cart/']"></i>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="container-menu" style="position: relative; padding: 0 128px;">
-  <p-megaMenu style="color: white;" orientation="horizontal" [model]="items"></p-megaMenu>
+<div class="container-menu" style="position: relative; padding: 0 128px">
+  <p-megaMenu
+    orientation="horizontal"
+    [model]="items"
+  ></p-megaMenu>
 </div>
-

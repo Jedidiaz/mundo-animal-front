@@ -1,3 +1,4 @@
+
 .container{
   display: grid;
   grid-template-columns: 10% 90%;
@@ -11,11 +12,11 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .container-menu{
   background: #1A2537;
 }
-
-
 
 :host ::ng-deep .p-dropdown-label.p-inputtext.ng-star-inserted, :host ::ng-deep .p-dropdown-trigger-icon.ng-tns-c72-1.pi.pi-chevron-down, :host ::ng-deep .p-dropdown-trigger-icon,:host ::ng-deep .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text, :host ::ng-deep.p-submenu-icon.pi.pi-angle-down.ng-star-inserted{
   color: white;
@@ -60,6 +61,7 @@
   display: flex;
   align-items: center;
 }
+
 
 :host ::ng-deep .my-cart .p-dropdown.p-component{
   border: 0;
@@ -114,6 +116,36 @@
   width: 100%;
   height: auto;
 }
+/* Dropdown login header ------------- */
+.dropDown-user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+.dropDown-user span, h3{
+  margin: 10px 0px 20px 0px;
+}
+
+.dropDown-user button{
+  width: 100%;
+  background-color: #AEB422;
+  border: none;
+}
+
+.dropDown-user button:hover{
+  background-color: #616408;
+  border: none;
+}
+.dropDown-user p {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 
 @media only screen and (max-width: 320px) and (min-width: 780px)  {
   :host ::ng-deep .container{

@@ -19,7 +19,6 @@ import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms'
 import {PanelModule} from 'primeng/panel';
 import {DialogModule} from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
 import {SelectButtonModule} from 'primeng/selectbutton';
@@ -30,7 +29,14 @@ import {BadgeModule} from 'primeng/badge';
 import { ProductDetailComponent } from './modules/products/product-detail/product-detail.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import { CategoryComponent } from './modules/products/category/category.component';
+//primeNG modules---------------
 import {ListboxModule} from 'primeng/listbox';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {InputTextModule} from 'primeng/inputtext';
+import { PrimeIcons } from 'primeng/api';
+import { CartComponent } from './modules/cart/cart.component';
+
+
 
 
 
@@ -43,7 +49,8 @@ import {ListboxModule} from 'primeng/listbox';
     SliderComponent,
     ProductsComponent,
     ProductDetailComponent,
-    CategoryComponent
+    CategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,8 @@ import {ListboxModule} from 'primeng/listbox';
     AutoCompleteModule,
     BadgeModule,
     ToggleButtonModule,
-    ListboxModule
+    ListboxModule,
+    OverlayPanelModule
 
   ],
   providers: [],

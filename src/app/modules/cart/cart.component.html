@@ -1,0 +1,44 @@
+<!-- container general -->
+<div class="container">
+  <!-- productos del carrito -->
+  <div class="product-content" >
+    <div class="title">
+      <h2>Carrito</h2>
+    </div>
+    <div class="products" *ngFor="let products of productsCart" >
+      <div class="content-img">
+        <img src="{{ products.imagen }}" alt="image" />
+      </div>
+      <div class="content-description">
+        <h3>{{ products.descripcion }}</h3>
+        <p>
+          <span>{{ products.unidades_disponibles }}</span> Unidades disponibles
+        </p>
+        <p>${{ products.valor }}</p>
+      </div>
+      <div class="class-buttons">
+        <i><img src="../../../assets/delete.png" alt="" /></i>
+        <p-inputNumber
+          class="increment-decrement"
+          [(ngModel)]="val"
+          [step]="1.0"
+          [showButtons]="true"
+          mode="decimal"
+          [min]="1"
+          [max]="100"
+          buttonLayout="horizontal"
+          inputId="horizontal"
+          spinnerMode="horizontal"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+        ></p-inputNumber>
+      </div>
+    </div>
+  </div>
+  <div class="orden-content">
+    <div class="subtotal">
+      <h3>Subtotal</h3>
+      <p>$0</p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../products/service/product.service';
+import { CarouselI } from '../../Models/carosuel/carousel'
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,18 @@ export class HomeComponent implements OnInit {
   categories:CategoriesModels[] = [];
   subcategories:SubcategoriesModel[] = [];
   responsiveOptions:any = [];
-
+  carousel!:CarouselI[];
   constructor(private service:ProductService) { }
 
   ngOnInit(): void {
-    this.getSubCategories();
+    // this.getSubCategories();
+    // this.carouselService.getCarousel().then(Carousel=> {
+    //   this.carousel = Carousel;
+    // })
+    this.carousel = [{image: '../../../../assets/carousel/pexels-engin-akyurt-14374653.jpg'},
+    {image: '../../../../assets/carousel/pexels-lumn-4060142.jpg'},
+    {image: '../../../../assets/carousel/pexels-mikkel-bendix-9789471.jpg'}];
+    
     this.responsiveOptions = [
       {
           breakpoint: '1024px',

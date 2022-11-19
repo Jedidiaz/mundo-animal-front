@@ -1,5 +1,5 @@
 .container{
-  padding: 30px 80px;
+  display: block;
 }
 
 h2{
@@ -18,18 +18,30 @@ h2{
     align-items: center;
 }
 
+:host ::ng-deep .p-carousel-container button{
+  display: none;
+}
+
+:host ::ng-deep .p-carousel-indicators{
+  position: absolute;
+  top: 45%;
+  right: 20rem;
+}
+
 :host ::ng-deep .p-carousel .p-carousel-indicators .p-carousel-indicator button {
-  background-color: #e9ecef;
   width: 1rem;
   height: 1rem;
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   border-radius: 50%;
+  background-color: #1A2537;
 }
 
-
-:host ::ng-deep .p-carousel-container button{
-  display: none !important;
+:host ::ng-deep .p-galleria-indicators.p-reset.ng-star-inserted{
+  background-color: transparent;
+  justify-content: end;
+  padding-right: 15rem;
 }
+
 .img{
   width: 135px;
   height: 135px;
@@ -47,6 +59,52 @@ h2{
 .social-icon{
   font-size: 2rem;
   margin-bottom: 8px;
-  background-color: black;
   border-radius: 10px;
+}
+
+.container-social-media > img{
+  width: 45px;
+  margin: 5px;
+}
+
+/* categories */
+.container-category{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-category > div >img{
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  margin: 0px 40px 9px 40px;
+  box-shadow: 0px 0px 23px -2px rgba(0,0,0,0.43);
+
+}
+.container-category div img:hover {
+  cursor: pointer;
+  opacity: 40%;
+}
+.container-category >div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h3 {
+  font-family: 'Nunito';
+  font-weight: 700;
+}
+/* Carousel ------- */
+.img-carousel{
+  width: 100vw;
+  height: 35vh;
+  object-fit:fill;
+}
+
+h1{
+  font-family: 'Nunito';
+  margin: 4rem 0rem 2rem 10rem;
+  font-weight: 700;
 }

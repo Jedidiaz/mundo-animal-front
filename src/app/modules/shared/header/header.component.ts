@@ -4,10 +4,11 @@ import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
 
@@ -93,6 +94,9 @@ export class HeaderComponent implements OnInit {
     ];
 
     this.info = ['Trabaja con nosotros','Contacto']
+  }
+
+  show(){
   }
 
   getProduts(){

@@ -1,0 +1,138 @@
+*{
+  font-family: 'Nunito';
+}
+/* container general */
+.container {
+  display: grid;
+  width: 100%;
+  height: auto;
+  grid-template-columns: 50% 50%;
+  align-items: start;
+  padding: 10px 30px 10px 30px;
+  background-color: #fff;
+}
+/* Container productos */
+.product-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fff;
+}
+/* Titulo */
+.title {
+  width: 100%;
+  display: flex;
+  position: left;
+}
+
+.title h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #aeb422;
+}
+/* Productos */
+.products {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  align-items: center;
+  border: 1px solid #1A2537;
+  border-radius: 25px;
+  width: 100%;
+  padding: 10px;
+  /* height: 200px; */
+  margin: 10px 0px 10px 0px;
+}
+
+.content-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-img img {
+  width: 120px;
+}
+/*  descripcion products */
+.descripcion{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.content-description h3 {
+  color: #1A2537;
+  font-size: 30px;
+}
+
+p, span {
+  color: #b3b3b3;
+  font-weight: 700;
+}
+
+.content-description p:nth-child(3){
+  font-size: 35px;
+}
+
+.class-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.class-buttons i img {
+  width: 40px;
+  height: 40px;
+}
+
+.class-buttons :nth-child(1){
+  margin: 10px 0px 10px 0px;
+}
+
+:host ::ng-deep .p-element .p-inputnumber-button {
+  background-color: #1A2537;
+  border: none;
+}
+
+:host ::ng-deep .p-button-icon {
+  color: #fff;
+}
+
+:host ::ng-deep .p-inputnumber-input, :host ::ng-deep .p-inputnumber-button{
+  width: 40px;
+}
+
+:host ::ng-deep .p-inputnumber.p-component.p-inputnumber-buttons-horizontal{
+  height: 40px;
+}
+
+.orden-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 51px 30px 30px 30px;
+}
+
+.subtotal {
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.subtotal h3 {
+  font-size: 24px;
+  color: #1A2537;
+}
+
+.subtotal p {
+  font-size: 24px;
+}

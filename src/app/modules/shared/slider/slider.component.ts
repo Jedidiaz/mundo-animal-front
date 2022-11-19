@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
+import { CarouselService } from '../../services/carousel/carousel.service'
+import { CarouselI } from '../../../Models/carosuel/carousel'
 
 @Component({
   selector: 'app-slider',
@@ -12,11 +14,19 @@ export class SliderComponent implements OnInit {
   responsiveOptions:Array<any> = [];
   images:any = [];
 
-  categories:CategoriesModels[] = [];
+  categories!:CarouselI[];
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService, private carouselService: CarouselService) { }
 
   ngOnInit(): void {
+    // this.carouselService.getCarousel().then(Carousel=> {
+    //   this.categories = Carousel;
+    //   console.log(this.categories)
+    // })
+    this.categories = [{image: '../../../../assets/carousel/pexels-engin-akyurt-14374653.jpg'},
+    {image: '../../../../assets/carousel/pexels-lumn-4060142.jpg'},
+    {image: '../../../../assets/carousel/pexels-mikkel-bendix-9789471.jpg'}]
+
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -35,9 +45,6 @@ export class SliderComponent implements OnInit {
       }
     ];
 
-    this.images.push('https://images.pexels.com/photos/139309/pexels-photo-139309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
-    this.images.push('https://images.pexels.com/photos/139309/pexels-photo-139309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
-    this.images.push('https://images.pexels.com/photos/139309/pexels-photo-139309.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
   }
 
 }
