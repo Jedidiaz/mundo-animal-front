@@ -35,6 +35,10 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {InputTextModule} from 'primeng/inputtext';
 import { PrimeIcons } from 'primeng/api';
 import { CartComponent } from './modules/cart/cart.component';
+import { RecoveryPasswordComponent } from './modules/recovery-password/recovery-password.component';
+import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
+import {TableModule} from 'primeng/table';
+import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
 
 
 
@@ -50,7 +54,10 @@ import { CartComponent } from './modules/cart/cart.component';
     ProductsComponent,
     ProductDetailComponent,
     CategoryComponent,
-    CartComponent
+    CartComponent,
+    RecoveryPasswordComponent,
+    CRUDProductsComponent,
+    CrudsClientsComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,8 @@ import { CartComponent } from './modules/cart/cart.component';
     BadgeModule,
     ToggleButtonModule,
     ListboxModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    TableModule
 
   ],
   providers: [],

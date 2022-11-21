@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.content-crud {
+  margin-top: 20px;
+  border: 1px solid #aaa;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+  justify-content: center;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  justify-content: center;
+}
