@@ -1,14 +1,12 @@
 <div class="container">
-  <div routerLink="" lass="col content-img">
+  <div routerLink="" class="content-img">
     <img
       src="./../../../../assets/Logo_MA-07.png"
       alt=""
-      height="auto"
-      width="100%"
     />
   </div>
-  <div class="col content-options">
-    <div class="col content-button">
+  <div class="content-options">
+    <div class="content-button">
       <div class="container-search" style="position: relative; width: 50%">
         <p-autoComplete
           styleClass="p-autocomplete-list-item"
@@ -55,9 +53,7 @@
           <!-- <i class="pi pi-user user-icon"></i> -->
         </div>
         <!-- separador -->
-        <div
-          style="border-left: 1px solid white; height: 20px; margin: 0px 10px 0px 10px"
-        ></div>
+        <div class="separador"></div>
         <!-- --------------- -->
         <!-- Register content -->
         <div class="my-account">
@@ -108,17 +104,16 @@
           </p>
         </div>
         <div class="my-cart">
-          <p-dropdown
-            [options]="user"
-            [(ngModel)]="userSelect"
-            optionLabel="name"
-            optionValue="code"
-          ></p-dropdown>
           <i style="color: #aeb422; cursor: pointer;" class="pi pi-shopping-cart cart-icon" [routerLink]="['cart/']"></i>
         </div>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkBtn">
+          <i class="pi pi-bars"></i>
+        </label>
       </div>
     </div>
   </div>
+
 </div>
 <div class="container-menu" style="position: relative; padding: 0 128px">
   <p-megaMenu

@@ -10,6 +10,7 @@
   top: 0;
   z-index: 10;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 
@@ -55,6 +56,12 @@
   flex-direction: row;
   justify-content:end;
   align-items: center;
+}
+
+.separador {
+  border-left: 1px solid white;
+  height: 20px;
+  margin: 0px 10px 0px 10px;
 }
 
 .my-cart{
@@ -146,20 +153,48 @@
   cursor: pointer;
 }
 
+.checkBtn{
+  font-size: 30px;
+  float: right;
+  cursor: pointer;
+  display: none;
+}
 
-@media only screen and (max-width: 320px) and (min-width: 780px)  {
-  :host ::ng-deep .container{
-    padding: 25px 10px !important;
-    grid-template-columns: 90vw;
+#check {
+  display: none;
+}
+
+/* Responsive vista celular */
+@media only screen and (min-width: 360px) and (max-width: 720px)  {
+  /* Container principal  */
+  .container{
+    padding: 20px 10px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  :host ::ng-deep .content-img{
-    display: none !important;
+
+
+  .container-menu, .my-account, .container-search, .separador{
+    display:none;
   }
+/* imagen del logo */
+  .content-img img{
+    width: 150px;
+    padding: 0;
+    margin: 0;
+  }
+
   .content-button{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 0px;
-    flex-direction: column;
+    padding: 0;
+    flex-direction: row;
   }
+
+  .checkBtn{
+    display: block;
+  }
+
 }
