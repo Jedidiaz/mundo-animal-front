@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://webma.herokuapp.com/'
+  api: 'http://ec2-54-197-163-112.compute-1.amazonaws.com:3000/'
 };
 
 /*
