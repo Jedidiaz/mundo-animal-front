@@ -39,7 +39,7 @@ import { RecoveryPasswordComponent } from './modules/recovery-password/recovery-
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import {TableModule} from 'primeng/table';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
-
+import {SidebarModule} from 'primeng/sidebar';
 
 
 
@@ -85,10 +85,10 @@ import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clien
     ToggleButtonModule,
     ListboxModule,
     OverlayPanelModule,
-    TableModule
-
+    TableModule,
+    SidebarModule
   ],
-  providers: [],
+  providers: [PrimeIcons],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

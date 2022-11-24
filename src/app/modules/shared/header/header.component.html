@@ -1,9 +1,6 @@
 <div class="container">
   <div routerLink="" class="content-img">
-    <img
-      src="./../../../../assets/Logo_MA-07.png"
-      alt=""
-    />
+    <img src="./../../../../assets/Logo_MA-07.png" alt="" />
   </div>
   <div class="content-options">
     <div class="content-button">
@@ -38,7 +35,7 @@
                   <input id="float-password" type="text" pInputText />
                   <label for="float-password">Password</label>
                 </span>
-                <button pButton label="Login" ></button>
+                <button pButton label="Login"></button>
                 <p [routerLink]="['forgot-password/']">Forgot password?</p>
               </div>
             </ng-template>
@@ -91,33 +88,69 @@
                   <input id="float-phone" type="text" pInputText />
                   <label for="float-phone">Phone number</label>
                 </span>
-                <button pButton label="Register" ></button>
+                <button pButton label="Register"></button>
               </div>
             </ng-template>
-        </p-overlayPanel>
+          </p-overlayPanel>
           <p
             type="text"
             (click)="op2.toggle($event)"
-            style="color: white; font-family: 'Nunito'; cursor: pointer; margin-right: 40px;"
+            style="
+              color: white;
+              font-family: 'Nunito';
+              cursor: pointer;
+              margin-right: 40px;
+            "
           >
             Register
           </p>
         </div>
         <div class="my-cart">
-          <i style="color: #aeb422; cursor: pointer;" class="pi pi-shopping-cart cart-icon" [routerLink]="['cart/']"></i>
+          <i
+            style="color: #aeb422; cursor: pointer"
+            class="pi pi-shopping-cart cart-icon"
+            [routerLink]="['cart/']"
+          ></i>
         </div>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkBtn">
-          <i class="pi pi-bars"></i>
-        </label>
+        <p-button
+          type="text"
+          (click)="display = true"
+          icon="pi pi-bars"
+          class="bars"
+        ></p-button>
       </div>
     </div>
   </div>
-
 </div>
-<div class="container-menu" style="position: relative; padding: 0 128px">
-  <p-megaMenu
+<p-sidebar [(visible)]="display" styleClass="p-sidebar-sm" position="right">
+  <ng-template pTemplate="content">
+    <ul>
+      <li><a href="">Marcas</a></li>
+      <li><a href="">Categorias</a></li>
+      <li><a href="">Servicios</a></li>
+      <li><a href="">Contactenos</a></li>
+      <li><a href="">Promociones</a></li>
+      <li><a href="">Blog</a></li>
+      <li><a href="">Contactenos</a></li>
+    </ul>
+    <div class="user-container">
+      <button pButton label="Iniciar sesion" class="userBtn"></button>
+      <button pButton label="Registrarse" class="userBtn"></button>
+    </div>
+  </ng-template>
+</p-sidebar>
+<div class="container-menu">
+  <ul>
+    <li><a href="">Marcas</a></li>
+    <li><a href="">Categorias</a></li>
+    <li><a href="">Servicios</a></li>
+    <li><a href="">Contactenos</a></li>
+    <li><a href="">Promociones</a></li>
+    <li><a href="">Blog</a></li>
+    <li><a href="">Contactenos</a></li>
+  </ul>
+  <!-- <p-megaMenu
     orientation="horizontal"
     [model]="items"
-  ></p-megaMenu>
+  ></p-megaMenu> -->
 </div>

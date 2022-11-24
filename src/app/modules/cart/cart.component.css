@@ -1,5 +1,6 @@
 *{
   font-family: 'Nunito';
+  box-sizing: border-box;
 }
 /* container general */
 .container {
@@ -22,7 +23,6 @@
 /* Titulo */
 .title {
   width: 100%;
-  display: flex;
   position: left;
 }
 
@@ -112,10 +112,6 @@ p, span {
 }
 
 .orden-content{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   margin: 51px 30px 30px 30px;
 }
 
@@ -125,7 +121,7 @@ p, span {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: 30px;
 }
 
 .subtotal h3 {
@@ -135,4 +131,72 @@ p, span {
 
 .subtotal p {
   font-size: 24px;
+}
+
+/* Vista responsive celular */
+@media only screen and (min-width: 360px) and (max-width: 720px){
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+
+  }
+  .orden-content{
+    position: fixed;
+    height: auto;
+    margin: 0;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+  .product-content{
+    width: 100%;
+  }
+
+  .products {
+    width: 100%;
+  }
+  .content-img {
+    width: 60px;
+    padding: 0;
+  }
+  .content-img img {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .content-description h3, .content-description p:nth-child(3){
+    font-size: 15px;
+  }
+  .content-description p{
+    font-size: 10px;
+  }
+  .class-buttons i img{
+    width: 30px;
+    height: 30px;
+  }
+  .class-buttons {
+    width: 35px;
+  }
+  :host ::ng-deep .p-inputnumber-input, :host ::ng-deep .p-inputnumber-button{
+    width: 35px;
+    height: 35px;
+  }
+
+}
+@media only screen and (min-width: 500px) and (max-width: 720px){
+  .class-buttons {
+    width: 100%;
+  }
+  .content-img {
+    width: 100px;
+    padding: 0;
+  }
+  .content-description h3, .content-description p:nth-child(3){
+    font-size: 23px;
+  }
+  .content-description p{
+    font-size: 15px;
+  }
 }

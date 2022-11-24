@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PrimeIcons } from 'primeng/api';
 import { MegaMenuItem } from 'primeng/api/megamenuitem';
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
@@ -9,10 +10,12 @@ import { ProductService } from '../../products/service/product.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  providers: [PrimeIcons],
 })
 export class HeaderComponent implements OnInit {
 
   products:ProductsModel[] = [];
+  display:any;
 
   categories:CategoriesModels[] = [];
   subcategories:any = [];

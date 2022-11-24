@@ -1,7 +1,7 @@
 
 .container{
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 20% 80%;
   align-items: center;
   justify-content: center;
   padding: 20px 128px 0px 128px;
@@ -13,20 +13,34 @@
   box-sizing: border-box;
 }
 
-
-
 .container-menu{
   background: #1A2537;
+  width: 100%;
+  padding-left: 128px;
+  padding-bottom: 20px;}
+
+.container-menu ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
 }
 
-:host ::ng-deep .p-dropdown-label.p-inputtext.ng-star-inserted, :host ::ng-deep .p-dropdown-trigger-icon.ng-tns-c72-1.pi.pi-chevron-down, :host ::ng-deep .p-dropdown-trigger-icon,:host ::ng-deep .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text, :host ::ng-deep.p-submenu-icon.pi.pi-angle-down.ng-star-inserted{
+.container-menu ul li{
+  margin: 0 20px;
+}
+
+.container-menu ul li a{
   color: white;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .icon-search{
   position: absolute;
-    right: 1rem;
-    top: 0.8rem;
+  right: 1rem;
+  top: 0.8rem;
 }
 
 :host ::ng-deep .container-search .p-autocomplete-input{
@@ -118,10 +132,14 @@
 :host ::ng-deep .p-megamenu{
   background-color: #1A2537 !important;
   border: none;
+  align-items: center;
 }
 .content-img{
   width: 100%;
   height: auto;
+}
+.content-img img{
+  width: 100%;
 }
 /* Dropdown login header ------------- */
 .dropDown-user{
@@ -153,14 +171,7 @@
   cursor: pointer;
 }
 
-.checkBtn{
-  font-size: 30px;
-  float: right;
-  cursor: pointer;
-  display: none;
-}
-
-#check {
+:host::ng-deep .p-ripple{
   display: none;
 }
 
@@ -175,7 +186,7 @@
   }
 
 
-  .container-menu, .my-account, .container-search, .separador{
+  .my-account, .container-search, .separador, .container-menu{
     display:none;
   }
 /* imagen del logo */
@@ -193,8 +204,50 @@
     flex-direction: row;
   }
 
-  .checkBtn{
-    display: block;
+  ul {
+    padding-bottom: 10px;
+    flex-direction: column;
+    background-color: #1A2537;
+    list-style: none;
+  }
+  ul li{
+    margin: 10px;
   }
 
+  ul li a{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  :host::ng-deep .p-sidebar-sm {
+    background-color: #1A2537;
+  }
+
+  :host::ng-deep .p-sidebar-sm .p-sidebar-header .p-ripple{
+    background-color: white;
+  }
+
+  :host::ng-deep .userBtn{
+    background-color: #AEB422;
+    border: none;
+    border-radius: 50px;
+    margin: 0px 5px;
+  }
+
+  :host::ng-deep .userBtn:hover{
+    background-color: #616408;
+    border: none;
+  }
+
+  :host::ng-deep .bars .p-button-icon{
+    color: white;
+  }
+
+  :host::ng-deep .p-ripple{
+    background-color: transparent;
+    border: none;
+    display: flex;
+  }
 }
+

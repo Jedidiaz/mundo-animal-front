@@ -24,20 +24,20 @@ export class HomeComponent implements OnInit {
     this.carousel = [{image: '../../../../assets/carousel/pexels-engin-akyurt-14374653.jpg'},
     {image: '../../../../assets/carousel/pexels-lumn-4060142.jpg'},
     {image: '../../../../assets/carousel/pexels-mikkel-bendix-9789471.jpg'}];
-    
+
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
+          numVisible: 1,
+          numScroll: 1
       },
       {
-          breakpoint: '768px',
-          numVisible: 2,
-          numScroll: 2
+          breakpoint: '720px',
+          numVisible: 1,
+          numScroll: 1
       },
       {
-          breakpoint: '560px',
+          breakpoint: '360px',
           numVisible: 1,
           numScroll: 1
       }

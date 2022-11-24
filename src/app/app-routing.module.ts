@@ -17,8 +17,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'forgot-password', component: RecoveryPasswordComponent},
   {path: 'CrUd-products', component: CRUDProductsComponent},
-  {path: 'CrUd-cients', component: CrudsClientsComponent}
-  //{path: '**', redirectTo: ''}
+  {path: 'CrUd-cients', component: CrudsClientsComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
