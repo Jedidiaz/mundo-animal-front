@@ -1,3 +1,4 @@
+/* Container */
 .container{
   display: flex;
   width: 100vw;
@@ -17,7 +18,8 @@
   object-fit: cover;
 }
 
-.content{
+/* box login */
+.box-login{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,28 +30,40 @@
   z-index: 2;
 }
 
-.content h3 {
+h2{
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
-.content span{
-  margin: 10px  0;
-  width: 100%;
+span{
+  margin-bottom: 25px;
 }
 
-.content span input{
-  width: 300px;
+input{
+  width: 260px;
 }
 
-.content button {
-  background-color: #aeb422;
-  width: 100%;
+button{
+  background-color: #AEB422;
   border: none;
-
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-.content button:hover{
+a{
+  color: white;
+  text-decoration: none;
+  font-family: 'Nunito';
+}
+
+a:hover {
+  color: #F2950E;
+}
+
+.btnlogin:hover{
   background-color: #F2950E;
+  border: none;
 }
+
+
 

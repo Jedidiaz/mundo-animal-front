@@ -40,6 +40,10 @@ import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-produc
 import {TableModule} from 'primeng/table';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
 import {SidebarModule} from 'primeng/sidebar';
+import { LoginComponent } from './modules/login/login.component';
+import { SignInComponent } from './modules/sign-in/sign-in.component';
+import { SignUpComponent } from './modules/sign-up/sign-up.component';
+import { AuthComponent } from './modules/auth/auth.component';
 
 
 
@@ -57,7 +61,11 @@ import {SidebarModule} from 'primeng/sidebar';
     CartComponent,
     RecoveryPasswordComponent,
     CRUDProductsComponent,
-    CrudsClientsComponent
+    CrudsClientsComponent,
+    LoginComponent,
+    SignInComponent,
+    SignUpComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
