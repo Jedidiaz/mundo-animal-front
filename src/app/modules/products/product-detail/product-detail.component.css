@@ -37,7 +37,7 @@
   border-color: #ccc;
 }
 
-:host ::ng-deep .p-rating.p-readonly{
+:host ::ng-deep .p-rating .p-readonly{
   text-align: end;
   padding: 15px 0;
 }
@@ -52,7 +52,7 @@
 }
 
 :host ::ng-deep .p-galleria-thumbnail-item{
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 :host ::ng-deep .p-galleria-thumbnail-prev, :host ::ng-deep .p-galleria-thumbnail-next{
@@ -60,7 +60,7 @@
 }
 
 :host ::ng-deep .p-galleria-thumbnail-items{
-  justify-content: end;
+  justify-content: start;
 }
 
 :host ::ng-deep .p-galleria .p-galleria-thumbnail-container{
@@ -70,7 +70,6 @@
 
 :host ::ng-deep .p-ripple.p-element.p-button.p-component{
   padding: 9px;
-  margin-right: 7px;
   border-radius: 5px;
   border-color: #b3b3b3;
   border-right: 1px solid #b3b3b3 !important;
@@ -103,4 +102,30 @@
 
 .add-to-cart button{
   font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 720px){
+  .container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .container-info{
+    margin: 0 10px;
+  }
+
+  .properties{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-to-cart{
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .info{
+    text-align: center;
+  }
 }

@@ -13,6 +13,9 @@
   padding: 0 10px;
   border: 1px solid #aaa;
 }
+img{
+  cursor: pointer;
+}
 
 :host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
   justify-content: center;
