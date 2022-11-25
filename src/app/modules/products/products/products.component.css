@@ -298,3 +298,7 @@
   width: 10rem;
   margin-right: 15px;
 }
+/* diseño responsive para mobil */
+@media only screen and (min-width: 360px) and (max-width: 720px){
+  
+}

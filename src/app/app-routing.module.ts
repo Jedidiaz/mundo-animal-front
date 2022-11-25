@@ -4,6 +4,7 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
+import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { CategoryComponent } from './modules/products/category/category.component';
@@ -20,12 +21,13 @@ const routes: Routes = [
   { path: 'category/:name', component: CategoryComponent },
   { path: 'cart', component: CartComponent },
   { path: 'forgot-password', component: RecoveryPasswordComponent },
-  { path: 'CrUd-products', component: CRUDProductsComponent },
-  { path: 'CrUd-cients', component: CrudsClientsComponent },
+  { path: 'crud-products', component: CRUDProductsComponent },
+  { path: 'crud-clients', component: CrudsClientsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'auth', component: AuthComponent },
+  { path: 'edit-products', component: EditProductsComponent },
   { path: '**', redirectTo: '' },
 ];
 

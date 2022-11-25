@@ -44,6 +44,8 @@ import { LoginComponent } from './modules/login/login.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { SignUpComponent } from './modules/sign-up/sign-up.component';
 import { AuthComponent } from './modules/auth/auth.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
 
 
 
@@ -65,7 +67,8 @@ import { AuthComponent } from './modules/auth/auth.component';
     LoginComponent,
     SignInComponent,
     SignUpComponent,
-    AuthComponent
+    AuthComponent,
+    EditProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { AuthComponent } from './modules/auth/auth.component';
     ListboxModule,
     OverlayPanelModule,
     TableModule,
-    SidebarModule
+    SidebarModule,
+    InputTextareaModule
   ],
   providers: [PrimeIcons],
   bootstrap: [AppComponent]

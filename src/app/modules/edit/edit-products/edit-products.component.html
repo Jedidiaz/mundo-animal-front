@@ -1,0 +1,99 @@
+<!-- contenedor -->
+<div class="container">
+  <!-- Div de la card -->
+  <div class="card">
+    <div class="img-content">
+      <img
+        src="https://laika.com.co/cdn-cgi/image/onerror=redirect,format=auto,fit=scale-down,width=600,quality=80/https://laikapp.s3.amazonaws.com/dev_images_products/14962_40522_Cama_Premium_1610855239_500x500.jpg"
+        alt="img"
+      />
+    </div>
+    <div class="description-content">
+      <span>
+        <label for="nombre">Nombre </label>
+        <input pInputText type="text" id="nombre" />
+      </span>
+      <span>
+        <label for="descripcion">Descripcion </label>
+        <textarea
+          id="descripcion"
+          pInputTextarea
+          placeholder="Descripción aquí"
+        ></textarea>
+      </span>
+      <span>
+        <label for="options">Marcas </label>
+        <p-dropdown
+          id="options"
+          [options]="options"
+          [(ngModel)]="focus"
+          placeholder="Select a Option"
+          optionLabel="name"
+          [showClear]="true"
+        ></p-dropdown>
+      </span>
+      <span>
+        <label for="options">Categorias </label>
+        <p-dropdown
+          id="options"
+          [options]="options"
+          [(ngModel)]="focus"
+          placeholder="Select a Option"
+          optionLabel="name"
+          [showClear]="true"
+        ></p-dropdown>
+      </span>
+      <span>
+        <label for="options">Clasificacion </label>
+        <p-dropdown
+          id="options"
+          [options]="options"
+          [(ngModel)]="focus"
+          placeholder="Select a Option"
+          optionLabel="name"
+          [showClear]="true"
+        ></p-dropdown>
+      </span>
+      <span>
+        <label for="options">Estado </label>
+        <p-dropdown
+          id="options"
+          [options]="options"
+          [(ngModel)]="focus"
+          placeholder="Select a Option"
+          optionLabel="name"
+          [showClear]="true"
+        ></p-dropdown>
+      </span>
+      <div class="porcent">
+        <span>
+          <label for="options">IVA % </label>
+          <p-dropdown
+            id="options"
+            [options]="options"
+            [(ngModel)]="focus"
+            placeholder="Select a Option"
+            optionLabel="name"
+            [showClear]="true"
+          ></p-dropdown>
+        </span>
+        <span>
+          <label for="options">Descuento % </label>
+          <p-dropdown
+            id="options"
+            [options]="options"
+            [(ngModel)]="focus"
+            placeholder="Select a Option"
+            optionLabel="name"
+            [showClear]="true"
+          ></p-dropdown>
+        </span>
+      </div>
+      <span>
+        <label for="Promo">Promo </label>
+        <input pInputText type="date" id="Promo" />
+      </span>
+      <button pButton label="Guardar"></button>
+    </div>
+  </div>
+</div>
