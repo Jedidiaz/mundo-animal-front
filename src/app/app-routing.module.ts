@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/auth.component';
 import { CartComponent } from './modules/cart/cart.component';
+import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
+import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
 import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
+import { OrdenComponent } from './modules/orden/orden.component';
 import { CategoryComponent } from './modules/products/category/category.component';
 import { ProductDetailComponent } from './modules/products/product-detail/product-detail.component';
 import { ProductsComponent } from './modules/products/products/products.component';
@@ -28,6 +31,9 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'edit-products', component: EditProductsComponent },
+  { path: 'edit-clients', component: EditClientsComponent },
+  { path: 'crud-categories', component: CrudCategoryComponent },
+  { path: 'orden', component: OrdenComponent },
   { path: '**', redirectTo: '' },
 ];
 

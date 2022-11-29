@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="content">
+    <div class="datos-direccion">
+      <span>
+        <p-dropdown
+          id="options"
+          [options]="direcciones"
+          [(ngModel)]="focusDirecciones"
+          placeholder="{{ direcciones[0].name }}"
+          optionLabel="name"
+        ></p-dropdown>
+      </span>
+      <span>
+        <p-dropdown
+          id="options"
+          [options]="options"
+          [(ngModel)]="focus"
+          placeholder="{{ options[0].name }}"
+          optionLabel="name"
+        ></p-dropdown>
+      </span>
+    </div>
+    <div class="metodo-pago">
+      <span>
+        <p-dropdown
+          id="options"
+          [options]="metodoPago"
+          [(ngModel)]="focusPagos"
+          placeholder="Metodo de pago"
+          optionLabel="name"
+        ></p-dropdown>
+      </span>
+    </div>
+    <div class="datos-orden">
+      <div class="datos-pedido">
+        
+      </div>
+    </div>
+    <div class="total"></div>
+    <div class="btn-comprar"></div>
+  </div>
+</div>

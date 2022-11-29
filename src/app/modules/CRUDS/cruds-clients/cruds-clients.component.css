@@ -14,12 +14,12 @@
 }
 
 :host ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
-  justify-content: center;
+  text-align: center;
   font-size: 14px;
 }
 
 :host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
-  justify-content: center;
+  text-align: center;
 }
 
 :host::ng-deep

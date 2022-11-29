@@ -10,14 +10,14 @@
 
 .content-crud {
   margin-top: 20px;
-  padding: 0 10px;
   border: 1px solid #aaa;
 }
-img{
-  cursor: pointer;
+
+h1{
+  text-align: center;
 }
 
-:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
   text-align: center;
   font-size: 14px;
 }

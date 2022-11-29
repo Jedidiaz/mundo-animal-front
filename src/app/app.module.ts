@@ -46,6 +46,9 @@ import { SignUpComponent } from './modules/sign-up/sign-up.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
+import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
+import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
+import { OrdenComponent } from './modules/orden/orden.component';
 
 
 
@@ -68,7 +71,10 @@ import { EditProductsComponent } from './modules/edit/edit-products/edit-product
     SignInComponent,
     SignUpComponent,
     AuthComponent,
-    EditProductsComponent
+    EditProductsComponent,
+    EditClientsComponent,
+    CrudCategoryComponent,
+    OrdenComponent
   ],
   imports: [
     BrowserModule,
