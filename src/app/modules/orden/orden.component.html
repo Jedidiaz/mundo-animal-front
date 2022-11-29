@@ -1,42 +1,65 @@
+<!-- Cntainer orden -->
 <div class="container">
+  <!-- Container boxes-->
   <div class="content">
+    <!-- datos de direccion -->
     <div class="datos-direccion">
-      <span>
-        <p-dropdown
-          id="options"
-          [options]="direcciones"
-          [(ngModel)]="focusDirecciones"
-          placeholder="{{ direcciones[0].name }}"
-          optionLabel="name"
-        ></p-dropdown>
-      </span>
-      <span>
-        <p-dropdown
-          id="options"
-          [options]="options"
-          [(ngModel)]="focus"
-          placeholder="{{ options[0].name }}"
-          optionLabel="name"
-        ></p-dropdown>
-      </span>
+      <p-dropdown
+        id="options"
+        [options]="direcciones"
+        [(ngModel)]="focusDirecciones"
+        placeholder="{{ direcciones[0].name }}"
+        optionLabel="name"
+      ></p-dropdown>
+      <p-dropdown
+        id="options"
+        [options]="options"
+        [(ngModel)]="focus"
+        placeholder="{{ options[0].name }}"
+        optionLabel="name"
+      ></p-dropdown>
     </div>
+    <!-- Metodo de pago -->
     <div class="metodo-pago">
-      <span>
-        <p-dropdown
-          id="options"
-          [options]="metodoPago"
-          [(ngModel)]="focusPagos"
-          placeholder="Metodo de pago"
-          optionLabel="name"
-        ></p-dropdown>
-      </span>
+      <p-dropdown
+        id="options"
+        [options]="metodoPago"
+        [(ngModel)]="focusPagos"
+        placeholder="Metodo de pago"
+        optionLabel="name"
+      ></p-dropdown>
     </div>
+    <!-- Datos de la orden -->
     <div class="datos-orden">
       <div class="datos-pedido">
-        
+        <div class="dato-content">
+          <div class="pedido">
+            <div class="img">
+            <img src="../../../assets/product.png" alt="i" />
+          </div>
+          <div class="datos">
+            <h4>Nombre</h4>
+            <p>descripcion</p>
+            <p>cantidad</p>
+          </div>
+          </div>
+          <h3>$10.000</h3>
+        </div>
+        <hr>
+        <div class="tarifa-entrega">
+          <p>Tarifa entrega</p>
+          <h3>$2.000</h3>
+        </div>
       </div>
     </div>
-    <div class="total"></div>
-    <div class="btn-comprar"></div>
+    <!-- Total -->
+    <div class="total">
+      <h4>Total</h4>
+      <h3>$12.000</h3>
+    </div>
+    <!-- Boton -->
+    <div class="btn-comprar">
+      <button pButton label="Comprar"></button>
+    </div>
   </div>
 </div>
