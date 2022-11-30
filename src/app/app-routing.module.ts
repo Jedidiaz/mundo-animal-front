@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'edit-clasification', component: EditClasificationComponent },
   { path: 'edit-brands', component: EditBrandsComponent },
   { path: 'crud-categories', component: CrudCategoryComponent },
+  { path: 'crud-categories', component: CrudCategoryComponent },
   { path: 'orden', component: OrdenComponent },
   { path: '**', redirectTo: '' },
 ];

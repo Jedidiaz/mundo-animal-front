@@ -53,6 +53,7 @@ import { EditCategoryComponent } from './modules/edit/edit-category/edit-categor
 import { EditSubcategoryComponent } from './modules/edit/edit-subcategory/edit-subcategory.component';
 import { EditClasificationComponent } from './modules/edit/edit-clasification/edit-clasification.component';
 import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.component';
+import { CrudOrdenesComponent } from './modules/CRUDS/crud-ordenes/crud-ordenes.component';
 
 
 
@@ -82,7 +83,8 @@ import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.comp
     EditCategoryComponent,
     EditSubcategoryComponent,
     EditClasificationComponent,
-    EditBrandsComponent
+    EditBrandsComponent,
+    CrudOrdenesComponent
   ],
   imports: [
     BrowserModule,
