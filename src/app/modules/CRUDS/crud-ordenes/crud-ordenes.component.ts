@@ -9,16 +9,27 @@ export class CrudOrdenesComponent implements OnInit {
   products: Array<any> = [];
   titles: Array<any> = [
     'No',
-    'Codigo',
     'Cliente',
-    'Fecha de nacimiento',
-    'Telefono',
-    'Ciudad',
-    'direccion',
-    'editar',
-    'eliminar',
+    'Valor',
+    'Detalle',
+    'Estado'
   ];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.products.push(
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' }
+    );
+  }
 }

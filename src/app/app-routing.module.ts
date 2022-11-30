@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/auth.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
+import { CrudOrdenesComponent } from './modules/CRUDS/crud-ordenes/crud-ordenes.component';
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
 import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.component';
@@ -11,8 +12,10 @@ import { EditClasificationComponent } from './modules/edit/edit-clasification/ed
 import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
 import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
 import { EditSubcategoryComponent } from './modules/edit/edit-subcategory/edit-subcategory.component';
+import { HistorialCompraComponent } from './modules/historial-compra/historial-compra.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
+import { OrdenDetailAdminComponent } from './modules/orden-detail-admin/orden-detail-admin.component';
 import { OrdenComponent } from './modules/orden/orden.component';
 import { CategoryComponent } from './modules/products/category/category.component';
 import { ProductDetailComponent } from './modules/products/product-detail/product-detail.component';
@@ -44,8 +47,10 @@ const routes: Routes = [
   { path: 'edit-clasification', component: EditClasificationComponent },
   { path: 'edit-brands', component: EditBrandsComponent },
   { path: 'crud-categories', component: CrudCategoryComponent },
-  { path: 'crud-categories', component: CrudCategoryComponent },
+  { path: 'crud-orden', component: CrudOrdenesComponent },
   { path: 'orden', component: OrdenComponent },
+  { path: 'orden-detail-admin', component: OrdenDetailAdminComponent },
+  { path: 'historial-compra', component: HistorialCompraComponent },
   { path: '**', redirectTo: '' },
 ];
 
