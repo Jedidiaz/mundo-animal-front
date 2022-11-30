@@ -76,7 +76,7 @@ export class ProductsComponent implements OnInit {
   getProduts(){
     this.productsService.getProducts().subscribe({
       next: (ok) => {
-        this.products  = ok
+        this.products = ok
         this.products.forEach(el => {
           if(el.brandId == 1){
             this.dog.push(el);
@@ -84,7 +84,7 @@ export class ProductsComponent implements OnInit {
             this.cat.push(el)
           }
         })
-      },error: (err) => {}
+      }, error: (err) => { }
     });
   }
 

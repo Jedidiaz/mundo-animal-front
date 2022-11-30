@@ -49,6 +49,10 @@ import { EditProductsComponent } from './modules/edit/edit-products/edit-product
 import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
 import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
 import { OrdenComponent } from './modules/orden/orden.component';
+import { EditCategoryComponent } from './modules/edit/edit-category/edit-category.component';
+import { EditSubcategoryComponent } from './modules/edit/edit-subcategory/edit-subcategory.component';
+import { EditClasificationComponent } from './modules/edit/edit-clasification/edit-clasification.component';
+import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.component';
 
 
 
@@ -74,7 +78,11 @@ import { OrdenComponent } from './modules/orden/orden.component';
     EditProductsComponent,
     EditClientsComponent,
     CrudCategoryComponent,
-    OrdenComponent
+    OrdenComponent,
+    EditCategoryComponent,
+    EditSubcategoryComponent,
+    EditClasificationComponent,
+    EditBrandsComponent
   ],
   imports: [
     BrowserModule,

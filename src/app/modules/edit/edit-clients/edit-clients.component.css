@@ -17,23 +17,9 @@
   border-radius: 20px;
 }
 
-.content-img-profile {
-  width: 100%;
-}
-
-.content-img-profile img{
-  width: 100%;
-  border-radius: 50%;
-  border: 1px solid #b3b3b3;
-}
-
 .p-inputtext {
   width: 100%;
   margin-bottom: 10px;
-}
-
-.p-inputtextarea {
-  height: 150px;
 }
 
 :host::ng-deep .p-dropdown {
@@ -55,6 +41,7 @@
 @media only screen and (min-width: 1024px) {
   .card {
     flex-direction: row;
+    margin: 0 400px;
   }
 
   .description {

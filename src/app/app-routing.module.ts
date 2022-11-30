@@ -5,8 +5,12 @@ import { CartComponent } from './modules/cart/cart.component';
 import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
+import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.component';
+import { EditCategoryComponent } from './modules/edit/edit-category/edit-category.component';
+import { EditClasificationComponent } from './modules/edit/edit-clasification/edit-clasification.component';
 import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
 import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
+import { EditSubcategoryComponent } from './modules/edit/edit-subcategory/edit-subcategory.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { OrdenComponent } from './modules/orden/orden.component';
@@ -29,9 +33,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'auth', component: AuthComponent },
+  {
+    path: 'Account_Verification/payload:payload&extendsI:extendsI',
+    component: AuthComponent,
+  },
   { path: 'edit-products', component: EditProductsComponent },
   { path: 'edit-clients', component: EditClientsComponent },
+  { path: 'edit-category', component: EditCategoryComponent },
+  { path: 'edit-subcategory', component: EditSubcategoryComponent },
+  { path: 'edit-clasification', component: EditClasificationComponent },
+  { path: 'edit-brands', component: EditBrandsComponent },
   { path: 'crud-categories', component: CrudCategoryComponent },
   { path: 'orden', component: OrdenComponent },
   { path: '**', redirectTo: '' },
