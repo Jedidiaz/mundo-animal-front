@@ -2,11 +2,26 @@
 <div class="container">
   <!-- Div de la card -->
   <div class="card">
-    <div class="img-content">
-      <img
-        src="https://laika.com.co/cdn-cgi/image/onerror=redirect,format=auto,fit=scale-down,width=600,quality=80/https://laikapp.s3.amazonaws.com/dev_images_products/14962_40522_Cama_Premium_1610855239_500x500.jpg"
-        alt="img"
-      />
+    <div class="container-images">
+      <p-galleria
+        [value]="images"
+        [responsiveOptions]="responsiveOptions"
+        [numVisible]="2"
+        thumbnailsPosition="bottom"
+        [circular]="true"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" style="width: 100%; display: block" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item >
+          <div class="grid grid-nogutter justify-content-center">
+            <img
+              [src]="item"
+              style="width: 100px; height: auto; visibility: initial"
+            />
+          </div>
+        </ng-template>
+      </p-galleria>
     </div>
     <div class="description-content">
       <span>

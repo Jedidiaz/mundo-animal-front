@@ -56,6 +56,8 @@ import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.comp
 import { CrudOrdenesComponent } from './modules/CRUDS/crud-ordenes/crud-ordenes.component';
 import { OrdenDetailAdminComponent } from './modules/orden-detail-admin/orden-detail-admin.component';
 import { HistorialCompraComponent } from './modules/historial-compra/historial-compra.component';
+import { CrudPresentationsComponent } from './modules/CRUDS/crud-presentations/crud-presentations.component';
+import { EditPresentationsComponent } from './modules/edit/edit-presentations/edit-presentations.component';
 
 
 
@@ -88,7 +90,9 @@ import { HistorialCompraComponent } from './modules/historial-compra/historial-c
     EditBrandsComponent,
     CrudOrdenesComponent,
     OrdenDetailAdminComponent,
-    HistorialCompraComponent
+    HistorialCompraComponent,
+    CrudPresentationsComponent,
+    EditPresentationsComponent
   ],
   imports: [
     BrowserModule,

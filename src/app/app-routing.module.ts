@@ -4,12 +4,14 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { CrudCategoryComponent } from './modules/CRUDS/crud-category/crud-category.component';
 import { CrudOrdenesComponent } from './modules/CRUDS/crud-ordenes/crud-ordenes.component';
+import { CrudPresentationsComponent } from './modules/CRUDS/crud-presentations/crud-presentations.component';
 import { CRUDProductsComponent } from './modules/CRUDS/crud-products/crud-products.component';
 import { CrudsClientsComponent } from './modules/CRUDS/cruds-clients/cruds-clients.component';
 import { EditBrandsComponent } from './modules/edit/edit-brands/edit-brands.component';
 import { EditCategoryComponent } from './modules/edit/edit-category/edit-category.component';
 import { EditClasificationComponent } from './modules/edit/edit-clasification/edit-clasification.component';
 import { EditClientsComponent } from './modules/edit/edit-clients/edit-clients.component';
+import { EditPresentationsComponent } from './modules/edit/edit-presentations/edit-presentations.component';
 import { EditProductsComponent } from './modules/edit/edit-products/edit-products.component';
 import { EditSubcategoryComponent } from './modules/edit/edit-subcategory/edit-subcategory.component';
 import { HistorialCompraComponent } from './modules/historial-compra/historial-compra.component';
@@ -46,8 +48,10 @@ const routes: Routes = [
   { path: 'edit-subcategory', component: EditSubcategoryComponent },
   { path: 'edit-clasification', component: EditClasificationComponent },
   { path: 'edit-brands', component: EditBrandsComponent },
+  { path: 'edit-presentation', component: EditPresentationsComponent },
   { path: 'crud-categories', component: CrudCategoryComponent },
   { path: 'crud-orden', component: CrudOrdenesComponent },
+  { path: 'crud-presentations', component: CrudPresentationsComponent },
   { path: 'orden', component: OrdenComponent },
   { path: 'orden-detail-admin', component: OrdenDetailAdminComponent },
   { path: 'historial-compra', component: HistorialCompraComponent },

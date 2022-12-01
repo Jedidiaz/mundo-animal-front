@@ -17,11 +17,11 @@
   border-radius: 20px;
 }
 
-.img-content {
+.container-images {
   width: 100%;
 }
 
-.img-content img {
+.container-images img {
   width: 100%;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .p-inputtextarea {
-  height: 150px;
+  height: 100px;
 }
 
 :host::ng-deep .p-dropdown {
@@ -49,10 +49,18 @@
   background-color: #616408;
 }
 
+:host ::ng-deep .p-galleria-thumbnail-items{
+  justify-content: start;
+}
+
+:host ::ng-deep .p-galleria .p-galleria-thumbnail-container{
+  background-color: transparent;
+}
+
 @media only screen and (min-width: 1024px) {
   .card {
     flex-direction: row;
-    margin: 0 200px;
+    margin: 0 450px;
   }
 
   .porcent {
