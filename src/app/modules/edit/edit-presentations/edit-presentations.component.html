@@ -2,12 +2,17 @@
 <div class="container">
   <!-- Card presentaciones -->
   <div class="card">
-    <form action="" *ngFor="let name of campos">
-      <span>
-        <label for="{{name}}">{{name}} </label>
-        <input pInputText type="text" id="{{name}}" />
-      </span>
-    </form>
-    <button pButton label="Guardar"></button>
+    <div class="form">
+      <form action="" *ngFor="let name of campos">
+        <span>
+          <label for="{{name}}">{{name}} </label>
+          <input pInputText type="text" id="{{name}}" />
+        </span>
+      </form>
+    </div>
+    <div class="btn">
+      <button pButton label="Guardar"></button>
+    </div>
+
   </div>
 </div>

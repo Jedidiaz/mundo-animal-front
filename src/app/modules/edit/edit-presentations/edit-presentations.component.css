@@ -24,6 +24,7 @@
 
 .p-button:hover{
   background-color: #616408;
+  cursor: text;
 }
 
 @media only screen and (min-width: 1024px){
@@ -32,7 +33,13 @@
     justify-content: center;
   }
 
-  .card{
-    width: 500px;
+  .form{
+    width: 900px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .p-inputtext{
+    width: 95%;
   }
 }
