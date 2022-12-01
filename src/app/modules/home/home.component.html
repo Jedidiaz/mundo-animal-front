@@ -8,8 +8,8 @@
     <img src="../../../assets/whatsapp.png" alt="" />
   </div>
   <!-- <app-slider></app-slider> -->
-<!-- Container carousel        -->
-<div class="container">
+  <!-- Container carousel        -->
+  <div class="container">
     <p-carousel
       [value]="carousel"
       [numVisible]="1"
@@ -20,11 +20,7 @@
     >
       <ng-template let-carousel pTemplate="item">
         <div class="images-categories">
-          <img
-            class="img-carousel"
-            src="{{carousel.image}}"
-            alt=""
-          />
+          <img class="img-carousel" src="{{ carousel.image }}" alt="" />
         </div>
       </ng-template>
     </p-carousel>
@@ -53,6 +49,21 @@
     <div>
       <img src="../../../assets/Categorias.jpg" alt="" class="Salud-animal" />
       <h3>Salud animal</h3>
+    </div>
+  </div>
+  <!-- Container products -->
+  <div class="titulo">
+    <h1>Productos recomendados</h1>
+    <hr/>
+  </div>
+  <div class="container-products">
+    <div class="content-products" *ngFor="let img of imagesProducts">
+      <div class="products">
+        <img [src]="img">
+        <h4>Nombre producto</h4>
+        <h3>$20.000</h3>
+        <p-rating [(ngModel)]="val" [readonly]="true" [stars]="5" [cancel]="false"></p-rating>
+      </div>
     </div>
   </div>
 </div>

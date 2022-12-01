@@ -140,6 +140,7 @@
 }
 .content-img img{
   width: 100%;
+  cursor: pointer;
 }
 /* Dropdown login header ------------- */
 .dropDown-user{
@@ -189,7 +190,7 @@
   .my-account, .container-search, .separador, .container-menu, .content-actions-user{
     display:none;
   }
-  
+
 /* imagen del logo */
   .content-img img{
     width: 150px;

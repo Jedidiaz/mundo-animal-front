@@ -16,6 +16,7 @@
   height: 84vh;
   filter: blur(6px);
   object-fit: cover;
+  margin: 0;
 }
 
 /* box login */

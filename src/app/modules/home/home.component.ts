@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   subcategories:SubcategoriesModel[] = [];
   responsiveOptions:any = [];
   carousel!:CarouselI[];
+  imagesProducts: Array<any> = [];
+  val: number = 3;
   constructor(private service:ProductService) { }
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class HomeComponent implements OnInit {
           numScroll: 1
       }
     ];
+
+    this.imagesProducts.push(
+      '../../../assets/product.png', '../../../assets/product.png', '../../../assets/product.png','../../../assets/product.png')
   }
 
   /* getData(){

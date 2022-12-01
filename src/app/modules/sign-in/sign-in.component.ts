@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
     this.userservice.register(form).subscribe({
       next: (data) => {
         console.log(data);
-      }, error: (err) => { 
+      }, error: (err) => {
         if (err.statusText == 'Conflict') {
           console.log('Email ya ha sido registrado')
         } else if (err.statusText == 'Bad Request') {
