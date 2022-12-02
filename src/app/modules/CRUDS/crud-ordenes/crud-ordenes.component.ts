@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
   selector: 'app-crud-ordenes',
@@ -14,7 +15,7 @@ export class CrudOrdenesComponent implements OnInit {
     'Detalle',
     'Estado'
   ];
-  constructor() {}
+  constructor( private ordenService: UsersService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -31,5 +32,14 @@ export class CrudOrdenesComponent implements OnInit {
       { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
       { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' }
     );
+    this.getOrders();
+  }
+
+  getOrders(){
+    this.ordenService.getOrder().subscribe({
+      next: (data) => {
+        console.log(data)
+      }, error: (err) =>{console.log(err)}
+    })
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsModel } from 'src/app/Models/produts/productsModel';
+import { ProductService } from '../../products/service/product.service';
 
 @Component({
   selector: 'app-crud-products',
@@ -12,7 +14,10 @@ export class CRUDProductsComponent implements OnInit {
   focus: any;
   responsiveOptions: any;
   titles: Array<any> = ['No', 'Codigo', 'Producto', 'Precio 1', 'Precio 2', 'acciones', 'visualizar', 'editar', 'eliminar'];
-  constructor() { }
+
+  //Variables de api
+  Products:ProductsModel[] = [];
+  constructor(private apiServices:ProductService ) { }
 
   ngOnInit(): void {
     this.products.push(
@@ -129,6 +134,21 @@ export class CRUDProductsComponent implements OnInit {
       { name: 'Opcion 4', code: '4' },
       { name: 'Opcion 5', code: '5' }
     );
+
+    this.getItems();
+  }
+
+  getItems(){
+    this.apiServices.getProducts().subscribe({
+      next: (data) => {
+        this.Products = data;
+      }, error: (err)=> {}
+    })
+  }
+
+  deleteProduct(id: number){
+    this.apiServices.deleteProduct(id).subscribe()
+    this.getItems();
   }
 
 }

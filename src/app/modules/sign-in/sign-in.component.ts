@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
 import { RegisterI } from 'src/app/Models/authentication/authmodel.interface';
-import { UsersService } from 'src/app/services/users/users.service';
+import { UsersService } from 'src/app/modules/services/users/users.service';
 
 
 
@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
           console.log('Email ya ha sido registrado')
         } else if (err.statusText == 'Bad Request') {
           console.log('Email invalido')
-        }
+        }else{console.log(err)}
       }
     })
   }

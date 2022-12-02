@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PresentationsModel } from 'src/app/Models/CategoriesModel';
+import { ProductsModel } from 'src/app/Models/produts/productsModel';
+import { ProductService } from '../../products/service/product.service';
 
 @Component({
   selector: 'app-crud-presentations',
@@ -22,8 +25,10 @@ export class CrudPresentationsComponent implements OnInit {
     'editar',
     'eliminar'
   ];
+  idProduct!: number;
+  Presentaciones!: PresentationsModel[];
 
-  constructor() {}
+  constructor( private getItemId: ProductService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -93,5 +98,20 @@ export class CrudPresentationsComponent implements OnInit {
         isActive: 'isActive',
       }
     );
+
+    let URLsearch = `${window.location.href}`;
+    let url = URLsearch.split('/')
+    let n = url.length;
+    this.idProduct = Number(url[n-1]);
+    this.getPresentations();
   }
+
+  getPresentations(){
+    this.getItemId.getProductById(this.idProduct).subscribe({
+      next: (data)=> {
+        this.Presentaciones = data.presentations;
+      }, error: (err)=>{console.log(err)}
+    })
+  }
+
 }

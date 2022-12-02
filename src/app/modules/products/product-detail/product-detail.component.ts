@@ -77,7 +77,6 @@ export class ProductDetailComponent implements OnInit {
           previewImageSrc:ok.image,
           thumbnailImageSrc: ok.image
         });
-        console.log(ok, this.product, this.images);
       },
       error: (err) => {}
     });

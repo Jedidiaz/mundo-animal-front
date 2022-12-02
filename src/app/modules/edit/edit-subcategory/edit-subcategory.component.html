@@ -4,15 +4,15 @@
   <img src="../../../../assets/product.png"  alt="">
   <span>
         <label for="nombre">Categoria asociada </label>
-        <input pInputText type="text" id="nombre" />
+        <input pInputText type="text" id="nombre" [value]="subcategory.categorieId"/>
   </span>
   <span>
         <label for="nombre">Imagen </label>
-        <input pInputText type="text" id="nombre" value="../../../../assets/product.png"/>
+        <input pInputText type="text" id="nombre" [value]="subcategory.image"/>
   </span>
   <span>
         <label for="nombre">Nombre </label>
-        <input pInputText type="text" id="nombre" />
+        <input pInputText type="text" id="nombre" [value]="subcategory.name"/>
   </span>
   </div>
 </div>

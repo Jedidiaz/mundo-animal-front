@@ -1,10 +1,10 @@
-<app-edit-products></app-edit-products>
+<app-edit-products [id]="idProduct"></app-edit-products>
 <div class="container">
   <h1>Presentaciones</h1>
   <div class="content-crud">
     <p-table
       #dt1
-      [value]="products"
+      [value]="Presentaciones"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"

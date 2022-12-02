@@ -4,6 +4,11 @@ export interface RegisterI {
   role: string;
 }
 
+export interface LoginI {
+  email:string;
+  password: string;
+}
+
 export interface AuthI {
   Payload: string;
   ExtendsI: string;

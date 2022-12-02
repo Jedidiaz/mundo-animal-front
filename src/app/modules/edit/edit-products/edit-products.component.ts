@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CategoriesModels } from 'src/app/Models/CategoriesModel';
+import { ProductsModel } from 'src/app/Models/produts/productsModel';
+import { ProductService } from '../../products/service/product.service';
 
 @Component({
   selector: 'app-edit-products',
@@ -6,18 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-products.component.css'],
 })
 export class EditProductsComponent implements OnInit {
+
   options: Array<any> = [];
+
   focus: any;
-  images: Array<any> = [];
+  focus1: any;
+  focus2: any;
+  focus3: any;
+  focus4: any;
+  focus5: any;
+
+  imagenes: any = [];
   responsiveOptions: any;
-  constructor() {}
+
+  product!: ProductsModel;
+
+  marcas: any = [];
+  categoria: any = [];
+  clasificacion: any = [];
+
+  //variable heredada
+  @Input() id:any;
+
+  constructor( private getItemId: ProductService ) {}
 
   ngOnInit(): void {
-    this.images.push(
-      '../../../../assets/product.png',
-      '../../../../assets/product.png'
-    );
-
     this.options.push(
       { name: 'Opcion 1', code: '1' },
       { name: 'Opcion 2', code: '2' },
@@ -44,5 +60,65 @@ export class EditProductsComponent implements OnInit {
         numVisible: 1,
       },
     ];
+
+    this.getProduct();
+    this.getCategorias();
+    this.getClasificacion();
+    this.getMarcas();
+  }
+//detalle de productos
+  getProduct(){
+    this.getItemId.getProductById(this.id). subscribe({
+      next: (data)=> {
+        console.log(data)
+        this.product = data;
+        this.imagenes = data.images;
+        this.imagenes.unshift({
+          previewImageSrc:data.image,
+          thumbnailImageSrc: data.image
+        });
+        this.imagenes.unshift({
+          previewImageSrc:data.image,
+          thumbnailImageSrc: data.image
+        });
+      }, error: (err)=>{console.log(err)}
+    })
+  }
+
+  //categorias
+  getCategorias(){
+    this.getItemId.getCategories().subscribe({
+      next: (data)=> {
+        data.forEach(el => {
+          this.categoria.push(
+            {name: el.name, code: el.id}
+          )
+        })
+      }, error: (err)=>{console.log(err)}
+    })
+  }
+//Clsificacion
+  getClasificacion(){
+    this.getItemId.getClasification().subscribe({
+      next: (data)=> {
+        data.forEach(el => {
+          this.clasificacion.push(
+            {name: el.name, code: el.id}
+          )
+        })
+      }, error: (err)=>{console.log(err)}
+    })
+  }
+
+  getMarcas(){
+    this.getItemId.getBrands().subscribe({
+      next: (data)=> {
+        data.forEach(el => {
+          this.marcas.push(
+            {name: el.name, code: el.id}
+          )
+        })
+      }, error: (err)=>{console.log(err)}
+    })
   }
 }

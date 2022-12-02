@@ -115,7 +115,7 @@
   <div class="content-crud">
     <p-table
       #dt1
-      [value]="products"
+      [value]="Products"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -144,7 +144,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-product let-columns="columns">
         <tr>
-          <td>{{ product.number }}</td>
+          <td>{{ product.id }}</td>
           <td>{{ product.code }}</td>
           <td style="width: 500px">{{ product.name }}</td>
           <td>${{ product.precio_1 }}</td>
@@ -154,11 +154,11 @@
           <td>
             <img
               src="../../../../assets/edit.png"
-              routerLink="/crud-presentations"
+              [routerLink]="'crud-presentations/' + product.id"
               alt="i"
             />
           </td>
-          <td><img src="../../../../assets/delete.png" alt="i" /></td>
+          <td><img src="../../../../assets/delete.png" (click)="deleteProduct(product.id)" /></td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

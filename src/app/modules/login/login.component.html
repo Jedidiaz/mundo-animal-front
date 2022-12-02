@@ -5,14 +5,14 @@
     <h2>Iniciar sesion</h2>
     <!-- inputs y boton -->
     <span class="p-float-label">
-      <input id="float-username" type="email" required pInputText />
+      <input #inUs id="float-username" type="email" required pInputText />
       <label for="float-username">Email</label>
     </span>
     <span class="p-float-label">
-      <input id="float-password" type="password" required pInputText />
+      <input #inps id="float-password" type="password" required pInputText />
       <label for="float-password">Contraseña</label>
     </span>
-    <button pButton label="Login" class="btnlogin" routerLink="/auth"></button>
+    <button pButton label="Login" class="btnlogin" (click)="onLogin(inUs.value, inps.value)"></button>
     <a routerLink="/forgot-password">¿ Olvidaste tu contraseña ?</a>
   </div>
 </div>

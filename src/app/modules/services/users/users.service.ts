@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthI, RegisterI } from 'src/app/Models/authentication/authmodel.interface';
+import { AuthI, LoginI, RegisterI } from 'src/app/Models/authentication/authmodel.interface';
 import { environment } from 'src/environments/environment';
 
 
@@ -13,6 +13,10 @@ export class UsersService {
 
   private readonly url = environment.api;
 
+  login(form: LoginI):Observable<any>{
+    return this.http.post(this.url + 'api/v1/store/auth/login', form)
+  }
+
   register(form: RegisterI): Observable<any> {
     let direccion = this.url +'api/v1/store/users/new';
     return this.http.post<any>(direccion, form);
@@ -21,8 +25,16 @@ export class UsersService {
   auth(): Observable<any> {
     let direccion =
       this.url +
-      +'api/v1/store/users/confirm?payload=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjEwLCJpYXQiOjE2Njc4NTc5NjMsImV4cCI6MTY2Nzg1ODU2M30.84-6Fkw0GFhWV7f7H9kFLRJRfy8GS2aEgZrS7w8GGJ4&extendsI=10';
+      +'api/v1/store/users/confirm';
     return this.http.post<any>(direccion, '')
+  }
+
+  getClients():Observable<any>{
+    return this.http.get<any>(this.url + 'api/v1/store/users')
+  }
+
+  getOrder():Observable<any>{
+    return this.http.get<any>(this.url + 'api/v1/store/purchaseOrders')
   }
 }
 

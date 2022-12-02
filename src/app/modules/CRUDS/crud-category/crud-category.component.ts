@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { BarndsModels, CategoriesModels, ClasificationModel, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
+import { ProductService } from '../../products/service/product.service';
 
 @Component({
   selector: 'app-crud-category',
@@ -28,7 +31,18 @@ export class CrudCategoryComponent implements OnInit {
     'Editar',
     'Eliminar',
   ];
-  constructor() {}
+
+  //variables api
+  //categoria
+  categorias: CategoriesModels[] = [];
+  //Subcategoria
+  subCategorias: SubcategoriesModel[] = [];
+  //Clasificacion
+  clasificaciones: ClasificationModel[] = [];
+  //Marcas
+  marcas: BarndsModels[] = [];
+
+  constructor(private apiGet: ProductService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -57,5 +71,44 @@ export class CrudCategoryComponent implements OnInit {
         subCategory: 'Sub categoria asociada',
       }
     );
+    this.getCategorias();
+    this.getSubcategorias();
+    this.getClasificaciones();
+    this.getMarcas();
+  }
+  //Categories
+  getCategorias(){
+    this.apiGet.getCategories().subscribe({
+      next: (data)=> {
+        this.categorias = data;
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Subcategories
+  getSubcategorias(){
+    this.apiGet.getSubcategories().subscribe({
+      next: (data)=> {
+        this.subCategorias = data;
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Clasifications
+  getClasificaciones(){
+    this.apiGet.getClasification().subscribe({
+      next: (data)=> {
+        this.clasificaciones = data;
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //BRANDS
+  getMarcas(){
+    this.apiGet.getBrands().subscribe({
+      next: (data)=> {
+        this.marcas = data;
+      }, error: (err)=> { console.log(err)}
+    })
   }
 }
