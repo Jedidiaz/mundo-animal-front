@@ -26,15 +26,16 @@ export interface BarndsModels{
 }
 
 export interface PresentationsModel{
-  code: number;
+  code: string;
   name: string;
   reference: string;
   plu: string;
-  stock: number;
+  stock: string;
   price1: string;
   price2: string;
   price3: string;
   med: string;
-  bulk: string;
+  bulk: boolean;
   isActive: boolean;
+  productId: number;
 }

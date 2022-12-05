@@ -5,4 +5,5 @@ export interface CartI {
   unidades_disponibles:number;
   valor:number;
   imagen:string;
+  val: number;
 }

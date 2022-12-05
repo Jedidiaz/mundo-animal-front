@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
@@ -12,7 +14,9 @@ export class EditProductsComponent implements OnInit {
 
   options: Array<any> = [];
 
-  focus: any;
+  name!: string;
+  description!:string;
+  brands: any;
   focus1: any;
   focus2: any;
   focus3: any;
@@ -21,6 +25,7 @@ export class EditProductsComponent implements OnInit {
 
   imagenes: any = [];
   responsiveOptions: any;
+
 
   product!: ProductsModel;
 
@@ -66,12 +71,15 @@ export class EditProductsComponent implements OnInit {
     this.getClasificacion();
     this.getMarcas();
   }
+
 //detalle de productos
   getProduct(){
     this.getItemId.getProductById(this.id). subscribe({
       next: (data)=> {
         console.log(data)
         this.product = data;
+        this.name = data.name;
+        this.description = data.description;
         this.imagenes = data.images;
         this.imagenes.unshift({
           previewImageSrc:data.image,

@@ -3,16 +3,57 @@
   <!-- Card presentaciones -->
   <div class="card">
     <div class="form">
-      <form action="" *ngFor="let name of campos">
         <span>
-          <label for="{{name}}">{{name}} </label>
-          <input pInputText type="text" id="{{name}}" />
+          <label for="code">Code</label>
+          <input pInputText type="text" id="code" [value]="presentations.code"/>
         </span>
-      </form>
+        <span>
+          <label for="name">Name</label>
+          <input pInputText type="text" id="name" [value]="presentations.name"/>
+        </span>
+        <span>
+          <label for="reference">Reference</label>
+          <input pInputText type="text" id="reference" [value]="presentations.reference"/>
+        </span>
+        <span>
+          <label for="plu">Plu</label>
+          <input pInputText type="text" id="plu" [value]="presentations.plu"/>
+        </span>
+        <span>
+          <label for="stock">Stock</label>
+          <input pInputText type="text" id="stock" [value]="presentations.stock"/>
+        </span>
+        <span>
+          <label for="price1">Price1</label>
+          <input pInputText type="text" id="price1" [value]="presentations.price1"/>
+        </span>
+        <span>
+          <label for="price2">Price2</label>
+          <input pInputText type="text" id="price2" [value]="presentations.price2"/>
+        </span>
+        <span>
+          <label for="price3">Price3</label>
+          <input pInputText type="text" id="price3" [value]="presentations.price3"/>
+        </span>
+        <span>
+          <label for="med">Med</label>
+          <input pInputText type="text" id="med" [value]="presentations.med"/>
+        </span>
+        <span>
+          <label for="bulk">Bulk</label>
+          <input pInputText type="text" id="bulk" [value]="presentations.bulk"/>
+        </span>
+        <span>
+          <label for="isActive">IsActive</label>
+          <input pInputText type="text" id="isActive" [value]="presentations.isActive"/>
+        </span>
+        <span>
+          <label for="ProductId">ProductId</label>
+          <input pInputText type="text" id="ProductId" [value]="presentations.productId"/>
+        </span>
     </div>
     <div class="btn">
-      <button pButton label="Guardar"></button>
+      <button pButton type="button" label="Guardar"></button>
     </div>
-
   </div>
 </div>

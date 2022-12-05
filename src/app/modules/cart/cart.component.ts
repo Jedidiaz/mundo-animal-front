@@ -20,7 +20,8 @@ export class CartComponent implements OnInit {
         peso: '2kg',
         unidades_disponibles: 10,
         valor: 27.999,
-        imagen: '../../../assets/product.png'
+        imagen: '../../../assets/product.png',
+        val: 1
       },
       {
         descripcion: 'Dog Chow adultos - extralife',
@@ -28,14 +29,16 @@ export class CartComponent implements OnInit {
         peso: '2kg',
         unidades_disponibles: 10,
         valor: 27.999,
-        imagen: '../../../assets/product.png'
+        imagen: '../../../assets/product.png',
+        val: 1
       },{
         descripcion: 'Dog Chow adultos - extralife',
         numero: 1,
         peso: '2kg',
         unidades_disponibles: 10,
         valor: 27.999,
-        imagen: '../../../assets/product.png'
+        imagen: '../../../assets/product.png',
+        val: 1
       },
       {
         descripcion: 'Dog Chow adultos - extralife',
@@ -43,7 +46,8 @@ export class CartComponent implements OnInit {
         peso: '2kg',
         unidades_disponibles: 10,
         valor: 27.999,
-        imagen: '../../../assets/product.png'
+        imagen: '../../../assets/product.png',
+        val: 1
       }
     );
     console.log(this.productsCart)

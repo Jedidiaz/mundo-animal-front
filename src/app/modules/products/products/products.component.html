@@ -38,26 +38,26 @@
         <div>
           <p-dropdown
             class="filtro"
-            [options]="subcategories"
-            [(ngModel)]="subcategoriesSelect"
+            [options]="clasification"
+            [(ngModel)]="clasificationSelect"
             optionLabel="name"
             optionValue="code"
-            placeholder="Seco"
           ></p-dropdown>
           <p-dropdown
             class="filtro"
-            [options]="subcategories"
-            [(ngModel)]="subcategoriesSelect"
+            [options]="brands"
+            [(ngModel)]="brandsSelect"
             optionLabel="name"
             optionValue="code"
-            placeholder="Dog Chow"
           ></p-dropdown>
         </div>
       </ng-template>
       <ng-template let-product pTemplate="gridItem">
         <div class="p-col-12 p-md-4 container-card">
           <div class="product-grid-item card">
-            <i class="pi pi-whatsapp social-icon"></i>
+            <a href="https://web.whatsapp.com">
+              <i class="pi pi-whatsapp social-icon"></i>
+            </a>
             <div
               [routerLink]="'detail/' + product.id"
               class="product-grid-item-top"

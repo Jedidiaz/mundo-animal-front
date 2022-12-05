@@ -23,17 +23,17 @@
         </ng-template>
       </p-galleria>
     </div>
-    <div class="description-content">
+    <div class="description-content" >
       <span>
         <label for="nombre">Nombre </label>
-        <input pInputText type="text" id="nombre" [value]="product.name" />
+        <input pInputText type="text" id="nombre" [value]="name"/>
       </span>
       <span>
         <label for="descripcion">Descripcion </label>
         <textarea
           id="descripcion"
           pInputTextarea
-          [value]="product.description"
+          [value]="description"
         ></textarea>
       </span>
       <span>
@@ -41,10 +41,9 @@
         <p-dropdown
           id="options"
           [options]="marcas"
-          [(ngModel)]="marcas.name"
-          placeholder="Elige"
+          [(ngModel)]="product.brandId"
           optionLabel="name"
-          [showClear]="true"
+          optionValue="code"
         ></p-dropdown>
       </span>
       <span>
@@ -52,10 +51,9 @@
         <p-dropdown
           id="options"
           [options]="categoria"
-          [(ngModel)]="focus1"
-          placeholder="Elige"
+          [(ngModel)]="product"
           optionLabel="name"
-          [showClear]="true"
+          optionValue="code"
         ></p-dropdown>
       </span>
       <span>
@@ -64,9 +62,8 @@
           id="options"
           [options]="clasificacion"
           [(ngModel)]="focus2"
-          placeholder="Elige"
+          optionValue="code"
           optionLabel="name"
-          [showClear]="true"
         ></p-dropdown>
       </span>
       <span>
@@ -75,9 +72,8 @@
           id="options"
           [options]="options"
           [(ngModel)]="focus3"
-          placeholder="Select a Option"
+          optionValue="code"
           optionLabel="name"
-          [showClear]="true"
         ></p-dropdown>
       </span>
       <div class="porcent">
@@ -87,9 +83,8 @@
             id="options"
             [options]="options"
             [(ngModel)]="focus4"
-            placeholder="Select a Option"
+            optionValue="code"
             optionLabel="name"
-            [showClear]="true"
           ></p-dropdown>
         </span>
         <span>
@@ -98,9 +93,8 @@
             id="options"
             [options]="options"
             [(ngModel)]="focus5"
-            placeholder="Select a Option"
+            optionValue="code"
             optionLabel="name"
-            [showClear]="true"
           ></p-dropdown>
         </span>
       </div>
@@ -111,4 +105,5 @@
       <button pButton label="Guardar"></button>
     </div>
   </div>
+
 </div>

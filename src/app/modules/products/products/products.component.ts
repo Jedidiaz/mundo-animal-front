@@ -4,7 +4,7 @@ import { PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { GeneralResponse } from 'src/app/Models/general';
-import { ProductsModel, ProductWeigth } from 'src/app/Models/produts/productsModel';
+import { ProductsLocalModel, ProductsModel, ProductWeigth } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../service/product.service';
 
 @Component({
@@ -28,14 +28,19 @@ export class ProductsComponent implements OnInit {
   cat:ProductsModel[] = [];
 
   categories:CategoriesModels[] = [];
+  clasification: Array<any> = [];
   subcategories:any = [];
-  tab:any = [];
+  brands: Array<any> = [];
+
   categoriesSelect:number = 1;
   subcategoriesSelect:number = 1;
-  responsiveOptions:any = [];
+  clasificationSelect: number = 1;
+  brandsSelect: number = 1;
 
+  responsiveOptions:any = [];
+  tab:any = [];
   weight:ProductWeigth[] = [];
-  selectWeight:ProductWeigth[] = [];
+  selectWeight!:ProductWeigth;
 
   val:number = 1;
 
@@ -61,17 +66,21 @@ export class ProductsComponent implements OnInit {
       {name: 'Gato', code: 2, icon:'./../../../../assets/cat-category.png'}
     ];
 
-
+// llamado a api
+    this.getProduts();
     this.getCategories();
     this.getSubCategories();
-    this.getProduts();
+    this.getBrands();
+    this.getClasifications();
 
     if(this.categoriesSelect == 1){
       this.products = this.dog
     }else{
       this.products = this.cat
     }
+
   }
+
 
   getProduts(){
     this.productsService.getProducts().subscribe({
@@ -87,7 +96,7 @@ export class ProductsComponent implements OnInit {
       }, error: (err) => { }
     });
   }
-
+//Cargar categorias
   getCategories(){
     this.productsService.getCategories().subscribe({
       next: (ok) => {
@@ -98,7 +107,7 @@ export class ProductsComponent implements OnInit {
       },error: (err) => {}
     });
   }
-
+//Cargar subcategorias
   getSubCategories(){
     this.productsService.getSubcategories().subscribe({
       next: (ok) => {
@@ -106,11 +115,29 @@ export class ProductsComponent implements OnInit {
           this.subcategories.push({ name:el.name, code:el.id})
         });
         this.subcategories = ok
-        console.log(ok)
       },
       error: (err) => {}
     });
   }
+
+  //cargar clasificaciones
+  getClasifications(){
+    this.productsService.getClasification().subscribe({
+      next: (ok) => {
+        this.clasification = ok;
+      }, error: (err)=> {}
+    })
+  }
+
+  //cargar marcas
+  getBrands(){
+    this.productsService.getBrands().subscribe({
+      next: (ok) => {
+        this.brands = ok;
+      }, error: (err)=> {}
+    })
+  }
+  //*********************************************************************************************************** */
 
   onSortChange(event:any) {
     let value = event.value;

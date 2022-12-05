@@ -48,7 +48,7 @@ const routes: Routes = [
   { path: 'crud-categories/edit-subcategory/:id', component: EditSubcategoryComponent },
   { path: 'crud-categories/edit-clasification/:id', component: EditClasificationComponent },
   { path: 'crud-categories/edit-brands/:id', component: EditBrandsComponent },
-  { path: 'edit-presentation', component: EditPresentationsComponent },
+  { path: 'crud-products/crud-presentations/:id/edit-presentation/:code', component: EditPresentationsComponent },
   { path: 'crud-categories', component: CrudCategoryComponent },
   { path: 'crud-orden', component: CrudOrdenesComponent },
   { path: 'crud-products/crud-presentations/:id', component: CrudPresentationsComponent },

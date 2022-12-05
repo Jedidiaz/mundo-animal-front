@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PresentationsModel } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
@@ -22,15 +23,18 @@ export class CrudPresentationsComponent implements OnInit {
     'med',
     'bulk',
     'isActive',
+    'ProductId',
     'editar',
     'eliminar'
+
   ];
   idProduct!: number;
   Presentaciones!: PresentationsModel[];
 
-  constructor( private getItemId: ProductService) {}
+  constructor( private getItemId: ProductService, private router: Router) {}
 
   ngOnInit(): void {
+
     this.products.push(
       {
         code: 'code',
@@ -110,8 +114,10 @@ export class CrudPresentationsComponent implements OnInit {
     this.getItemId.getProductById(this.idProduct).subscribe({
       next: (data)=> {
         this.Presentaciones = data.presentations;
+        console.log(this.Presentaciones)
       }, error: (err)=>{console.log(err)}
     })
   }
+
 
 }

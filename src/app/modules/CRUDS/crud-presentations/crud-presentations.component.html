@@ -44,7 +44,8 @@
           <td>{{ product.med }}</td>
           <td>{{ product.bulk }}</td>
           <td>{{ product.isActive }}</td>
-          <td><img src="../../../../assets/edit.png" alt="" routerLink="/edit-presentation" /></td>
+          <td>{{ product.productId }}</td>
+          <td><img src="../../../../assets/edit.png" alt="" [routerLink]="'edit-presentation/'+product.code"/></td>
           <td><img src="../../../../assets/delete.png" alt="" /></td>
         </tr>
       </ng-template>

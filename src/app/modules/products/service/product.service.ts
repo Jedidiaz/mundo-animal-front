@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, retry } from 'rxjs';
-import { BarndsModels, CategoriesModels, ClasificationModel, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
-import { ProductsModel } from 'src/app/Models/produts/productsModel';
+import { BarndsModels, CategoriesModels, ClasificationModel, PresentationsModel, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
+import { ProductsLocalModel, ProductsModel } from 'src/app/Models/produts/productsModel';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class ProductService {
   private product:BehaviorSubject<any> = new BehaviorSubject<any>('0');
 
   private readonly URL = environment.api+'api/v1/store/';
+
 
   constructor(private http:HttpClient) { }
 
@@ -89,6 +90,9 @@ export class ProductService {
     return this.http.delete<{}>(`${this.URL}brands/${id}`)
   }
 
-  //ORDEN COMPRA
+  //PRESENTATIONS
   
+
+  //ORDEN COMPRA
+
 }
