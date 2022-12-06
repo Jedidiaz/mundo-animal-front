@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
 import { MegaMenuItem } from 'primeng/api/megamenuitem';
-import { CategoriesModels } from 'src/app/Models/CategoriesModel';
+import { BarndsModels, CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
 
@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
 
   items:MegaMenuItem[] = [];
   info:Array<any> = [];
+
+  // categories!: CategoriesModels[];
+  marcas: BarndsModels[] = [];
 
   constructor(private productsService:ProductService) { }
 
@@ -97,6 +100,8 @@ export class HeaderComponent implements OnInit {
     ];
 
     this.info = ['Trabaja con nosotros','Contacto']
+    this.getBrands();
+    this.getCategories();
   }
 
   show(){
@@ -125,10 +130,18 @@ export class HeaderComponent implements OnInit {
           this.subcategories.push({ name:el.name, code:el.id})
         });
         this.subcategories = ok
-        console.log(ok)
       },
       error: (err) => {}
     });
+  }
+
+  getBrands(){
+    this.productsService.getBrands().subscribe({
+      next: (data)=> {
+        this.marcas = data;
+        console.log(data)
+      }, error: (err)=>{}
+    })
   }
 
   search(event:any) {

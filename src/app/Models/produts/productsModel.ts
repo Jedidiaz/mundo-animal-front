@@ -11,7 +11,9 @@ export interface ProductsModel{
   isActive:boolean,
   iva: any,
   presentations:Array<any>,
-  images:Array<any>
+  images:Array<any>,
+  val: number,
+  pSelect: any
 }
 
 export interface ProductWeigth{

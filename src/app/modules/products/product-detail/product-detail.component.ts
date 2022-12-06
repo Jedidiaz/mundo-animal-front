@@ -65,6 +65,7 @@ export class ProductDetailComponent implements OnInit {
   getProduct(){
     this.productsService.getProductById(this.idProduct).subscribe({
       next: (ok) => {
+        console.log(ok)
         this.product = ok;
         this.name = ok.name;
         this.desc = ok.description;

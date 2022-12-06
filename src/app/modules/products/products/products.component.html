@@ -75,12 +75,12 @@
             <div class="content-properties">
               <p-selectButton
                 [options]="weight"
-                [(ngModel)]="selectWeight"
+                [(ngModel)]="product.pSelect"
                 optionLabel="name"
               ></p-selectButton>
               <p-inputNumber
                 class="increment-decrement"
-                [(ngModel)]="val"
+                [(ngModel)]="product.val"
                 [step]="1.0"
                 [showButtons]="true"
                 mode="decimal"

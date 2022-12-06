@@ -79,6 +79,7 @@ export class ProductsComponent implements OnInit {
       this.products = this.cat
     }
 
+
   }
 
 

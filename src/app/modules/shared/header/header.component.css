@@ -176,6 +176,35 @@
   display: none;
 }
 
+:host::ng-deep .pi-spin{
+  display: none;
+}
+
+
+.btn, .btn:hover{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white ;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-desp{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.btn-desp:hover{
+  background-color: #f1f1f1;
+}
+
+
 /* Responsive vista celular */
 @media only screen and (min-width: 360px) and (max-width: 720px)  {
   /* Container principal  */
@@ -251,5 +280,6 @@
     border: none;
     display: flex;
   }
+
 }
 

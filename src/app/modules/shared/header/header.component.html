@@ -89,9 +89,23 @@
   </ng-template>
 </p-sidebar>
 <div class="container-menu">
+  <p-overlayPanel #brands [dismissable]="true">
+    <ng-template pTemplate>
+      <div *ngFor="let brand of marcas">
+        <button class="btn-desp" type="button"  >{{brand.name}}</button>
+      </div>
+    </ng-template>
+  </p-overlayPanel>
+  <p-overlayPanel #category [dismissable]="true">
+    <ng-template pTemplate>
+        <div *ngFor="let category of categories">
+          <button class="btn-desp" type="button"  >{{category.name}}</button>
+        </div>
+    </ng-template>
+  </p-overlayPanel>
   <ul>
-    <li><a href="">Marcas</a></li>
-    <li><a href="">Categorias</a></li>
+    <li><button  class="btn"  type="button"  (click)="brands.toggle($event)">Marcas  <i class="pi pi-angle-down" style="color: white;"></i></button></li>
+    <li><button  class="btn"  type="button"  (click)="category.toggle($event)">Categorias <i class="pi pi-angle-down" style="color: white;"></i></button></li>
     <li><a href="">Servicios</a></li>
     <li><a href="">Contactenos</a></li>
     <li><a href="">Promociones</a></li>
