@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthI } from 'src/app/Models/authentication/authmodel.interface';
@@ -18,9 +19,11 @@ export class AuthComponent implements OnInit {
     this._route.queryParams.subscribe({
       next: (ok) => {
         this.queryparams = ok;
-        console.log(this.queryparams)
       }
     })
+
+
+
     this.Auth();
   }
 

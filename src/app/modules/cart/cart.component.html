@@ -7,14 +7,14 @@
     </div>
     <div class="products" *ngFor="let products of productsCart" >
       <div class="content-img">
-        <img src="{{ products.imagen }}" alt="image" />
+        <img src="{{ products.image }}" alt="image" />
       </div>
       <div class="content-description">
-        <h3>{{ products.descripcion }}</h3>
+        <h3>{{ products.name }}</h3>
         <p>
-          <span>{{ products.unidades_disponibles }}</span> Unidades disponibles
+          <span>{{ products.id }}</span> Unidades disponibles
         </p>
-        <p>${{ products.valor }}</p>
+        <p>${{ products.pSelect.price1 }}</p>
       </div>
       <div class="class-buttons">
         <i><img src="../../../assets/delete.png" alt="" /></i>
@@ -39,6 +39,9 @@
     <div class="subtotal">
       <h3>Subtotal</h3>
       <p>$0</p>
+    </div>
+    <div class="btn">
+      <button pButton type="button" label="Ordenar" (click)="setOrder()"></button>
     </div>
   </div>
 </div>

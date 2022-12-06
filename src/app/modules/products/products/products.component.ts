@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { GeneralResponse } from 'src/app/Models/general';
 import { ProductsLocalModel, ProductsModel, ProductWeigth } from 'src/app/Models/produts/productsModel';
+import { UsersService } from '../../services/users/users.service';
 import { ProductService } from '../service/product.service';
 
 @Component({
@@ -46,7 +47,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productsService:ProductService,
     private primengConfig:PrimeNGConfig,
-    private router:Router) { }
+    private router:Router,
+    private cartService: UsersService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -82,6 +84,10 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  //añadir al carrito
+  addToCart(product: ProductsModel){
+    this.cartService.setCart(product);
+  }
 
   getProduts(){
     this.productsService.getProducts().subscribe({

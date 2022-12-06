@@ -59,6 +59,7 @@ import { OrdenDetailAdminComponent } from './modules/orden-detail-admin/orden-de
 import { HistorialCompraComponent } from './modules/historial-compra/historial-compra.component';
 import { CrudPresentationsComponent } from './modules/CRUDS/crud-presentations/crud-presentations.component';
 import { EditPresentationsComponent } from './modules/edit/edit-presentations/edit-presentations.component';
+import { ChangePasswordComponent } from './modules/recovery-password/change-password/change-password.component';
 
 
 
@@ -93,7 +94,8 @@ import { EditPresentationsComponent } from './modules/edit/edit-presentations/ed
     OrdenDetailAdminComponent,
     HistorialCompraComponent,
     CrudPresentationsComponent,
-    EditPresentationsComponent
+    EditPresentationsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

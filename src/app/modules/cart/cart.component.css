@@ -133,6 +133,20 @@ p, span {
   font-size: 24px;
 }
 
+:host::ng-deep .btn .p-button{
+  border: none;
+  width: 100%;
+  margin: 20px 0;
+  height: 82px;
+  background-color: #aeb422;
+  font-size: 24px;
+}
+
+:host::ng-deep .btn .p-button:hover{
+  background-color: #F2950E;
+}
+
+
 /* Vista responsive celular */
 @media only screen and (min-width: 360px) and (max-width: 720px){
   .container {
@@ -145,10 +159,10 @@ p, span {
     position: fixed;
     height: auto;
     margin: 0;
-    bottom: 5%;
+    bottom: 0%;
     left: 0;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
   }
   .product-content{
     width: 100%;
@@ -184,6 +198,10 @@ p, span {
     height: 35px;
   }
 
+  :host::ng-deep .btn .p-button{
+    height: auto;
+    margin: 10px 0;
+  }
 }
 @media only screen and (min-width: 500px) and (max-width: 720px){
   .class-buttons {

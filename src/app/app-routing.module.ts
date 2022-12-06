@@ -22,6 +22,7 @@ import { OrdenComponent } from './modules/orden/orden.component';
 import { CategoryComponent } from './modules/products/category/category.component';
 import { ProductDetailComponent } from './modules/products/product-detail/product-detail.component';
 import { ProductsComponent } from './modules/products/products/products.component';
+import { ChangePasswordComponent } from './modules/recovery-password/change-password/change-password.component';
 import { RecoveryPasswordComponent } from './modules/recovery-password/recovery-password.component';
 import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { SignUpComponent } from './modules/sign-up/sign-up.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'category/:name', component: CategoryComponent },
   { path: 'cart', component: CartComponent },
   { path: 'forgot-password', component: RecoveryPasswordComponent },
+  { path: 'change-password', component: ChangePasswordComponent },
   { path: 'crud-products', component: CRUDProductsComponent },
   { path: 'crud-clients', component: CrudsClientsComponent },
   { path: 'login', component: LoginComponent },
