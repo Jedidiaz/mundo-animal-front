@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthI } from 'src/app/Models/authentication/authmodel.interface';
+import { UsersService } from '../services/users/users.service'
+
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  queryparams: any;
+  constructor( private _route:ActivatedRoute, private authService: UsersService ) { }
 
   ngOnInit(): void {
+    this._route.queryParams.subscribe({
+      next: (ok) => {
+        this.queryparams = ok;
+        console.log(this.queryparams)
+      }
+    })
+    this.Auth();
   }
 
+  Auth(){
+    this.authService.auth(this.queryparams).subscribe({
+      next: (ok)=> {
+        console.log(ok)
+      }, error: (err)=> {console.log(err)}
+    })
+  }
 }

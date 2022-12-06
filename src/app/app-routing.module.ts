@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   {
-    path: 'Account_Verification/payload:payload&extendsI:extendsI',
+    path: 'Account_Verification',
     component: AuthComponent,
   },
   { path: 'edit-products', component: EditProductsComponent },

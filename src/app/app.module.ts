@@ -29,6 +29,7 @@ import {BadgeModule} from 'primeng/badge';
 import { ProductDetailComponent } from './modules/products/product-detail/product-detail.component';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import { CategoryComponent } from './modules/products/category/category.component';
+import { ReactiveFormsModule } from '@angular/forms';
 //primeNG modules---------------
 import {ListboxModule} from 'primeng/listbox';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
@@ -122,7 +123,8 @@ import { EditPresentationsComponent } from './modules/edit/edit-presentations/ed
     OverlayPanelModule,
     TableModule,
     SidebarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ReactiveFormsModule
   ],
   providers: [PrimeIcons],
   bootstrap: [AppComponent]

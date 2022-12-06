@@ -10,6 +10,8 @@ export interface LoginI {
 }
 
 export interface AuthI {
-  Payload: string;
-  ExtendsI: string;
+  payload: string;
+  extendsI: string;
 }
+
+

@@ -14,7 +14,7 @@ export class UsersService {
   private readonly url = environment.api;
 
   login(form: LoginI):Observable<any>{
-    return this.http.post(this.url + 'api/v1/store/auth/login', form)
+    return this.http.post<any>(this.url + 'api/v1/store/auth/login', form)
   }
 
   register(form: RegisterI): Observable<any> {
@@ -22,11 +22,11 @@ export class UsersService {
     return this.http.post<any>(direccion, form);
   }
 
-  auth(): Observable<any> {
+  auth(query: any): Observable<any> {
     let direccion =
       this.url +
       +'api/v1/store/users/confirm';
-    return this.http.post<any>(direccion, '')
+    return this.http.post<any>(direccion, query)
   }
 
   getClients():Observable<any>{
