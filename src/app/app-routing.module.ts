@@ -44,7 +44,7 @@ const routes: Routes = [
     path: 'Account_Verification',
     component: AuthComponent,
   },
-  { path: 'edit-products', component: EditProductsComponent },
+  { path: 'crud-products/edit-products', component: EditProductsComponent },
   { path: 'edit-clients', component: EditClientsComponent },
   { path: 'crud-categories/edit-category/:id', component: EditCategoryComponent },
   { path: 'crud-categories/edit-subcategory/:id', component: EditSubcategoryComponent },

@@ -28,6 +28,18 @@
   background-color: transparent;
 }
 
+/* Button crear */
+
+.p-d-flex button{
+  width: 47px;
+  height: 47px;
+  margin: 0 0 10px 10px;
+}
+
+:host::ng-deep .p-button-icon{
+  color: white;
+}
+
 .descripcion{
   display: flex;
   flex-direction: column;

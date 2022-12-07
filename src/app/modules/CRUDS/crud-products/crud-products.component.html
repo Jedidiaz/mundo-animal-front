@@ -135,6 +135,8 @@
               placeholder="Search keyword"
             />
           </span>
+          <!-- Boton Nuevo! -->
+          <button pButton icon="pi pi-plus-circle" [routerLink]="'edit-products'"></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header" let-columns>
@@ -145,7 +147,6 @@
       <ng-template pTemplate="body" let-product let-columns="columns">
         <tr>
           <td>{{ product.id }}</td>
-          <td>{{ product.code }}</td>
           <td style="width: 500px">{{ product.name }}</td>
           <td>${{ product.precio_1 }}</td>
           <td>${{ product.precio_2 }}</td>

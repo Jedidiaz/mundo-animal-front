@@ -11,9 +11,12 @@
         [circular]="true"
       >
         <ng-template pTemplate="item" let-item>
-          <img [src]="item.thumbnailImageSrc" style="width: 100%; display: block" />
+          <img
+            [src]="item.thumbnailImageSrc"
+            style="width: 100%; display: block"
+          />
         </ng-template>
-        <ng-template pTemplate="thumbnail" let-item >
+        <ng-template pTemplate="thumbnail" let-item>
           <div class="grid grid-nogutter justify-content-center">
             <img
               [src]="item.previewImageSrc"
@@ -23,87 +26,96 @@
         </ng-template>
       </p-galleria>
     </div>
-    <div class="description-content" >
-      <span>
-        <label for="nombre">Nombre </label>
-        <input pInputText type="text" id="nombre" [value]="name"/>
-      </span>
-      <span>
-        <label for="descripcion">Descripcion </label>
-        <textarea
-          id="descripcion"
-          pInputTextarea
-          [value]="description"
-        ></textarea>
-      </span>
-      <span>
-        <label for="options">Marcas </label>
-        <p-dropdown
-          id="options"
-          [options]="marcas"
-          [(ngModel)]="product.brandId"
-          optionLabel="name"
-          optionValue="code"
-        ></p-dropdown>
-      </span>
-      <span>
-        <label for="options">Categorias </label>
-        <p-dropdown
-          id="options"
-          [options]="categoria"
-          [(ngModel)]="product"
-          optionLabel="name"
-          optionValue="code"
-        ></p-dropdown>
-      </span>
-      <span>
-        <label for="options">Clasificacion </label>
-        <p-dropdown
-          id="options"
-          [options]="clasificacion"
-          [(ngModel)]="focus2"
-          optionValue="code"
-          optionLabel="name"
-        ></p-dropdown>
-      </span>
-      <span>
-        <label for="options">Estado </label>
-        <p-dropdown
-          id="options"
-          [options]="options"
-          [(ngModel)]="focus3"
-          optionValue="code"
-          optionLabel="name"
-        ></p-dropdown>
-      </span>
-      <div class="porcent">
+    <div class="description-content">
+      <form [formGroup]="formProducts" (ngSubmit)="updateOrNew()">
         <span>
-          <label for="options">IVA % </label>
+          <label for="nombre">Nombre </label>
+          <input pInputText type="text" id="nombre" formControlName="name" required/>
+        </span>
+        <span>
+          <label for="descripcion">Descripcion </label>
+          <textarea
+            id="descripcion"
+            pInputTextarea
+            formControlName="description"
+            required
+          ></textarea>
+        </span>
+        <span>
+          <label for="Marcas">Marcas </label>
           <p-dropdown
-            id="options"
-            [options]="options"
-            [(ngModel)]="focus4"
-            optionValue="code"
+            id="Marcas"
+            [options]="marcas"
+            formControlName="brands"
             optionLabel="name"
+            optionValue="code"
+            [required]="true"
           ></p-dropdown>
         </span>
         <span>
-          <label for="options">Descuento % </label>
+          <label for="categoria">Categorias </label>
           <p-dropdown
-            id="options"
-            [options]="options"
-            [(ngModel)]="focus5"
-            optionValue="code"
+            id="categoria"
+            [options]="categoria"
+            formControlName="categories"
             optionLabel="name"
+            optionValue="code"
+            [required]="true"
           ></p-dropdown>
         </span>
-      </div>
-      <span>
-        <label for="Promo">Promo </label>
-        <input pInputText type="date" id="Promo" />
-      </span>
-      <button pButton label="Guardar"></button>
+        <span>
+          <label for="Clasificacion">Clasificacion </label>
+          <p-dropdown
+            id="Clasificacion"
+            [options]="clasificacion"
+            formControlName="clasifications"
+            optionValue="code"
+            optionLabel="name"
+            [required]="true"
+          ></p-dropdown>
+        </span>
+        <span>
+          <label for="estado">Estado </label>
+          <p-dropdown
+            id="estado"
+            [options]="options"
+            formControlName="state"
+            optionValue="code"
+            optionLabel="name"
+            [required]="true"
+          ></p-dropdown>
+        </span>
+        <div class="porcent">
+          <span>
+            <label for="iva">IVA % </label>
+            <p-dropdown
+              id="iva"
+              [options]="options"
+              formControlName="iva"
+              optionValue="code"
+              optionLabel="name"
+              [required]="true"
+            ></p-dropdown>
+          </span>
+          <span>
+            <label for="desc">Descuento % </label>
+            <p-dropdown
+              id="desc"
+              [options]="options"
+              formControlName="desc"
+              optionValue="code"
+              optionLabel="name"
+              [required]="true"
+            ></p-dropdown>
+          </span>
+        </div>
+        <span>
+          <label for="Promo">Promo </label>
+          <input pInputText type="date" id="Promo"  formControlName="promo" required />
+        </span>
+        <button pButton label="Guardar" type="submit"  *ngIf="!switch"></button>
+        <button pButton label="Crear" type="submit"  *ngIf="switch"></button>
+      </form>
     </div>
   </div>
-
 </div>

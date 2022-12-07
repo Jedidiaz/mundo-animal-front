@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
+import { PrimeIcons } from 'primeng/api';
 
 @Component({
   selector: 'app-crud-products',
@@ -13,7 +14,8 @@ export class CRUDProductsComponent implements OnInit {
   options: Array<any> = [];
   focus: any;
   responsiveOptions: any;
-  titles: Array<any> = ['No', 'Codigo', 'Producto', 'Precio 1', 'Precio 2', 'acciones', 'visualizar', 'editar', 'eliminar'];
+  titles: Array<any> = ['ID', 'NOMBRE PRODUCTO', 'Precio 1', 'Precio 2', 'acciones', 'visualizar', 'editar', 'eliminar'];
+  New: any = 'new';
 
   //Variables de api
   Products:ProductsModel[] = [];
@@ -142,6 +144,7 @@ export class CRUDProductsComponent implements OnInit {
     this.apiServices.getProducts().subscribe({
       next: (data) => {
         this.Products = data;
+        console.log(this.Products)
       }, error: (err)=> {}
     })
   }

@@ -24,6 +24,8 @@
               placeholder="Buscar"
             />
           </span>
+          <!-- Boton Nuevo! -->
+          <button pButton icon="pi pi-plus-circle" [routerLink]="'edit-presentation/' + 'new'"></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header" *ngFor="let title of titles">

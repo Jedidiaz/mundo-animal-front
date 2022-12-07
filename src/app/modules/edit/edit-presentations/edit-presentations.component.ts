@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PresentationsModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-presentations',
@@ -24,14 +25,37 @@ export class EditPresentationsComponent implements OnInit {
     'productId'
   ];
 
-
+  New: boolean = false;
+  formPresentations!: FormGroup;
   presentations!:PresentationsModel;
-  constructor(private productService: ProductService, private _route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private _route: ActivatedRoute, fromBuilder: FormBuilder) {
+    this.formPresentations = fromBuilder.group({
+      code: ['', Validators.required],
+      name: ['', Validators.required],
+      reference: ['', Validators.required],
+      plu: ['', Validators.required],
+      stock: ['', Validators.required],
+      price1: ['', Validators.required],
+      price2: ['', Validators.required],
+      price3: ['', Validators.required],
+      med: ['', Validators.required],
+      bulk: ['', Validators.required],
+      isActive: ['', Validators.required],
+      productId: ['', Validators.required]
+    })
+   }
 
   ngOnInit(): void {
     let id = this._route.snapshot.paramMap.get('id');
     let code = this._route.snapshot.paramMap.get('code');
-    this.getproduct(id, code)
+
+    if (code === 'new'){
+      this.New = true;
+      console.log('new');
+    }else {
+      this.getproduct(id, code);
+      console.log('edit')
+    }
   }
 
   getproduct(id:any, code:any){
@@ -41,11 +65,32 @@ export class EditPresentationsComponent implements OnInit {
         for (let el of presetaciones){
           if (el.code == code){
             this.presentations = el;
+            this.formPresentations.setValue({
+              'code': this.presentations.code,
+              'name': this.presentations.name,
+              'reference': this.presentations.reference,
+              'plu': this.presentations.plu,
+              'stock': this.presentations.stock,
+              'price1': this.presentations.price1,
+              'price2': this.presentations.price2,
+              'price3': this.presentations.price3,
+              'med': this.presentations.med,
+              'bulk': this.presentations.bulk,
+              'isActive': this.presentations.isActive,
+              'productId': this.presentations.productId
+            })
           }
         }
-        console.log(this.presentations)
       }
     })
+  }
+
+  updateOrNew(){
+    if(!this.New){
+      console.log('editar')
+    }else{
+      console.log('nuevo')
+    }
   }
 
 

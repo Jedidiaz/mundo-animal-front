@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
@@ -26,6 +27,8 @@ export class EditProductsComponent implements OnInit {
   imagenes: any = [];
   responsiveOptions: any;
 
+  //Forrmulario
+  formProducts!: FormGroup;
 
   product!: ProductsModel;
 
@@ -33,18 +36,29 @@ export class EditProductsComponent implements OnInit {
   categoria: any = [];
   clasificacion: any = [];
 
+  switch:boolean = false;
+
   //variable heredada
   @Input() id:any;
 
-  constructor( private getItemId: ProductService ) {}
+  constructor( private getItemId: ProductService, fromBuilder: FormBuilder ) {
+    this.formProducts = fromBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      brands: ['', Validators.required],
+      categories: ['', Validators.required],
+      clasifications: ['', Validators.required],
+      state: ['', Validators.required],
+      iva: ['', Validators.required],
+      desc: ['', Validators.required],
+      promo: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     this.options.push(
-      { name: 'Opcion 1', code: '1' },
-      { name: 'Opcion 2', code: '2' },
-      { name: 'Opcion 3', code: '3' },
-      { name: 'Opcion 4', code: '4' },
-      { name: 'Opcion 5', code: '5' }
+      { name: 'True', code: '1' },
+      { name: 'False', code: '2' }
     );
 
     this.responsiveOptions = [
@@ -66,11 +80,17 @@ export class EditProductsComponent implements OnInit {
       },
     ];
 
-    this.getProduct();
     this.getCategorias();
     this.getClasificacion();
     this.getMarcas();
+
+    if(this.id != null){
+      this.getProduct();
+    }else{
+      this.switch = true
+    }
   }
+
 
 //detalle de productos
   getProduct(){
@@ -78,8 +98,6 @@ export class EditProductsComponent implements OnInit {
       next: (data)=> {
         console.log(data)
         this.product = data;
-        this.name = data.name;
-        this.description = data.description;
         this.imagenes = data.images;
         this.imagenes.unshift({
           previewImageSrc:data.image,
@@ -89,8 +107,28 @@ export class EditProductsComponent implements OnInit {
           previewImageSrc:data.image,
           thumbnailImageSrc: data.image
         });
+        this.formProducts.setValue({
+          'name' : this.product.name,
+          'description' : this.product.description,
+          'brands' : this.product.brandId,
+          'categories' : 1,
+          'clasifications' : this.product.clasificationId,
+          'state' : this.product.isActive,
+          'iva' : this.product.iva,
+          'desc' : this.product.discount,
+          'promo' : this.product.startDiscount,
+        })
       }, error: (err)=>{console.log(err)}
     })
+  }
+
+  //EditPost
+  updateOrNew(){
+    if (this.id != null){
+
+    }else{
+
+    }
   }
 
   //categorias
