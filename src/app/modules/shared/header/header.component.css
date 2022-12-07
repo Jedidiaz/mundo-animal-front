@@ -204,6 +204,34 @@
   background-color: #f1f1f1;
 }
 
+.logout{
+  display: flex;
+  align-items: center;
+}
+
+.user-img{
+  width: 48px;
+  margin: 0 20px;
+  border-radius: 50%;
+  border: 1px solid #c39900;
+}
+
+:host::ng-deep .logout .p-button{
+  border-radius: 30px;
+  background-color: #AEB422;
+  border: none;
+  outline: none;
+}
+
+:host::ng-deep .logout .p-button:hover {
+  background-color: #616408;
+}
+
+.my-cart i{
+  padding: 0;
+}
+
+
 
 /* Responsive vista celular */
 @media only screen and (min-width: 360px) and (max-width: 720px)  {
@@ -279,6 +307,10 @@
     background-color: transparent;
     border: none;
     display: flex;
+  }
+
+  .logout {
+    display: none;
   }
 
 }

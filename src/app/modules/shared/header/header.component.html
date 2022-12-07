@@ -15,8 +15,8 @@
         <i class="pi pi-search icon-search"></i>
       </div>
       <!-- Acount buttons  -->
-      <div class="content-actions-user">
-        <div class="my-account">
+      <div class="content-actions-user" *ngIf="!checked; else onlogin">
+        <div class="my-account" >
           <p
             type="text"
             style="color: white; font-family: 'Nunito'; cursor: pointer"
@@ -43,6 +43,14 @@
           Register
         </p>
       </div>
+
+      <ng-template #onlogin >
+        <div class="logout">
+          <button pButton label="Cerrar sesion" type="button" (click)="logOut()"></button>
+          <img  class="user-img" src="../../../../assets/huella.png" alt="">
+        </div>
+      </ng-template>
+
       <div class="my-cart">
         <i
           style="color: #aeb422; cursor: pointer"
@@ -110,7 +118,7 @@
     <li><a href="">Contactenos</a></li>
     <li><a href="">Promociones</a></li>
     <li><a href="">Blog</a></li>
-    <li><a [routerLink]="'Account_Verification'" [queryParams]="{payload: 'hola', extendsI: 'hola'}" >Contactenos</a></li>
+    <li><a >Contactenos</a></li>
   </ul>
   <!-- <p-megaMenu
     orientation="horizontal"

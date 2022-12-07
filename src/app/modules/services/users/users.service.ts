@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {
   AuthI,
@@ -56,7 +56,13 @@ export class UsersService {
   }
 
   getClients(): Observable<any> {
-    return this.http.get<any>(this.url + 'api/v1/store/users');
+    const token = localStorage.getItem('token')
+    const httpHeaders: HttpHeaders = new HttpHeaders().append(
+      'Authorization', 'Bearer' + token
+    );
+    return this.http.get<any>(this.url + 'api/v1/store/users', {
+      headers: httpHeaders
+    });
   }
 
   getOrder(): Observable<any> {

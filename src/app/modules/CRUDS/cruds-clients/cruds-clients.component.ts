@@ -34,7 +34,7 @@ export class CrudsClientsComponent implements OnInit {
       next: (data) => {
         this.Clients = data
         console.log(this.Clients)
-      }, error: (err) => {console.log(err.name)}
+      }, error: (err) => {console.log(err)}
     })
   }
 

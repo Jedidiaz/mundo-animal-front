@@ -4,6 +4,7 @@ import { MegaMenuItem } from 'primeng/api/megamenuitem';
 import { BarndsModels, CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
+import { UsersService } from '../../services/users/users.service';
 
 
 @Component({
@@ -28,10 +29,12 @@ export class HeaderComponent implements OnInit {
   items:MegaMenuItem[] = [];
   info:Array<any> = [];
 
+  checked: boolean = false;
+
   // categories!: CategoriesModels[];
   marcas: BarndsModels[] = [];
 
-  constructor(private productsService:ProductService) { }
+  constructor(private productsService:ProductService, private userService: UsersService) { }
 
   ngOnInit(): void {
     this.items = [
@@ -102,6 +105,16 @@ export class HeaderComponent implements OnInit {
     this.info = ['Trabaja con nosotros','Contacto']
     this.getBrands();
     this.getCategories();
+
+    const token = localStorage.getItem('token');
+    if (token){
+      this.checked = true;
+    }
+  }
+
+  logOut(){
+    this.userService.deleteToken();
+    location.reload();
   }
 
   show(){
@@ -139,7 +152,6 @@ export class HeaderComponent implements OnInit {
     this.productsService.getBrands().subscribe({
       next: (data)=> {
         this.marcas = data;
-        console.log(data)
       }, error: (err)=>{}
     })
   }

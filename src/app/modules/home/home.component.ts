@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     // this.carouselService.getCarousel().then(Carousel=> {
     //   this.carousel = Carousel;
     // })
+
     this.carousel = [{image: '../../../../assets/carousel/pexels-engin-akyurt-14374653.jpg'},
     {image: '../../../../assets/carousel/pexels-lumn-4060142.jpg'},
     {image: '../../../../assets/carousel/pexels-mikkel-bendix-9789471.jpg'}];
