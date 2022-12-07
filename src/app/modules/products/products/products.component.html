@@ -1,4 +1,5 @@
 <div class="container">
+  <p-toast></p-toast>
   <div class="container-categories">
     <span class="subtitle">Estas Comprando Para:</span>
     <p-selectButton
@@ -73,11 +74,6 @@
               [cancel]="false"
             ></p-rating>
             <div class="content-properties">
-              <p-selectButton
-                [options]="product.presentations"
-                [(ngModel)]="product.pSelect"
-                optionLabel="name"
-              ></p-selectButton>
               <p-inputNumber
                 class="increment-decrement"
                 [(ngModel)]="product.val"
@@ -94,7 +90,14 @@
               ></p-inputNumber>
             </div>
             <div class="product-grid-item-content">
-              <span class="product-price">$27.000</span>
+              <span class="product-price" >$27.000</span>
+              <div class="select_presentation">
+                <p-selectButton
+                  [options]="product.presentations"
+                  [(ngModel)]="product.pSelect"
+                  optionLabel="name"
+                ></p-selectButton>
+              </div>
             </div>
             <div class="add-to-cart">
               <button

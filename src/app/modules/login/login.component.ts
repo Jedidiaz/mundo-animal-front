@@ -3,11 +3,13 @@ import { LoginI } from 'src/app/Models/authentication/authmodel.interface';
 import { UsersService } from '../services/users/users.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
   checked: boolean = false;
 
   formLogin!: FormGroup;
-  constructor(private loginService: UsersService, private router: Router, formBuilder: FormBuilder) {
+  constructor(private loginService: UsersService, private router: Router, formBuilder: FormBuilder, public messageService: MessageService) {
     this.formLogin = formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -34,13 +36,22 @@ export class LoginComponent implements OnInit {
       next: (data)=> {
         localStorage.setItem('token', data.token_jwt)
         this.checked = true;
+        this.showLogin();
         window.location.href="";
       },error: (err)=> {
-        this.errorStatus = true;
-        this.errorMsj = "Contraseña y/o email invalido(s)";
+        this.formLogin.reset();
+        this.showError();
       }
     })
 
+  }
+
+  showError() {
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Contraseña y/o email invalido(s)'});
+  }
+
+  showLogin(){
+    this.messageService.add({severity:'success', summary: 'success', detail: 'Inicio de sesion con exito!'});
   }
 
 }

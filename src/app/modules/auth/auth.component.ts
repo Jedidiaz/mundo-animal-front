@@ -13,6 +13,7 @@ import { UsersService } from '../services/users/users.service'
 export class AuthComponent implements OnInit {
 
   queryparams: any;
+  message: string = '';
   constructor( private _route:ActivatedRoute, private authService: UsersService ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,18 @@ export class AuthComponent implements OnInit {
     this.authService.auth(this.queryparams).subscribe({
       next: (ok)=> {
         console.log(ok)
-      }, error: (err)=> {console.log(err)}
+        if (ok.messagge === 'There was an error with your token'){
+          this.message = 'UPS! Su token es invalido';
+        }else if (ok.messagge === 'This account is already verified'){
+          this.message = '¡Esta cuenta ya ha sido verificada, inicia sesion!';
+        }else if (ok.messagge === 'successful confirmation'){
+          this.message = '!Tu cuenta ha sido verificada con exito!';
+        }
+      }, error: (err)=> {
+        if (err.status === 400){
+          this.message = 'UPS! Su token esta vencido';
+        }
+      }
     })
   }
 }

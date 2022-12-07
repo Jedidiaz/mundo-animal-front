@@ -58,12 +58,18 @@ export class CartComponent implements OnInit {
 
   setOrder(){
     if (this.productsCart.length != 0){
-      
+
       this.router.navigate(['orden'])
     }else{
       console.log('ingrese productos al carrito')
     }
 
+  }
+  deleteProduct(product: ProductsModel){
+    const temp = this.productsCart.find((el)=> el.id === product.id)
+    if (temp != null){
+      this.productsCart.pop()
+    }
   }
 
 }

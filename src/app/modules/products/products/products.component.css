@@ -96,8 +96,9 @@
 }
 
 :host ::ng-deep .p-ripple.p-element.p-button.p-component{
-  padding: 7px;
-  margin-right: 10px;
+  padding: 5px;
+  margin-right: 7px;
+  margin-bottom: 5px;
   border-radius: 5px;
   border-color: #b3b3b3;
   border-right: 1px solid #b3b3b3 !important;
@@ -131,12 +132,24 @@
 
 .product-grid-item .product-grid-item-content {
   font-size: 2.5rem;
-  text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
 }
 
 .product-grid-item .product-price {
   font-size: 2.2rem;
   font-weight: 600;
+  margin-right: 7px;
+
+}
+
+.select_presentation{
+  display: flex;
+  justify-content: center;
+  height: 105px;
+  align-items: center;
 }
 
 .container{
@@ -159,6 +172,10 @@
   width: 100%;
 }
 
+.card i{
+  margin-right: 8px;
+}
+
 .contaienr-image, .contaienr-image img{
   width: 100%;
 }
@@ -170,7 +187,7 @@
 .content-properties{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   display: flex;
   align-items: start;
 }
@@ -241,6 +258,14 @@
 
 :host ::ng-deep  .p-selectbutton .p-button.p-highlight{
   background-color: #9AAC18;
+}
+
+:host ::ng-deep  .p-selectbutton .p-button-label{
+  font-size: 13px;
+}
+
+:host ::ng-deep  .p-selectbutton{
+
 }
 
 :host ::ng-deep .subcategory .p-dropdown.p-component{
@@ -317,6 +342,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+ }
+
+ .product-grid-item-content {
+  flex-direction: column;
+ }
+
+ .select_presentation{
+  height: auto;
  }
 
 }

@@ -146,6 +146,10 @@ p, span {
   background-color: #F2950E;
 }
 
+.class-buttons img{
+  cursor: pointer;
+}
+
 
 /* Vista responsive celular */
 @media only screen and (min-width: 360px) and (max-width: 720px){

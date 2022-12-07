@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PrimeNGConfig, SelectItem } from 'primeng/api';
+import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { GeneralResponse } from 'src/app/Models/general';
@@ -11,7 +11,8 @@ import { ProductService } from '../service/product.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  providers: [MessageService]
 })
 export class ProductsComponent implements OnInit {
 
@@ -48,7 +49,8 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService:ProductService,
     private primengConfig:PrimeNGConfig,
     private router:Router,
-    private cartService: UsersService) { }
+    private cartService: UsersService,
+    public messageService: MessageService) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -86,7 +88,21 @@ export class ProductsComponent implements OnInit {
 
   //añadir al carrito
   addToCart(product: ProductsModel){
-    this.cartService.setCart(product);
+    if(Object.entries(product.pSelect).length === 0){
+      this.showError();
+    }else{
+      this.cartService.setCart(product);
+      this.showAdd();
+    }
+  }
+
+  //alertas
+  showError() {
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Escoja una presentacion'});
+  }
+
+  showAdd(){
+    this.messageService.add({severity:'success', summary: 'Agregado', detail: '¡Se agregó al carrito!'});
   }
 
   getProduts(){

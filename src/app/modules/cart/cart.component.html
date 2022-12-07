@@ -17,7 +17,7 @@
         <p>${{ products.pSelect.price1 }}</p>
       </div>
       <div class="class-buttons">
-        <i><img src="../../../assets/delete.png" alt="" /></i>
+        <i><img src="../../../assets/delete.png" (click)="deleteProduct(products)"/></i>
         <p-inputNumber
           class="increment-decrement"
           [(ngModel)]="products.val"
