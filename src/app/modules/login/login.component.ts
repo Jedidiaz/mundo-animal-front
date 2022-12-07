@@ -40,7 +40,11 @@ export class LoginComponent implements OnInit {
         window.location.href="";
       },error: (err)=> {
         this.formLogin.reset();
+        if (err.status ===  401){
+          this.showConflit()
+        }else{
         this.showError();
+        }
       }
     })
 
@@ -48,6 +52,10 @@ export class LoginComponent implements OnInit {
 
   showError() {
     this.messageService.add({severity:'error', summary: 'Error', detail: 'Contraseña y/o email invalido(s)'});
+  }
+
+  showConflit(){
+    this.messageService.add({severity:'error', summary: 'Erroe', detail: 'Confirme su correo Electronico'});
   }
 
   showLogin(){
