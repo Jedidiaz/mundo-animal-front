@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TitleStrategy } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { RegisterI } from 'src/app/Models/authentication/authmodel.interface';
 import { UsersService } from 'src/app/modules/services/users/users.service';
@@ -16,7 +16,7 @@ import { UsersService } from 'src/app/modules/services/users/users.service';
 export class SignInComponent implements OnInit {
 
   formRegister!: FormGroup;
-  constructor( private userservice: UsersService, formBuilider: FormBuilder, public messageService: MessageService) {
+  constructor( private userservice: UsersService, formBuilider: FormBuilder, public messageService: MessageService, private router: Router) {
     this.formRegister = formBuilider.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -30,17 +30,27 @@ export class SignInComponent implements OnInit {
     let form: RegisterI = { email: this.formRegister.value.email, password: this.formRegister.value.password, role: 'customer'};
     this.userservice.register(form).subscribe({
       next: (data) => {
-        console.log(data);
+        this.showSucces();
       }, error: (err) => {
         if (err.statusText == 'Conflict') {
-          console.log('Email ya ha sido registrado')
+          this.showErrorRegisEmail();
         } else if (err.statusText == 'Bad Request') {
-          console.log('Email invalido')
+          this.showErrorEmail();
         }else{console.log(err)}
       }
     })
   }
 
-  
+  showSucces(){
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Usuario registrado, Se envio un correo de verificacion'});
+  }
+
+  showErrorEmail(){
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Email invalido'});
+  }
+
+  showErrorRegisEmail(){
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Email ya ha sido registrado, revise su correo'});
+  }
 
 }
