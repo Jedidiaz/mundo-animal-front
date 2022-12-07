@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   showConflit(){
-    this.messageService.add({severity:'error', summary: 'Erroe', detail: 'Confirme su correo Electronico'});
+    this.messageService.add({severity:'error', summary: 'Error', detail: 'Confirme su correo Electronico'});
   }
 
   showLogin(){
