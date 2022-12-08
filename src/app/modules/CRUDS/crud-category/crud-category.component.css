@@ -39,6 +39,15 @@ img{
   cursor: pointer;
 }
 
+.p-d-flex{
+  display: flex;
+  gap: 10px;
+}
+
+:host::ng-deep .p-button-icon{
+  color: white;
+}
+
 @media only screen and (min-width: 360px) and (max-width: 720px) {
   .content-crud{
     width: 100%;

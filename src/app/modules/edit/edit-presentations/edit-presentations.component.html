@@ -94,36 +94,15 @@
             required
           />
         </span>
-        <span>
-          <label for="bulk">Bulk</label>
-          <input
-            pInputText
-            type="text"
-            id="bulk"
-            formControlName="med"
-            required
-          />
+        <span class="bool">
+          <label for="bulk">Bulk </label>
+          <p-triStateCheckbox  id="bulk" formControlName = "bulk" ></p-triStateCheckbox>
         </span>
-        <span>
-          <label for="isActive">IsActive</label>
-          <input
-            pInputText
-            type="text"
-            id="isActive"
-            formControlName="isActive"
-            required
-          />
+        <span class="bool">
+          <label for="isActive">IsActive </label>
+          <p-triStateCheckbox  id="isActive" formControlName = "isActive" ></p-triStateCheckbox>
         </span>
-        <span>
-          <label for="ProductId">ProductId</label>
-          <input
-            pInputText
-            type="text"
-            id="ProductId"
-            formControlName="productId"
-            required
-          />
-        </span>
+
       </form>
     </div>
     <div class="btn">

@@ -88,25 +88,11 @@
         <div class="porcent">
           <span>
             <label for="iva">IVA % </label>
-            <p-dropdown
-              id="iva"
-              [options]="options"
-              formControlName="iva"
-              optionValue="code"
-              optionLabel="name"
-              [required]="true"
-            ></p-dropdown>
+            <input pInputText type="text" id="iva" formControlName="iva" required/>
           </span>
           <span>
             <label for="desc">Descuento % </label>
-            <p-dropdown
-              id="desc"
-              [options]="options"
-              formControlName="desc"
-              optionValue="code"
-              optionLabel="name"
-              [required]="true"
-            ></p-dropdown>
+            <input pInputText type="text" id="desc" formControlName="desc" required/>
           </span>
         </div>
         <span>

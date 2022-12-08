@@ -40,8 +40,7 @@ export class EditPresentationsComponent implements OnInit {
       price3: ['', Validators.required],
       med: ['', Validators.required],
       bulk: ['', Validators.required],
-      isActive: ['', Validators.required],
-      productId: ['', Validators.required]
+      isActive: ['', Validators.required]
     })
    }
 
@@ -76,8 +75,7 @@ export class EditPresentationsComponent implements OnInit {
               'price3': this.presentations.price3,
               'med': this.presentations.med,
               'bulk': this.presentations.bulk,
-              'isActive': this.presentations.isActive,
-              'productId': this.presentations.productId
+              'isActive': this.presentations.isActive
             })
           }
         }

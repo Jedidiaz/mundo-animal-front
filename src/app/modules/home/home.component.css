@@ -62,7 +62,7 @@ h2{
   border-radius: 10px;
 }
 
-.container-social-media > img{
+.container-social-media > a img{
   width: 45px;
   margin: 5px;
 }

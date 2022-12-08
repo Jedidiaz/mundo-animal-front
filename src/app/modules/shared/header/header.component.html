@@ -69,8 +69,12 @@
   </div>
 </div>
 
+<!-- **-----------------------------**---------------------**--------------------------------- -->
 <p-sidebar [(visible)]="display" styleClass="p-sidebar-sm" position="right">
   <ng-template pTemplate="content">
+      <div class="acount" *ngIf="checked">
+        <img  class="user-img" src="../../../../assets/huella.png" alt="">
+      </div>
     <ul>
       <li><a href="">Marcas</a></li>
       <li><a href="">Categorias</a></li>
@@ -80,7 +84,7 @@
       <li><a href="">Blog</a></li>
       <li><a href="">Contactenos</a></li>
     </ul>
-    <div class="user-container">
+    <div class="user-container" *ngIf="!checked; else Login">
       <button
         pButton
         label="Iniciar sesion"
@@ -94,8 +98,20 @@
         routerLink="sign-in"
       ></button>
     </div>
+    <ng-template #Login>
+      <div class="user-container">
+        <button
+        pButton
+        label="Cerrar sesion"
+        class="userBtn"
+        (click)="logOut()"
+      ></button>
+      </div>
+    </ng-template>
   </ng-template>
 </p-sidebar>
+
+<!-- **----------------------------****-------------------------------- -->
 <div class="container-menu">
   <p-overlayPanel #brands [dismissable]="true">
     <ng-template pTemplate>

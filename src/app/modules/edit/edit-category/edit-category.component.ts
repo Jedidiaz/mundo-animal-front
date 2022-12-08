@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
 
@@ -11,24 +13,48 @@ export class EditCategoryComponent implements OnInit {
   idCategory!: number;
 
   //variables category
-  category!: CategoriesModels;
-  constructor( private getItemId: ProductService) { }
+  formCategory!: FormGroup;
+  nuevo: boolean = false;
+  image: any = '../../../../assets/default-thumbnail.jpg';
+  disableButtonDelete: boolean = false;
+
+  constructor( private getItemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder) {
+    this.formCategory = formBuilder.group({
+      name: ['']
+    })
+   }
 
   ngOnInit(): void {
-    let URLsearch = `${window.location.href}`;
-    let url = URLsearch.split('/')
-    let n = url.length;
-    this.idCategory = Number(url[n-1]);
+    const id = this._router.snapshot.paramMap.get('id')
+    console.log(id)
+    if (id != 'new'){
+      this.getCategory(id);
+    }else{
+      this.nuevo = true;
+      this.disableButtonDelete = true;
+    }
 
-    this.getCategory();
   }
 
-  getCategory(){
-    this.getItemId.getCategoryById(this.idCategory).subscribe({
+  deleteImage(){
+    this.image = '../../../../assets/default-thumbnail.jpg';
+    this.disableButtonDelete = true;
+  }
+
+  getCategory(id: any){
+    this.getItemId.getCategoryById(id).subscribe({
       next: (data)=> {
-        this.category = data;
-        console.log(data  )
+        this.formCategory.setValue({
+          'name': data.name
+        })
+        this.image = data.image;
+
+        console.log(data)
       }, error: (err)=> {console.log(err)}
     })
+  }
+
+  onBasicUpload(event: any){
+    console.log(event.file)
   }
 }

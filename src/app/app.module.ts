@@ -32,6 +32,8 @@ import { CategoryComponent } from './modules/products/category/category.componen
 import { ReactiveFormsModule } from '@angular/forms';
 //primeNG modules---------------
 import {ToastModule} from 'primeng/toast';
+import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
+import {FileUploadModule} from 'primeng/fileupload';
 import {ListboxModule} from 'primeng/listbox';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {InputTextModule} from 'primeng/inputtext';
@@ -130,6 +132,8 @@ import { ChangePasswordComponent } from './modules/recovery-password/change-pass
     InputTextareaModule,
     ReactiveFormsModule,
     ToastModule,
+    FileUploadModule,
+    TriStateCheckboxModule,
   ],
   providers: [PrimeIcons],
   bootstrap: [AppComponent]

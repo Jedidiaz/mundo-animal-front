@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ClasificationModel } from 'src/app/Models/CategoriesModel';
 import { ProductDetailComponent } from '../../products/product-detail/product-detail.component';
 import { ProductService } from '../../products/service/product.service';
@@ -9,25 +11,43 @@ import { ProductService } from '../../products/service/product.service';
   styleUrls: ['./edit-clasification.component.css']
 })
 export class EditClasificationComponent implements OnInit {
+  image: any = '../../../../assets/default-thumbnail.jpg';
   idClasification!: number;
 
   clasification!: ClasificationModel;
-  constructor(private getItemId: ProductService) { }
-
-  ngOnInit(): void {
-    let URLsearch = `${window.location.href}`;
-    let url = URLsearch.split('/')
-    let n = url.length;
-    this.idClasification = Number(url[n-1]);
-
-    this.getClasification();
+  disableButtonDelete: boolean = false;
+  nuevo: boolean = false;
+  formClasification: FormGroup;
+  constructor(private getItemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder) {
+    this.formClasification = formBuilder.group({
+      name: ['']
+    })
   }
 
-  getClasification(){
-    this.getItemId.getClasificationById(this.idClasification). subscribe({
+  ngOnInit(): void {
+    const id = this._router.snapshot.paramMap.get('id')
+    if (id != 'new'){
+      this.getClasification(id);
+    }else{
+      this.nuevo = true;
+      this.disableButtonDelete = true;
+    }
+
+  }
+
+  deleteImage(){
+    this.image = '../../../../assets/default-thumbnail.jpg';
+    this.disableButtonDelete = true;
+  }
+
+  getClasification(id: any){
+    this.getItemId.getClasificationById(id). subscribe({
       next: (data)=> {
         console.log(data)
-        this.clasification = data.data;
+        this.formClasification.setValue({
+          'name': data.data.name
+        });
+        this.image = data.data.image;
       }, error: (err)=>{console.log(err)}
     })
   }

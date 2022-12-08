@@ -148,7 +148,6 @@
 .select_presentation{
   display: flex;
   justify-content: center;
-  height: 105px;
   align-items: center;
 }
 
@@ -264,9 +263,6 @@
   font-size: 13px;
 }
 
-:host ::ng-deep  .p-selectbutton{
-
-}
 
 :host ::ng-deep .subcategory .p-dropdown.p-component{
   border: 0;
@@ -342,10 +338,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
- }
-
- .product-grid-item-content {
-  flex-direction: column;
  }
 
  .select_presentation{

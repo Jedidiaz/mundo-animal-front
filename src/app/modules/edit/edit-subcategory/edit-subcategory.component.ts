@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
 
@@ -9,24 +11,43 @@ import { ProductService } from '../../products/service/product.service';
 })
 export class EditSubcategoryComponent implements OnInit {
   idSubcategory!: number;
+  image: any = '../../../../assets/default-thumbnail.jpg';
 
   subcategory!: SubcategoriesModel;
-  constructor( private getTtemId: ProductService) { }
+  disableButtonDelete: boolean = false;
+  nuevo: boolean = false;
+  formSubcategory: FormGroup;
 
-  ngOnInit(): void {
-    let URLsearch = `${window.location.href}`;
-    let url = URLsearch.split('/')
-    let n = url.length;
-    this.idSubcategory = Number(url[n-1]);
-
-    this.getSubcategoria();
+  constructor( private getTtemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder) {
+    this.formSubcategory = formBuilder.group({
+      name: ['']
+    })
   }
 
-  getSubcategoria(){
-    this.getTtemId.getSubcategoryById(this.idSubcategory). subscribe({
+  ngOnInit(): void {
+    const id = this._router.snapshot.paramMap.get('id')
+    if (id != 'new'){
+      this.getSubcategoria(id);
+    }else{
+      this.nuevo = true;
+      this.disableButtonDelete = true;
+    }
+
+  }
+
+  deleteImage(){
+    this.image = '../../../../assets/default-thumbnail.jpg';
+    this.disableButtonDelete = true;
+  }
+
+  getSubcategoria(id: any){
+    this.getTtemId.getSubcategoryById(id). subscribe({
       next: (data)=> {
         console.log(data)
-        this.subcategory = data.data;
+        this.formSubcategory.setValue({
+          'name': data.data.name
+        })
+        this.image = data.data.image;
       }, error: (err)=>{console.log(err)}
     })
   }

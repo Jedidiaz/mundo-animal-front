@@ -73,31 +73,31 @@
               [readonly]="true"
               [cancel]="false"
             ></p-rating>
-            <div class="content-properties">
-              <p-inputNumber
-                class="increment-decrement"
-                [(ngModel)]="product.val"
-                [step]="1.0"
-                [showButtons]="true"
-                mode="decimal"
-                [min]="0"
-                [max]="100"
-                buttonLayout="horizontal"
-                inputId="horizontal"
-                spinnerMode="horizontal"
-                incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus"
-              ></p-inputNumber>
-            </div>
             <div class="product-grid-item-content">
               <span class="product-price" >$27.000</span>
-              <div class="select_presentation">
-                <p-selectButton
-                  [options]="product.presentations"
-                  [(ngModel)]="product.pSelect"
-                  optionLabel="name"
-                ></p-selectButton>
+              <div class="content-properties">
+                <p-inputNumber
+                  class="increment-decrement"
+                  [(ngModel)]="product.val"
+                  [step]="1.0"
+                  [showButtons]="true"
+                  mode="decimal"
+                  [min]="0"
+                  [max]="100"
+                  buttonLayout="horizontal"
+                  inputId="horizontal"
+                  spinnerMode="horizontal"
+                  incrementButtonIcon="pi pi-plus"
+                  decrementButtonIcon="pi pi-minus"
+                ></p-inputNumber>
               </div>
+            </div>
+            <div class="select_presentation">
+              <p-selectButton
+                [options]="product.presentations"
+                [(ngModel)]="product.pSelect"
+                optionLabel="name"
+              ></p-selectButton>
             </div>
             <div class="add-to-cart">
               <button

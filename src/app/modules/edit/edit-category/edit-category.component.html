@@ -1,14 +1,20 @@
 <div class="container">
   <div class="content">
-    <h1>Categorias</h1>
-    <img src="../../../../assets/product.png" alt="" />
-    <span>
-      <label for="nombre">Imagen </label>
-      <input pInputText type="text" id="nombre" [value]="category.image" />
-    </span>
-    <span>
-      <label for="nombre">Nombre </label>
-      <input pInputText type="text" id="nombre" [value]="category.name" />
-    </span>
+    <h2>Categoria</h2>
+    <div class="upload_img">
+      <div class="funciones_img">
+        <p-fileUpload  mode="basic" name="myfile[]" url="./upload.php" accept="image/*"></p-fileUpload>
+        <button pButton class="p-button-danger" icon="pi pi-trash" [disabled]="disableButtonDelete" (click)="deleteImage()"></button>
+      </div>
+      <img [src]="image" alt="image">
+    </div>
+    <form [formGroup]="formCategory">
+      <span>
+        <label for="name">Nombre </label>
+      <input pInputText type="text" id="name" formControlName="name" />
+      </span>
+    </form>
+    <button pButton label="Guardar" class="p-button-success" *ngIf="!nuevo"></button>
+    <button pButton label="Crear" class="p-button-success" *ngIf="nuevo"></button>
   </div>
 </div>

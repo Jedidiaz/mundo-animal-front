@@ -37,7 +37,7 @@ export class UsersService {
     const headers = new HttpHeaders().append(
       'Content-Type',
       'application/x-www-form-urlencoded'
-  );
+    );
 
     const body = {};
 
@@ -87,5 +87,21 @@ export class UsersService {
 
   getCart(){
     return this.productCart
+  }
+
+  //Serch products and filters
+
+  postSearchBar(like: any):Observable<any>{
+    const headers = new HttpHeaders().append(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
+    );
+    const body = {};
+    const params = new HttpParams()
+      .append('like', like);
+    return this.http.post<any>(this.url + '/api/v1/store/products/sear', body, {
+      headers: headers,
+      params: params
+    })
   }
 }

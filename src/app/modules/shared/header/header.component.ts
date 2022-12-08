@@ -163,5 +163,13 @@ export class HeaderComponent implements OnInit {
       },
       error: (err) => {}
     });
-}
+  }
+
+  searchBar(like: any){
+    this.userService.postSearchBar(like).subscribe({
+      next: (ok)=> {
+        console.log(ok)
+      }, error: (err)=>{console.log(err)}
+    })
+  }
 }
