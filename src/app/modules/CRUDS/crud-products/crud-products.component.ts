@@ -14,8 +14,10 @@ export class CRUDProductsComponent implements OnInit {
   options: Array<any> = [];
   focus: any;
   responsiveOptions: any;
-  titles: Array<any> = ['ID', 'NOMBRE PRODUCTO', 'Precio 1', 'Precio 2', 'acciones', 'visualizar', 'editar', 'eliminar'];
+  titles: Array<any> = ['ID', 'NOMBRE PRODUCTO', 'Precio 1', 'Precio 2', 'editar', 'eliminar'];
   New: any = 'new';
+  loading: boolean = true;
+  filterProducts = '';
 
   //Variables de api
   Products:ProductsModel[] = [];
@@ -145,6 +147,7 @@ export class CRUDProductsComponent implements OnInit {
       next: (data) => {
         this.Products = data;
         console.log(this.Products)
+        this.loading = false
       }, error: (err)=> {}
     })
   }

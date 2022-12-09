@@ -104,4 +104,9 @@ export class UsersService {
       params: params
     })
   }
+
+  //addImages
+  postUploadImg(upload: any):Observable<any>{
+    return this.http.post<any>(this.url + 'api/v1/store/products/AddImage', upload)
+  }
 }

@@ -63,6 +63,7 @@ import { HistorialCompraComponent } from './modules/historial-compra/historial-c
 import { CrudPresentationsComponent } from './modules/CRUDS/crud-presentations/crud-presentations.component';
 import { EditPresentationsComponent } from './modules/edit/edit-presentations/edit-presentations.component';
 import { ChangePasswordComponent } from './modules/recovery-password/change-password/change-password.component';
+import { FilterPipe } from './modules/shared/pipes/filter.pipe';
 
 
 
@@ -99,7 +100,8 @@ import { ChangePasswordComponent } from './modules/recovery-password/change-pass
     HistorialCompraComponent,
     CrudPresentationsComponent,
     EditPresentationsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

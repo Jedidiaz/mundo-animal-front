@@ -4,7 +4,7 @@
     <h1>Categorias</h1>
     <p-table
       #dt1
-      [value]="categorias"
+      [value]="categorias | filter: filterCategories"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -20,7 +20,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterCategories"
+              [(ngModel)]="filterCategories"
               placeholder="Search keyword"
             />
           </span>
@@ -48,7 +49,7 @@
     <h1>Sub Categorias</h1>
     <p-table
       #dt1
-      [value]="subCategorias"
+      [value]="subCategorias | filter: filterSubcategories"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -64,7 +65,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterSubcategories"
+              [(ngModel)]="filterSubcategories"
               placeholder="Search keyword"
             />
           </span>
@@ -93,7 +95,7 @@
     <h1>Clasificacion</h1>
     <p-table
       #dt1
-      [value]="clasificaciones"
+      [value]="clasificaciones | filter: filterClasifications"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -109,7 +111,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterClasifications"
+              [(ngModel)]="filterClasifications"
               placeholder="Search keyword"
             />
           </span>
@@ -138,7 +141,7 @@
     <h1>Marcas</h1>
     <p-table
       #dt1
-      [value]="marcas"
+      [value]="marcas | filter: filterBrands"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -154,7 +157,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterBrands"
+              [(ngModel)]="filterBrands"
               placeholder="Search keyword"
             />
           </span>

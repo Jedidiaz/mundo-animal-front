@@ -41,6 +41,10 @@ export class CrudCategoryComponent implements OnInit {
   clasificaciones: ClasificationModel[] = [];
   //Marcas
   marcas: BarndsModels[] = [];
+  filterClasifications = '';
+  filterBrands = '';
+  filterCategories = '';
+  filterSubcategories = '';
 
   constructor(private apiGet: ProductService) {}
 

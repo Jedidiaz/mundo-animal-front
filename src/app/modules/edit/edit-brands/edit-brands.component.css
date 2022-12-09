@@ -7,27 +7,31 @@
   margin-top: 50px;
 }
 
-:host::ng-deep .p-inputtext{
-  width: 100%;
-  margin-bottom: 10px;
+:host::ng-deep .p-button-icon{
+  color: white !important;
 }
-
-:host::ng-deep .funciones_img .p-button-icon{
-  color: white;
+:host::ng-deep .p-button-label{
+  color: white !important;
 }
 
 .funciones_img{
   display: flex;
   gap: 10px;
   flex-direction: column;
-  position: absolute;
-  float: right;
-  margin: 10px 0 0 10px;
+  position: left;
+  float: left;
 }
 
 .upload_img{
   width: 100%;
   min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+:host::ng-deep .upload_img .p-button:nth-child(2){
+  width: 100%;
 }
 
 .upload_img img{

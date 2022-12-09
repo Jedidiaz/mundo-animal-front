@@ -12,23 +12,33 @@
   margin-bottom: 10px;
 }
 
-:host::ng-deep .funciones_img .p-button-icon{
-  color: white;
+:host::ng-deep .p-button-icon{
+  color: white !important;
+}
+:host::ng-deep .p-button-label{
+  color: white !important;
 }
 
 .funciones_img{
   display: flex;
   gap: 10px;
   flex-direction: column;
-  position: absolute;
-  float: right;
-  margin: 10px 0 0 10px;
+  position: left;
+  float: left;
 }
 
 .upload_img{
   width: 100%;
-  min-width: 200px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
+
+:host::ng-deep .upload_img .p-button:nth-child(2){
+  width: 100%;
+}
+
 
 .upload_img img{
   width: 100%;
@@ -42,7 +52,7 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    width: 500px;
+    width: 600px;
     gap: 20px;
   }
 }

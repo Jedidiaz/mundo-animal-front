@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
   selector: 'app-edit-subcategory',
@@ -18,7 +19,7 @@ export class EditSubcategoryComponent implements OnInit {
   nuevo: boolean = false;
   formSubcategory: FormGroup;
 
-  constructor( private getTtemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder) {
+  constructor( private getTtemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
     this.formSubcategory = formBuilder.group({
       name: ['']
     })
@@ -43,7 +44,7 @@ export class EditSubcategoryComponent implements OnInit {
   getSubcategoria(id: any){
     this.getTtemId.getSubcategoryById(id). subscribe({
       next: (data)=> {
-        console.log(data)
+        this.subcategory = data.data;
         this.formSubcategory.setValue({
           'name': data.data.name
         })
@@ -52,4 +53,12 @@ export class EditSubcategoryComponent implements OnInit {
     })
   }
 
+  uploadImg(event: any){
+    const img = event.files[0].name;
+    console.log(img)
+    const params = {productid: this.subcategory.id, image: img}
+    this.userService.postUploadImg(params).subscribe({
+      next: (data)=> {console.log(data)}, error: (err)=> {console.log(err)}
+    })
+  }
 }

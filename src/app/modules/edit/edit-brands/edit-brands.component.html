@@ -3,10 +3,10 @@
     <h2>Marca</h2>
     <div class="upload_img">
       <div class="funciones_img">
-        <p-fileUpload  mode="basic" name="myfile[]" url="./upload.php" accept="image/*"></p-fileUpload>
-        <button pButton class="p-button-danger" icon="pi pi-trash" [disabled]="disableButtonDelete" (click)="deleteImage()"></button>
+        <p-fileUpload  name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadImg($event)"></p-fileUpload>
       </div>
-      <img [src]="image" alt="">
+      <img [src]="image" alt="image">
+      <button pButton class="p-button-danger" label="Eliminar imagen" icon="pi pi-trash" [disabled]="disableButtonDelete" (click)="deleteImage()" ></button>
     </div>
     <form [formGroup]="formBrand">
       <span>

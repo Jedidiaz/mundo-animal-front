@@ -115,10 +115,11 @@
   <div class="content-crud">
     <p-table
       #dt1
-      [value]="Products"
+      [value]="Products | filter: filterProducts"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
-      ataKey="id"
+      dataKey= "id"
+      [loading]="loading"
       [rows]="5"
       [showCurrentPageReport]="true"
       [paginator]="true"
@@ -129,14 +130,16 @@
           <span class="p-input-icon-left p-ml-auto">
             <i class="pi pi-search"></i>
             <input
+            class="form-control"
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
-              placeholder="Search keyword"
+              name="filterProducts"
+              [(ngModel)]="filterProducts"
+              placeholder="Buscar...."
             />
           </span>
           <!-- Boton Nuevo! -->
-          <button pButton icon="pi pi-plus-circle" [routerLink]="'edit-products'"></button>
+          <button pButton icon="pi pi-plus-circle" [routerLink]="'edit-products'" ></button>
         </div>
       </ng-template>
       <ng-template pTemplate="header" let-columns>
@@ -144,14 +147,12 @@
           <th *ngFor="let title of titles">{{ title }}</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-product let-columns="columns">
+      <ng-template pTemplate="body" let-product >
         <tr>
           <td>{{ product.id }}</td>
           <td style="width: 500px">{{ product.name }}</td>
-          <td>${{ product.precio_1 }}</td>
-          <td>${{ product.precio_2 }}</td>
-          <td><img src="../../../../assets/cheque.png" alt="i" /></td>
-          <td><img src="../../../../assets/show.png" alt="i" /></td>
+          <td>${{ product.name }}</td>
+          <td>${{ product.name }}</td>
           <td>
             <img
               src="../../../../assets/edit.png"
