@@ -2,6 +2,14 @@ export interface RegisterI {
   email: string;
   password: string;
   role: string;
+  customer: RegistroModel;
+}
+
+interface RegistroModel {
+  name: string;
+  lastName: string;
+  phone: string;
+
 }
 
 export interface LoginI {

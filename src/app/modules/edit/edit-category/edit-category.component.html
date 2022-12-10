@@ -14,7 +14,7 @@
       <input pInputText type="text" id="name" formControlName="name" />
       </span>
     </form>
-    <button pButton label="Guardar" class="p-button-success" *ngIf="!nuevo"></button>
-    <button pButton label="Crear" class="p-button-success" *ngIf="nuevo"></button>
+    <button pButton label="Guardar" class="p-button-success" *ngIf="!nuevo" type="button" (click)="saveChange()"></button>
+    <button pButton label="Crear" class="p-button-success" *ngIf="nuevo" type="button" (click)="newItem()" ></button>
   </div>
 </div>

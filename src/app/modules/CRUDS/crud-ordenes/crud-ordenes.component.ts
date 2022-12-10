@@ -15,22 +15,24 @@ export class CrudOrdenesComponent implements OnInit {
     'Detalle',
     'Estado'
   ];
+
+  filterOrden = '';
   constructor( private ordenService: UsersService) {}
 
   ngOnInit(): void {
     this.products.push(
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' },
-      { numero: '1', cliente: 'nombre', valor: '10.000', estado: 'Activo' }
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'hola', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'soy un dato', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' },
+      { numero: '1', name: 'nombre', valor: '10.000', estado: 'Activo' }
     );
     this.getOrders();
   }

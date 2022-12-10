@@ -43,6 +43,7 @@
             [(ngModel)]="clasificationSelect"
             optionLabel="name"
             optionValue="code"
+            placeholder="Clasificaciones"
           ></p-dropdown>
           <p-dropdown
             class="filtro"
@@ -50,6 +51,7 @@
             [(ngModel)]="brandsSelect"
             optionLabel="name"
             optionValue="code"
+            placeholder="Marcas"
           ></p-dropdown>
         </div>
       </ng-template>
@@ -74,7 +76,7 @@
               [cancel]="false"
             ></p-rating>
             <div class="product-grid-item-content">
-              <span class="product-price" >$27.000</span>
+              <span class="product-price" >{{product.pSelect.price1 | currency}}</span>
               <div class="content-properties">
                 <p-inputNumber
                   class="increment-decrement"

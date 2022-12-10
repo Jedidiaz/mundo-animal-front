@@ -17,8 +17,8 @@ export interface ProductsModel{
 }
 
 export interface ProductWeigth{
-  name:string,
-  code:number
+  name:string;
+  code:number;
 }
 
 export interface ProductsLocalModel{
@@ -36,4 +36,9 @@ export interface ProductsLocalModel{
   iva: any,
   images:Array<any>
   val:any
+}
+
+export interface CartModels {
+  presentationProductCode: string;
+  amount: number;
 }

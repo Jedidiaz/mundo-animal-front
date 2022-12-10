@@ -28,6 +28,7 @@ export class CrudPresentationsComponent implements OnInit {
     'eliminar'
 
   ];
+  filterPresentations = '';
   idProduct!: number;
   Presentaciones!: PresentationsModel[];
 
@@ -118,7 +119,7 @@ export class CrudPresentationsComponent implements OnInit {
       }, error: (err)=>{console.log(err)}
     })
   }
-  
+
 
 
 }

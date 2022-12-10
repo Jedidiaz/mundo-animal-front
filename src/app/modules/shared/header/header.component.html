@@ -7,10 +7,10 @@
       <div class="container-search" style="position: relative; width: 50%">
         <p-autoComplete
           styleClass="p-autocomplete-list-item"
-          [(ngModel)]="products"
-          [suggestions]="results"
+          [(ngModel)]="results"
+          [suggestions]="products"
           field="name"
-          (completeMethod)="search($event)"
+          (completeMethod)="searchBar($event)"
         ></p-autoComplete>
         <i class="pi pi-search icon-search"></i>
       </div>
@@ -116,14 +116,14 @@
   <p-overlayPanel #brands [dismissable]="true">
     <ng-template pTemplate>
       <div *ngFor="let brand of marcas">
-        <button class="btn-desp" type="button"  >{{brand.name}}</button>
+        <button class="btn-desp" type="button" [routerLink]="['products']" [queryParams]="{brand: brand.id}">{{brand.name}}</button>
       </div>
     </ng-template>
   </p-overlayPanel>
   <p-overlayPanel #category [dismissable]="true">
     <ng-template pTemplate>
         <div *ngFor="let category of categories">
-          <button class="btn-desp" type="button"  >{{category.name}}</button>
+          <button class="btn-desp" type="button"  [routerLink]="['products']" [queryParams]="{category: category.id}" >{{category.name}}</button>
         </div>
     </ng-template>
   </p-overlayPanel>

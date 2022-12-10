@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpBackend, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {
   AuthI,
@@ -7,18 +7,20 @@ import {
   RegisterI,
 } from 'src/app/Models/authentication/authmodel.interface';
 import { environment } from 'src/environments/environment';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { ProductsModel } from 'src/app/Models/produts/productsModel';
 
 @Injectable({
   providedIn: 'root',
 })
-
-
-
 export class UsersService {
-
-  productCart: Array<any> = [];
-
-  constructor(private http: HttpClient) {}
+  //headers
+  headers = new HttpHeaders()
+    .append('Content-Type', 'application/x-www-form-urlencoded')
+    .append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  productCart: ProductsModel[] = [];
+  constructor(private http: HttpClient) {
+  }
 
   private readonly url = environment.api;
 
@@ -56,13 +58,7 @@ export class UsersService {
   }
 
   getClients(): Observable<any> {
-    const token = localStorage.getItem('token')
-    const httpHeaders: HttpHeaders = new HttpHeaders().append(
-      'Authorization', 'Bearer' + token
-    );
-    return this.http.get<any>(this.url + 'api/v1/store/users', {
-      headers: httpHeaders
-    });
+    return this.http.get<any>(this.url + 'api/v1/store/users', {headers: this.headers});
   }
 
   getOrder(): Observable<any> {
@@ -81,7 +77,7 @@ export class UsersService {
     return this.http.post<any>(this.url + 'api/v1/store/users/forgot-password', email)
   }
 
-  setCart(product: {}){
+  setCart(product: ProductsModel){
     this.productCart.push(product)
   }
 
@@ -105,8 +101,26 @@ export class UsersService {
     })
   }
 
-  //addImages
-  postUploadImg(upload: any):Observable<any>{
-    return this.http.post<any>(this.url + 'api/v1/store/products/AddImage', upload)
+  //addImagesProducts
+  postUploadImgProducts(upload: any):Observable<any>{
+    return this.http.post<any>(this.url + 'api/v1/store/products/AddImage', upload, {
+      headers: this.headers
+    })
   }
+
+  //deleteImagesProducts
+  postRemoveImagesProducts(params: any):Observable<AnyCatcher>{
+    return this.http.post<any>(`${this.url}api/v1/store/products/removeImage`, params, {
+      headers: this.headers
+    })
+  }
+
+  //detalle del usuario
+  getDetailCustomer():Observable<any>{
+    return this.http.get<any>(`${this.url}api/v1/store/customers/info`, {
+      headers: this.headers
+    })
+  }
+
+
 }

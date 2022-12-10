@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
@@ -25,6 +25,8 @@ export class ProductsComponent implements OnInit {
   sortField:string = '';
   sortOrder:number = 0;
 
+
+  productFilter: ProductsModel[] = [];
   products:ProductsModel[] = [];
   dog:ProductsModel[] = [];
   cat:ProductsModel[] = [];
@@ -34,10 +36,10 @@ export class ProductsComponent implements OnInit {
   subcategories:any = [];
   brands: Array<any> = [];
 
-  categoriesSelect:number = 1;
+  categoriesSelect:number = 0;
   subcategoriesSelect:number = 1;
-  clasificationSelect: number = 1;
-  brandsSelect: number = 1;
+  clasificationSelect: number = 0;
+  brandsSelect: number = 0;
 
   responsiveOptions:any = [];
   tab:any = [];
@@ -45,12 +47,14 @@ export class ProductsComponent implements OnInit {
   selectWeight!:ProductWeigth;
 
   val:number = 1;
-
+  brand: ProductsModel [] = []
+  filter: any = {};
   constructor(private productsService:ProductService,
     private primengConfig:PrimeNGConfig,
     private router:Router,
     private cartService: UsersService,
-    public messageService: MessageService) { }
+    public messageService: MessageService,
+    private _router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -70,12 +74,20 @@ export class ProductsComponent implements OnInit {
       {name: 'Gato', code: 2, icon:'./../../../../assets/cat-category.png'}
     ];
 
-// llamado a api
+    this._router.queryParams.subscribe({
+      next: (ok)=> {
+        this.filter = ok;
+      }
+    })
+    this.brandsSelect = +this.filter.brand
+    // llamado a api
     this.getProduts();
     this.getCategories();
     this.getSubCategories();
     this.getBrands();
     this.getClasifications();
+    //filtro desde header
+
 
     if(this.categoriesSelect == 1){
       this.products = this.dog
@@ -83,7 +95,16 @@ export class ProductsComponent implements OnInit {
       this.products = this.cat
     }
 
+  }
 
+  //filtro
+  filtroBrands(){
+    this.products.forEach(el=> {
+      if (el.brandId === this.brandsSelect){
+        this.brand.push(el)
+      }
+    })
+    console.log(this.brand)
   }
 
   //añadir al carrito
@@ -104,7 +125,7 @@ export class ProductsComponent implements OnInit {
   showAdd(){
     this.messageService.add({severity:'success', summary: 'Agregado', detail: '¡Se agregó al carrito!'});
   }
-
+//get products
   getProduts(){
     this.productsService.getProducts().subscribe({
       next: (ok) => {
@@ -116,7 +137,9 @@ export class ProductsComponent implements OnInit {
             this.cat.push(el)
           }
         })
+        this.filtroBrands();
       }, error: (err) => { }
+
     });
   }
 //Cargar categorias

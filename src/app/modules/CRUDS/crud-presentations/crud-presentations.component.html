@@ -4,7 +4,7 @@
   <div class="content-crud">
     <p-table
       #dt1
-      [value]="Presentaciones"
+      [value]="Presentaciones | filter: filterPresentations"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -20,7 +20,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterPresentations"
+              [(ngModel)]="filterPresentations"
               placeholder="Buscar"
             />
           </span>

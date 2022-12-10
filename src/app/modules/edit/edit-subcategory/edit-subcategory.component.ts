@@ -11,7 +11,8 @@ import { UsersService } from '../../services/users/users.service';
   styleUrls: ['./edit-subcategory.component.css']
 })
 export class EditSubcategoryComponent implements OnInit {
-  idSubcategory!: number;
+
+  idSubcategory!: any;
   image: any = '../../../../assets/default-thumbnail.jpg';
 
   subcategory!: SubcategoriesModel;
@@ -19,7 +20,7 @@ export class EditSubcategoryComponent implements OnInit {
   nuevo: boolean = false;
   formSubcategory: FormGroup;
 
-  constructor( private getTtemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
     this.formSubcategory = formBuilder.group({
       name: ['']
     })
@@ -27,6 +28,7 @@ export class EditSubcategoryComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this._router.snapshot.paramMap.get('id')
+    this.idSubcategory = id;
     if (id != 'new'){
       this.getSubcategoria(id);
     }else{
@@ -42,7 +44,7 @@ export class EditSubcategoryComponent implements OnInit {
   }
 
   getSubcategoria(id: any){
-    this.getTtemId.getSubcategoryById(id). subscribe({
+    this.productService.getSubcategoryById(id). subscribe({
       next: (data)=> {
         this.subcategory = data.data;
         this.formSubcategory.setValue({
@@ -54,11 +56,26 @@ export class EditSubcategoryComponent implements OnInit {
   }
 
   uploadImg(event: any){
-    const img = event.files[0].name;
-    console.log(img)
-    const params = {productid: this.subcategory.id, image: img}
-    this.userService.postUploadImg(params).subscribe({
-      next: (data)=> {console.log(data)}, error: (err)=> {console.log(err)}
+
+  }
+
+  //Actualizar datos
+  saveChange(){
+    const params = {name: this.formSubcategory.value.name, image: this.image}
+    this.productService.pacthEditSubcategory(this.idSubcategory, params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Crear Nuevo
+  newItem(){
+    const params = {name: this.formSubcategory.value.name, image: this.image}
+    this.productService.postNewSubcategory(params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
     })
   }
 }

@@ -1,8 +1,10 @@
 <!-- contenedor -->
 <div class="container">
+  <p-toast></p-toast>
   <!-- Div de la card -->
   <div class="card">
     <div class="container-images">
+      <p-fileUpload  name="myfile[]" [customUpload]="true" accept="image/*"  (uploadHandler)="uploadImg($event)"></p-fileUpload>
       <p-galleria
         [value]="imagenes"
         [responsiveOptions]="responsiveOptions"
@@ -15,6 +17,7 @@
             [src]="item.thumbnailImageSrc"
             style="width: 100%; display: block"
           />
+          <button pButton class="p-button-danger" label="Eliminar imagen" icon="pi pi-trash"  (click)="deleteImage(item.thumbnailImageSrc)" ></button>
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
           <div class="grid grid-nogutter justify-content-center">
@@ -27,7 +30,7 @@
       </p-galleria>
     </div>
     <div class="description-content">
-      <form [formGroup]="formProducts" (ngSubmit)="updateOrNew()">
+      <form [formGroup]="formProducts" >
         <span>
           <label for="nombre">Nombre </label>
           <input pInputText type="text" id="nombre" formControlName="name" required/>
@@ -74,33 +77,33 @@
             [required]="true"
           ></p-dropdown>
         </span>
-        <span>
-          <label for="estado">Estado </label>
-          <p-dropdown
-            id="estado"
-            [options]="options"
-            formControlName="state"
-            optionValue="code"
-            optionLabel="name"
-            [required]="true"
-          ></p-dropdown>
-        </span>
         <div class="porcent">
+          <span class="bool">
+            <label for="state">Estado </label>
+            <p-triStateCheckbox  id="state" formControlName = "state" ></p-triStateCheckbox>
+          </span>
+
           <span>
             <label for="iva">IVA % </label>
-            <input pInputText type="text" id="iva" formControlName="iva" required/>
+            <input pInputText type="number" id="iva" formControlName="iva" required/>
           </span>
           <span>
             <label for="desc">Descuento % </label>
-            <input pInputText type="text" id="desc" formControlName="desc" required/>
+            <input pInputText type="number" id="desc" formControlName="desc" required/>
           </span>
         </div>
-        <span>
-          <label for="Promo">Promo </label>
-          <input pInputText type="date" id="Promo"  formControlName="promo" required />
-        </span>
-        <button pButton label="Guardar" type="submit"  *ngIf="!switch"></button>
-        <button pButton label="Crear" type="submit"  *ngIf="switch"></button>
+        <div class="porcent">
+          <span>
+            <label for="StartPromo">Inicio de promo </label>
+            <input pInputText type="date" id="StartPromo"  formControlName="startPromo" required />
+          </span>
+          <span>
+            <label for="EndPromo">Fin de promo </label>
+            <input pInputText type="date" id="EndPromo"  formControlName="endPromo" required />
+          </span>
+        </div>
+        <button pButton label="Guardar" type="button"  *ngIf="!switch" (click)="addNew()"></button>
+        <button pButton label="Crear" type="button"  *ngIf="switch" (click)="editProduct()"></button>
       </form>
     </div>
   </div>

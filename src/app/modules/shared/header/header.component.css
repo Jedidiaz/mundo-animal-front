@@ -78,6 +78,10 @@
   align-items: center;
 }
 
+.content-actions-user p{
+  font-size: 20px;
+}
+
 .separador {
   border-left: 1px solid white;
   height: 20px;

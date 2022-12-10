@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartI } from '../../Models/cart/cart.interface';
 import { PrimeIcons } from 'primeng/api';
 import { UsersService } from '../services/users/users.service';
-import { ProductsModel } from 'src/app/Models/produts/productsModel';
+import { CartModels, ProductsModel } from 'src/app/Models/produts/productsModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   productsCart: ProductsModel[] = [];
-  constructor( private cartService: UsersService, private router: Router ) { }
+  items: CartModels[] = [];
+  constructor( private cartService: UsersService, private router: Router ) {
+   }
 
   ngOnInit(): void {
     // this.productsCart.push(
@@ -53,18 +55,23 @@ export class CartComponent implements OnInit {
     //   }
     // );
     this.productsCart = this.cartService.getCart();
-    console.log(this.productsCart)
+    this.productsCart.forEach(item=> {
+      this.items.push({presentationProductCode: item.pSelect.code, amount: item.val})
+    })
+
+    console.log(this.items)
   }
 
   setOrder(){
-    if (this.productsCart.length != 0){
 
+    if (this.productsCart.length != 0){
+      localStorage.setItem('myArray', JSON.stringify(this.items));
       this.router.navigate(['orden'])
     }else{
       console.log('ingrese productos al carrito')
     }
-
   }
+
   deleteProduct(product: ProductsModel){
     const temp = this.productsCart.find((el)=> el.id === product.id)
     if (temp != null){

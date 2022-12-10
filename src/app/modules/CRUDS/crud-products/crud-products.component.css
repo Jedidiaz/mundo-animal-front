@@ -91,7 +91,7 @@ img{
   display: none;
 }
 
-@media only screen and (min-width: 360px) and (max-width: 720px) {
+@media only screen and (min-width: 360px) and (max-width: 1440px) {
 
   .presentaciones{
     flex-direction: column;

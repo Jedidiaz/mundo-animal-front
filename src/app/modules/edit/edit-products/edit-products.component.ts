@@ -1,22 +1,29 @@
 import { Component, Input, OnInit, NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductsModel } from 'src/app/Models/produts/productsModel';
 import { ProductService } from '../../products/service/product.service';
+import { UsersService } from '../../services/users/users.service';
 
 @Component({
   selector: 'app-edit-products',
   templateUrl: './edit-products.component.html',
   styleUrls: ['./edit-products.component.css'],
+  providers: [MessageService],
 })
 export class EditProductsComponent implements OnInit {
-
   options: Array<any> = [];
 
   name!: string;
-  description!:string;
+  description!: string;
   brands: any;
   focus1: any;
   focus2: any;
@@ -36,23 +43,29 @@ export class EditProductsComponent implements OnInit {
   categoria: any = [];
   clasificacion: any = [];
 
-  switch:boolean = false;
+  switch: boolean = false;
 
   //variable heredada
-  @Input() id:any;
+  @Input() id: any;
 
-  constructor( private getItemId: ProductService, fromBuilder: FormBuilder ) {
+  constructor(
+    private productService: ProductService,
+    fromBuilder: FormBuilder,
+    private userService: UsersService,
+    public messageService: MessageService
+  ) {
     this.formProducts = fromBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       brands: ['', Validators.required],
       categories: ['', Validators.required],
       clasifications: ['', Validators.required],
-      state: ['', Validators.required],
+      state: [null, Validators.required],
       iva: ['', Validators.required],
       desc: ['', Validators.required],
-      promo: ['', Validators.required]
-    })
+      startPromo: ['', Validators.required],
+      endPromo: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -84,87 +97,165 @@ export class EditProductsComponent implements OnInit {
     this.getClasificacion();
     this.getMarcas();
 
-    if(this.id != null){
+    if (this.id != null) {
       this.getProduct();
-    }else{
-      this.switch = true
+    } else {
+      this.switch = true;
     }
   }
 
-
-//detalle de productos
-  getProduct(){
-    this.getItemId.getProductById(this.id). subscribe({
-      next: (data)=> {
-        console.log(data)
+  //detalle de productos
+  getProduct() {
+    this.productService.getProductById(this.id).subscribe({
+      next: (data) => {
+        console.log(data);
         this.product = data;
         this.imagenes = data.images;
         this.imagenes.unshift({
-          previewImageSrc:data.image,
-          thumbnailImageSrc: data.image
+          previewImageSrc: data.image,
+          thumbnailImageSrc: data.image,
         });
         this.imagenes.unshift({
-          previewImageSrc:data.image,
-          thumbnailImageSrc: data.image
+          previewImageSrc: data.image,
+          thumbnailImageSrc: data.image,
         });
         this.formProducts.setValue({
-          'name' : this.product.name,
-          'description' : this.product.description,
-          'brands' : this.product.brandId,
-          'categories' : 1,
-          'clasifications' : this.product.clasificationId,
-          'state' : this.product.isActive,
-          'iva' : this.product.iva,
-          'desc' : this.product.discount,
-          'promo' : this.product.startDiscount,
-        })
-      }, error: (err)=>{console.log(err)}
-    })
+          name: this.product.name,
+          description: this.product.description,
+          brands: this.product.brandId,
+          categories: 1,
+          clasifications: this.product.clasificationId,
+          state: this.product.isActive,
+          iva: this.product.iva,
+          desc: this.product.discount,
+          startPromo: this.product.startDiscount,
+          endPromo: this.product.endDiscount,
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
-  //EditPost
-  updateOrNew(){
-    if (this.id != null){
-
-    }else{
-
-    }
+  //nuevo
+  addNew() {
+    const params = {
+      name: this.formProducts.value.name,
+      description: this.formProducts.value.description,
+      brandId: this.formProducts.value.brands,
+      discount: this.formProducts.value.desc,
+      clasificationId: this.formProducts.value.clasifications,
+      iva: this.formProducts.value.iva,
+      startDiscount: this.formProducts.value.startPromo,
+      endDiscount: this.formProducts.value.endPromo,
+      isActive: this.formProducts.value.state,
+      image: this.imagenes[0],
+    };
+    this.productService.postNewProduct(params).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'success',
+          detail: 'Actualizado con exito!',
+        });
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Algo salió mal :(',
+        });
+      },
+    });
   }
 
+  //editar
+  editProduct() {}
   //categorias
-  getCategorias(){
-    this.getItemId.getCategories().subscribe({
-      next: (data)=> {
-        data.forEach(el => {
-          this.categoria.push(
-            {name: el.name, code: el.id}
-          )
-        })
-      }, error: (err)=>{console.log(err)}
-    })
+  getCategorias() {
+    this.productService.getCategories().subscribe({
+      next: (data) => {
+        data.forEach((el) => {
+          this.categoria.push({ name: el.name, code: el.id });
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-//Clsificacion
-  getClasificacion(){
-    this.getItemId.getClasification().subscribe({
-      next: (data)=> {
-        data.forEach(el => {
-          this.clasificacion.push(
-            {name: el.name, code: el.id}
-          )
-        })
-      }, error: (err)=>{console.log(err)}
-    })
+  //Clsificacion
+  getClasificacion() {
+    this.productService.getClasification().subscribe({
+      next: (data) => {
+        data.forEach((el) => {
+          this.clasificacion.push({ name: el.name, code: el.id });
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
-  getMarcas(){
-    this.getItemId.getBrands().subscribe({
-      next: (data)=> {
-        data.forEach(el => {
-          this.marcas.push(
-            {name: el.name, code: el.id}
-          )
-        })
-      }, error: (err)=>{console.log(err)}
-    })
+  getMarcas() {
+    this.productService.getBrands().subscribe({
+      next: (data) => {
+        data.forEach((el) => {
+          this.marcas.push({ name: el.name, code: el.id });
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  //deleteImage
+  deleteImage(image: string) {
+    const params = { id: image, productId: this.id };
+    this.userService.postRemoveImagesProducts(params).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'success',
+          detail: 'Eliminado con exito!',
+        });
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Algo salio mal :(',
+        });
+      },
+    });
+  }
+
+  //uploadIMAGE
+
+  uploadImg(event: any) {
+    const img = event.files[0].name;
+    console.log(img);
+    const params = { productid: this.id, image: img };
+    this.userService.postUploadImgProducts(params).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'success',
+          detail: 'Se actualizaron los datos!',
+        });
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

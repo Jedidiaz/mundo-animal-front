@@ -17,7 +17,7 @@ export class EditBrandsComponent implements OnInit {
   formBrand!: FormGroup;
   disableButtonDelete: boolean = false;
   nuevo: boolean = false;
-  constructor( private getItemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
     this.formBrand = formBuilder.group({
       name: ['']
     })
@@ -42,7 +42,7 @@ export class EditBrandsComponent implements OnInit {
   }
 
   getBrand(id: any){
-    this.getItemId.getBrandById(id). subscribe({
+    this.productService.getBrandById(id). subscribe({
       next: (data)=> {
         this.brand = data;
         this.formBrand.setValue({
@@ -56,11 +56,26 @@ export class EditBrandsComponent implements OnInit {
   }
 
   uploadImg(event: any){
-    const img = event.files[0].name;
-    console.log(img)
-    const params = {productid: this.brand.id, image: img}
-    this.userService.postUploadImg(params).subscribe({
-      next: (data)=> {console.log(data)}, error: (err)=> {console.log(err)}
+    console.log('upload')
+  }
+
+  //Actualizar datos
+  saveChange(){
+    const params = {name: this.formBrand.value.name, image: this.image}
+    this.productService.patchEditBrand(this.brand.id, params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Crear Nuevo
+  newItem(){
+    const params = {name: this.formBrand.value.name, image: this.image}
+    this.productService.postNewBrand(params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
     })
   }
 }

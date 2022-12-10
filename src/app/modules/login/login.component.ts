@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   checked: boolean = false;
 
   formLogin!: FormGroup;
-  constructor(private loginService: UsersService, private router: Router, formBuilder: FormBuilder, public messageService: MessageService) {
+  constructor(private userService: UsersService, private router: Router, formBuilder: FormBuilder, public messageService: MessageService) {
     this.formLogin = formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     let form:LoginI = {email: this.formLogin.value.email, password: this.formLogin.value.password}
-    this.loginService.login(form).subscribe({
+    this.userService.login(form).subscribe({
       next: (data)=> {
         localStorage.setItem('token', data.token_jwt)
         this.checked = true;
@@ -67,8 +67,10 @@ export class LoginComponent implements OnInit {
         // }
       }
     })
-
   }
+
+
+  //alertas
 
   showError() {
     this.messageService.add({severity:'error', summary: 'Error', detail: 'Contraseña y/o email invalido(s)'});

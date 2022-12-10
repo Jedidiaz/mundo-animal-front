@@ -3,7 +3,7 @@
   <div class="content-crud">
     <p-table
       #dt1
-      [value]="products"
+      [value]="products | filter: filterOrden"
       [tableStyle]="{ 'min-width': '50rem' }"
       scrollHeight="500px"
       ataKey="id"
@@ -19,7 +19,8 @@
             <input
               pInputText
               type="text"
-              (input)="dt1.filterGlobal($event.target, 'contains')"
+              name="filterOrden"
+              [(ngModel)]="filterOrden"
               placeholder="Search keyword"
             />
           </span>
@@ -33,7 +34,7 @@
       <ng-template pTemplate="body" let-product>
         <tr>
           <td>{{ product.numero }}</td>
-          <td>{{ product.cliente }}</td>
+          <td>{{ product.name }}</td>
           <td >{{ product.valor }}</td>
           <td><img src="../../../../assets/edit.png" alt="" routerLink="/orden-detail-admin" /></td>
           <td>{{ product.estado }}</td>

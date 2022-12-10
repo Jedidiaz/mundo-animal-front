@@ -22,8 +22,7 @@ export class AuthComponent implements OnInit {
         this.queryparams = ok;
       }
     })
-
-
+    console.log(this.queryparams)
 
     this.Auth();
   }
@@ -34,9 +33,9 @@ export class AuthComponent implements OnInit {
         console.log(ok)
         if (ok.messagge === 'There was an error with your token'){
           this.message = 'UPS! Su token es invalido';
-        }else if (ok.messagge === 'This account is already verified'){
+        }else if (ok.messagge === 'Esta cuenta ya esta verificada'){
           this.message = '¡Esta cuenta ya ha sido verificada, inicia sesion!';
-        }else if (ok.messagge === 'successful confirmation'){
+        }else if (ok.messagge === 'Verificacion exitosa'){
           this.message = '!Tu cuenta ha sido verificada con exito!';
         }
       }, error: (err)=> {

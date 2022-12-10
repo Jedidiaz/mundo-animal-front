@@ -19,7 +19,7 @@ export class EditClasificationComponent implements OnInit {
   disableButtonDelete: boolean = false;
   nuevo: boolean = false;
   formClasification: FormGroup;
-  constructor(private getItemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor(private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
     this.formClasification = formBuilder.group({
       name: ['']
     })
@@ -42,7 +42,7 @@ export class EditClasificationComponent implements OnInit {
   }
 
   getClasification(id: any){
-    this.getItemId.getClasificationById(id). subscribe({
+    this.productService.getClasificationById(id). subscribe({
       next: (data)=> {
         console.log(data)
         this.clasification = data.data
@@ -55,11 +55,26 @@ export class EditClasificationComponent implements OnInit {
   }
 
   uploadImg(event: any){
-    const img = event.files[0].name;
-    console.log(img)
-    const params = {productid: this.clasification.id, image: img}
-    this.userService.postUploadImg(params).subscribe({
-      next: (data)=> {console.log(data)}, error: (err)=> {console.log(err)}
+
+  }
+
+  //Actualizar datos
+  saveChange(){
+    const params = {name: this.formClasification.value.name, image: this.image}
+    this.productService.patchEditClasification(this.clasification.id, params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Crear Nuevo
+  newItem(){
+    const params = {name: this.formClasification.value.name, image: this.image}
+    this.productService.postNewClasification(params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
     })
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesModels, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../products/service/product.service';
 import { CarouselI } from '../../Models/carosuel/carousel'
+import { UsersService } from '../services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   carousel!:CarouselI[];
   imagesProducts: Array<any> = [];
   val: number = 3;
-  constructor(private service:ProductService) { }
+  constructor(private service:ProductService, private userService: UsersService) { }
 
   ngOnInit(): void {
     // this.getSubCategories();

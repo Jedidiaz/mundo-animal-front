@@ -6,7 +6,7 @@ import { PrimeIcons } from 'primeng/api';
 @Component({
   selector: 'app-crud-products',
   templateUrl: './crud-products.component.html',
-  styleUrls: ['./crud-products.component.css']
+  styleUrls: ['./crud-products.component.css'],
 })
 export class CRUDProductsComponent implements OnInit {
   products: Array<any> = [];
@@ -14,14 +14,28 @@ export class CRUDProductsComponent implements OnInit {
   options: Array<any> = [];
   focus: any;
   responsiveOptions: any;
-  titles: Array<any> = ['ID', 'NOMBRE PRODUCTO', 'Precio 1', 'Precio 2', 'editar', 'eliminar'];
+  titles: Array<any> = [
+    'ID',
+    'NOMBRE PRODUCTO',
+    'DESCRIPCION',
+    'ID MARCA',
+    'ID CLASIFICACION',
+    'IMAGEN',
+    'DESCUENTO',
+    'INICIO DESCUENTO',
+    'FIN DESCUENTO',
+    'IVA',
+    'ESTADO',
+    'EDITAR',
+    'ELIMINAR'
+  ];
   New: any = 'new';
   loading: boolean = true;
   filterProducts = '';
 
   //Variables de api
-  Products:ProductsModel[] = [];
-  constructor(private apiServices:ProductService ) { }
+  Products: ProductsModel[] = [];
+  constructor(private apiServices: ProductService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -111,7 +125,7 @@ export class CRUDProductsComponent implements OnInit {
       }
     );
 
-    this.images.push('../../../../assets/product.png')
+    this.images.push('../../../../assets/product.png');
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -142,19 +156,19 @@ export class CRUDProductsComponent implements OnInit {
     this.getItems();
   }
 
-  getItems(){
+  getItems() {
     this.apiServices.getProducts().subscribe({
       next: (data) => {
         this.Products = data;
-        console.log(this.Products)
-        this.loading = false
-      }, error: (err)=> {}
-    })
+        console.log(this.Products);
+        this.loading = false;
+      },
+      error: (err) => {},
+    });
   }
 
-  deleteProduct(id: number){
-    this.apiServices.deleteProduct(id).subscribe()
+  deleteProduct(id: number) {
+    this.apiServices.deleteProduct(id).subscribe();
     this.getItems();
   }
-
 }

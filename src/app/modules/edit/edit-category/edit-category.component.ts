@@ -11,7 +11,7 @@ import { UsersService } from '../../services/users/users.service';
   styleUrls: ['./edit-category.component.css']
 })
 export class EditCategoryComponent implements OnInit {
-  idCategory!: number;
+  idCategory!: any;
 
   //variables category
   category!: CategoriesModels;
@@ -20,17 +20,17 @@ export class EditCategoryComponent implements OnInit {
   image: any = '../../../../assets/default-thumbnail.jpg';
   images: any = '';
   disableButtonDelete: boolean = false;
-  constructor( private getItemId: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
     this.formCategory = formBuilder.group({
       name: ['']
     })
    }
 
   ngOnInit(): void {
-    const id = this._router.snapshot.paramMap.get('id')
-    console.log(id)
-    if (id != 'new'){
-      this.getCategory(id);
+    this.idCategory = this._router.snapshot.paramMap.get('id')
+    console.log(this.idCategory)
+    if (this.idCategory != 'new'){
+      this.getCategory();
     }else{
       this.nuevo = true;
       this.disableButtonDelete = true;
@@ -43,8 +43,8 @@ export class EditCategoryComponent implements OnInit {
     this.disableButtonDelete = true;
   }
 
-  getCategory(id: any){
-    this.getItemId.getCategoryById(id).subscribe({
+  getCategory(){
+    this.productService.getCategoryById(this.idCategory).subscribe({
       next: (data)=> {
         this.category = data;
         console.log(this.category)
@@ -57,11 +57,25 @@ export class EditCategoryComponent implements OnInit {
   }
 
   uploadImg(event: any){
-    const img = event.files[0].name;
-    console.log(img)
-    const params = {productid: this.category.id, image: img}
-    this.userService.postUploadImg(params).subscribe({
-      next: (data)=> {console.log(data)}, error: (err)=> {console.log(err)}
+    
+  }
+//Actualizar datos
+  saveChange(){
+    const params = {name: this.formCategory.value.name, image: this.image}
+    this.productService.patchEditCategory(this.idCategory, params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
+    })
+  }
+
+  //Crear Nuevo
+  newItem(){
+    const params = {name: this.formCategory.value.name, image: this.image}
+    this.productService.postNewCategory(params).subscribe({
+      next: (data)=> {
+        console.log(data)
+      }, error: (err)=> {console.log(err)}
     })
   }
 }

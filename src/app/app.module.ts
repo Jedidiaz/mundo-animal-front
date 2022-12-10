@@ -31,6 +31,7 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
 import { CategoryComponent } from './modules/products/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 //primeNG modules---------------
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ToastModule} from 'primeng/toast';
 import {TriStateCheckboxModule} from 'primeng/tristatecheckbox';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -69,6 +70,7 @@ import { FilterPipe } from './modules/shared/pipes/filter.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,7 +103,7 @@ import { FilterPipe } from './modules/shared/pipes/filter.pipe';
     CrudPresentationsComponent,
     EditPresentationsComponent,
     ChangePasswordComponent,
-    FilterPipe
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -136,6 +138,7 @@ import { FilterPipe } from './modules/shared/pipes/filter.pipe';
     ToastModule,
     FileUploadModule,
     TriStateCheckboxModule,
+    ConfirmDialogModule,
   ],
   providers: [PrimeIcons],
   bootstrap: [AppComponent]

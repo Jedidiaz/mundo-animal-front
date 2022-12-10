@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 import { BarndsModels, CategoriesModels, ClasificationModel, SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
 
@@ -7,6 +8,7 @@ import { ProductService } from '../../products/service/product.service';
   selector: 'app-crud-category',
   templateUrl: './crud-category.component.html',
   styleUrls: ['./crud-category.component.css'],
+  providers: [ConfirmationService]
 })
 export class CrudCategoryComponent implements OnInit {
   products: Array<any> = [];
@@ -46,7 +48,7 @@ export class CrudCategoryComponent implements OnInit {
   filterCategories = '';
   filterSubcategories = '';
 
-  constructor(private apiGet: ProductService) {}
+  constructor(private productService: ProductService, private confirmService: ConfirmationService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -82,37 +84,104 @@ export class CrudCategoryComponent implements OnInit {
   }
   //Categories
   getCategorias(){
-    this.apiGet.getCategories().subscribe({
+    this.productService.getCategories().subscribe({
       next: (data)=> {
         this.categorias = data;
       }, error: (err)=> {console.log(err)}
     })
   }
 
+  deleteCategory(id: any){
+    this.confirmService.confirm({
+      message: '¿Estas seguro de querer eliminar este Item?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.productService.deleteCategory(id).subscribe({
+          next: (data)=> {
+            console.log(data);
+            location.reload();
+          }, error: (err)=> {console.log(err)}
+        })
+      }
+    });
+  }
+
   //Subcategories
   getSubcategorias(){
-    this.apiGet.getSubcategories().subscribe({
+    this.productService.getSubcategories().subscribe({
       next: (data)=> {
         this.subCategorias = data;
       }, error: (err)=> {console.log(err)}
     })
   }
 
+  deleteSubcategory(id: any){
+    this.confirmService.confirm({
+      message: '¿Estas seguro de querer eliminar este Item?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.productService.deletesubcategory(id).subscribe({
+          next: (data)=> {
+            console.log(data)
+            location.reload();
+          }, error: (err)=> {console.log(err)}
+        });
+      }
+    });
+
+  }
+
   //Clasifications
   getClasificaciones(){
-    this.apiGet.getClasification().subscribe({
+    this.productService.getClasification().subscribe({
       next: (data)=> {
         this.clasificaciones = data;
       }, error: (err)=> {console.log(err)}
     })
   }
 
+  deleteClasification(id: any){
+    this.confirmService.confirm({
+      message: '¿Estas seguro de querer eliminar este Item?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.productService.deleteClasification(id).subscribe({
+          next: (data)=> {
+            console.log(data)
+            location.reload();
+          }, error: (err)=> {console.log(err)}
+        })
+      }
+    });
+
+  }
+
   //BRANDS
   getMarcas(){
-    this.apiGet.getBrands().subscribe({
+    this.productService.getBrands().subscribe({
       next: (data)=> {
         this.marcas = data;
       }, error: (err)=> { console.log(err)}
     })
+  }
+
+  deleteBrand(id: any){
+    this.confirmService.confirm({
+      message: '¿Estas seguro de querer eliminar este Item?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.productService.deleteBrand(id).subscribe({
+          next: (data)=> {
+            console.log(data)
+            location.reload()
+          }, error: (err)=> {console.log(err)}
+        })
+      }
+    });
+
   }
 }

@@ -138,11 +138,16 @@
   padding: 5px 0;
 }
 
+
 .product-grid-item .product-price {
   font-size: 2.2rem;
   font-weight: 600;
   margin-right: 7px;
 
+}
+
+.product-price{
+  font-size: 23px !important;
 }
 
 .select_presentation{

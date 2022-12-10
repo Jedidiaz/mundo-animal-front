@@ -1,4 +1,5 @@
 <div class="container">
+  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
   <!-- Categorias -->
   <div class="content-crud">
     <h1>Categorias</h1>
@@ -39,7 +40,7 @@
           <td >{{ product.name }}</td>
           <td>{{ product.image }}</td>
           <td><img src="../../../../assets/edit.png" [routerLink]="'edit-category/' + product.id" /></td>
-          <td><img src="../../../../assets/delete.png" alt="" /></td>
+          <td><img src="../../../../assets/delete.png" (click)="deleteCategory(product.id)" /></td>
         </tr>
       </ng-template>
     </p-table>
@@ -85,7 +86,7 @@
           <td >{{ product.name }}</td>
           <td>{{ product.image }}</td>
           <td><img src="../../../../assets/edit.png" alt="" [routerLink]="'edit-subcategory/' + product.id" /></td>
-          <td><img src="../../../../assets/delete.png" alt="" /></td>
+          <td><img src="../../../../assets/delete.png" (click)="deleteSubcategory(product.id)" /></td>
         </tr>
       </ng-template>
     </p-table>
@@ -131,7 +132,7 @@
           <td >{{ product.name }}</td>
           <td>{{ product.image }}</td>
           <td><img src="../../../../assets/edit.png" alt="" [routerLink]="'edit-clasification/' + product.id" /></td>
-          <td><img src="../../../../assets/delete.png" alt="" /></td>
+          <td><img src="../../../../assets/delete.png" (click)="deleteClasification(product.id)" /></td>
         </tr>
       </ng-template>
     </p-table>
@@ -176,7 +177,7 @@
           <td >{{ product.name }}</td>
           <td>{{ product.image }}</td>
           <td><img src="../../../../assets/edit.png" alt="" [routerLink]="'edit-brands/' + product.id" /></td>
-          <td><img src="../../../../assets/delete.png" alt="" /></td>
+          <td><img src="../../../../assets/delete.png" (click)="deleteBrand(product.id)" /></td>
         </tr>
       </ng-template>
     </p-table>
