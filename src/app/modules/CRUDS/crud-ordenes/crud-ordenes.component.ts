@@ -17,7 +17,7 @@ export class CrudOrdenesComponent implements OnInit {
   ];
 
   filterOrden = '';
-  constructor( private ordenService: UsersService) {}
+  constructor( private userservice: UsersService) {}
 
   ngOnInit(): void {
     this.products.push(
@@ -38,7 +38,7 @@ export class CrudOrdenesComponent implements OnInit {
   }
 
   getOrders(){
-    this.ordenService.getOrder().subscribe({
+    this.userservice.getOrder().subscribe({
       next: (data) => {
         console.log(data)
       }, error: (err) =>{console.log(err)}

@@ -98,7 +98,7 @@ export class ProductService {
   }
 
   deletesubcategory(id: number): Observable<{}> {
-    return this.http.delete<{}>(`${this.URL}subcategories/${id}`, {
+    return this.http.delete<{}>(`${this.URL}subcategorie/${id}`, {
       headers: this.headers,
     });
   }
@@ -109,8 +109,8 @@ export class ProductService {
     });
   }
 
-  postNewSubcategory(params: any): Observable<any> {
-    return this.http.post<any>(`${this.URL}subcategories/new`, params, {
+  postNewSubcategory(params: FormData): Observable<any> {
+    return this.http.post(`${this.URL}subcategorie/new`, params, {
       headers: this.headers,
     });
   }
@@ -163,9 +163,9 @@ export class ProductService {
     });
   }
 
-  postNewBrand(params: any): Observable<any> {
+  postNewBrand(params: FormData): Observable<any> {
     return this.http.post<any>(`${this.URL}brands/new`, params, {
-      headers: this.headers,
+      headers: this.headers
     });
   }
 

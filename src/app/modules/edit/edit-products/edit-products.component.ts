@@ -65,6 +65,7 @@ export class EditProductsComponent implements OnInit {
       desc: ['', Validators.required],
       startPromo: ['', Validators.required],
       endPromo: ['', Validators.required],
+      image: ['', Validators.required],
     });
   }
 
@@ -150,8 +151,9 @@ export class EditProductsComponent implements OnInit {
       startDiscount: this.formProducts.value.startPromo,
       endDiscount: this.formProducts.value.endPromo,
       isActive: this.formProducts.value.state,
-      image: this.imagenes[0],
+      image: this.formProducts.value.image,
     };
+    console.log(params)
     this.productService.postNewProduct(params).subscribe({
       next: (data) => {
         console.log(data);
@@ -257,5 +259,9 @@ export class EditProductsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  addImageMain(event: any){
+    console.log(event.currentFiles[0].name)
   }
 }

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { SubcategoriesModel } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
@@ -14,15 +16,18 @@ export class EditSubcategoryComponent implements OnInit {
 
   idSubcategory!: any;
   image: any = '../../../../assets/default-thumbnail.jpg';
+  archivo: any
 
   subcategory!: SubcategoriesModel;
   disableButtonDelete: boolean = false;
   nuevo: boolean = false;
   formSubcategory: FormGroup;
 
-  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService , private sanitizer: DomSanitizer) {
     this.formSubcategory = formBuilder.group({
-      name: ['']
+      name: ['', Validators.required],
+      image: ['', Validators.required],
+      categorieId: ['', Validators.required]
     })
   }
 
@@ -48,7 +53,9 @@ export class EditSubcategoryComponent implements OnInit {
       next: (data)=> {
         this.subcategory = data.data;
         this.formSubcategory.setValue({
-          'name': data.data.name
+          'name': data.data.name,
+          'image': data.data.image,
+          'categorieId': data.data.categorieId,
         })
         this.image = data.data.image;
       }, error: (err)=>{console.log(err)}
@@ -59,9 +66,46 @@ export class EditSubcategoryComponent implements OnInit {
 
   }
 
+  //image capture
+  fileEvent(fileInput:any):any{
+    const [ file ] = fileInput.target.files
+    //visualizar
+    this.extraerBase64(file).then(image => {
+      this.image = image
+    })
+    this.archivo = {
+      fileRaw: file,
+      fileName: file.name
+    }
+  }
+
+  //extraer base64
+  extraerBase64 = async ($event:any) => new Promise((resolve:any) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event)
+      const image = this.sanitizer.bypassSecurityTrustHtml(unsafeImg)
+      const reader = new FileReader()
+      reader.readAsDataURL($event)
+      reader.onload = () => {
+        resolve(
+          reader.result
+        )
+      }
+      reader.onerror = error => {
+        resolve(
+          null
+        )
+      }
+      return
+    } catch (e) {
+      return null
+    }
+  })
+
+
   //Actualizar datos
   saveChange(){
-    const params = {name: this.formSubcategory.value.name, image: this.image}
+    const params = {name: this.formSubcategory.value.name, image: this.archivo[0], categorieId: this.formSubcategory.value.categorieId}
     this.productService.pacthEditSubcategory(this.idSubcategory, params).subscribe({
       next: (data)=> {
         console.log(data)
@@ -71,11 +115,21 @@ export class EditSubcategoryComponent implements OnInit {
 
   //Crear Nuevo
   newItem(){
-    const params = {name: this.formSubcategory.value.name, image: this.image}
-    this.productService.postNewSubcategory(params).subscribe({
-      next: (data)=> {
-        console.log(data)
-      }, error: (err)=> {console.log(err)}
-    })
+    // const params = {
+    //   name: this.formSubcategory.value.name,
+    //   image: this.archivo[0],
+    //   categorieId: this.formSubcategory.value.categorieId
+    // }
+    const params = new FormData();
+    params.append('image', this.archivo.fileRaw, this.archivo.fileName);
+    params.append('name', this.formSubcategory.value.name)
+    params.append('categorieId', this.formSubcategory.value.categorieId)
+    console.log(params)
+    // const params = new FormData ();
+    // params.append('image', this.archivo[0]),
+    // params.append('name', this.formSubcategory.value.name),
+    // params.append('categorieId', this.formSubcategory.value.categorieId)
+    // console.log(params)
+    this.productService.postNewSubcategory(params).subscribe(res => console.log(res))
   }
 }

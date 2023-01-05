@@ -112,6 +112,7 @@ export class CrudCategoryComponent implements OnInit {
     this.productService.getSubcategories().subscribe({
       next: (data)=> {
         this.subCategorias = data;
+        console.log(data)
       }, error: (err)=> {console.log(err)}
     })
   }

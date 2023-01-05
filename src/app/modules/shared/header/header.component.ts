@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
 
   checked: boolean = false;
 
+  checkDropMarcas: boolean = false
+  checkDropcategporias: boolean = false
+
   // categories!: CategoriesModels[];
   marcas: BarndsModels[] = [];
 
@@ -171,5 +174,18 @@ export class HeaderComponent implements OnInit {
         console.log(ok)
       }, error: (err)=>{console.log(err)}
     })
+  }
+
+  //drops
+  dropMarcas(){
+    this.checkDropMarcas = !this.checkDropMarcas
+    if (this.checkDropMarcas)document.getElementById('brandIcon')!.style.transform = 'rotateX(180deg)'
+    else document.getElementById('brandIcon')!.style.transform = 'rotateX(0deg)'
+  }
+
+  dropCategorias(){
+    this.checkDropcategporias = !this.checkDropcategporias
+    if (this.checkDropcategporias)document.getElementById('categorieIcon')!.style.transform = 'rotateX(180deg)'
+    else document.getElementById('categorieIcon')!.style.transform = 'rotateX(0deg)'
   }
 }

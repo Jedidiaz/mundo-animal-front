@@ -1,3 +1,5 @@
+import { OrderModel } from './../../../Models/order.interface';
+import { ClientResponseModel } from './../../../Models/Clients.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -57,12 +59,13 @@ export class UsersService {
     return this.http.post<any>(this.url + 'api/v1/store/users/change-password', params)
   }
 
-  getClients(): Observable<any> {
-    return this.http.get<any>(this.url + 'api/v1/store/users', {headers: this.headers});
+  //Get clients
+  getClients(): Observable<ClientResponseModel> {
+    return this.http.get<ClientResponseModel>(this.url + 'api/v1/store/users', {headers: this.headers});
   }
-
-  getOrder(): Observable<any> {
-    return this.http.get<any>(this.url + 'api/v1/store/purchaseOrders');
+  //get order
+  getOrder(): Observable<OrderModel> {
+    return this.http.get<OrderModel>(this.url + 'api/v1/store/purchaseOrders', {headers: this.headers});
   }
 
   getToken(){

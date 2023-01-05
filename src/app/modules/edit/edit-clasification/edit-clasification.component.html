@@ -2,13 +2,17 @@
   <div class="content">
     <h2>Clasificacion</h2>
     <div class="upload_img">
-      <div class="funciones_img">
-        <p-fileUpload  name="myfile[]" [customUpload]="true" accept="image/*" (uploadHandler)="uploadImg($event)"></p-fileUpload>
-      </div>
       <img [src]="image" alt="image">
       <button pButton class="p-button-danger" label="Eliminar imagen" icon="pi pi-trash" [disabled]="disableButtonDelete" (click)="deleteImage()" ></button>
     </div>
     <form [formGroup]="formClasification">
+      <div class="uploadMain">
+        <button  class="btnAdd" type="button" (click)="uploadMain.click">
+          <label for="uploadMain"><i class="pi pi-file-import"></i> Adjuntar imagen</label>
+          <input #uploadMain type="file" formControlName="image" id="uploadMain" accept="image/png, image/jpg, image/jpeg" required >
+        </button>
+        <p>{{uploadMain.value || 'Empty'}}</p>
+      </div>
       <span>
         <label for="name">Nombre </label>
       <input pInputText type="text" id="name" formControlName="name" />

@@ -76,8 +76,22 @@
         <img  class="user-img" src="../../../../assets/huella.png" alt="">
       </div>
     <ul>
-      <li><a href="">Marcas</a></li>
-      <li><a href="">Categorias</a></li>
+      <li><a (click)="dropMarcas()">Marcas <i class="pi pi-angle-down" style="color: white;" id="brandIcon"></i></a></li>
+      <div class="dropMenuBrands" *ngIf="checkDropMarcas" >
+        <ul>
+          <li *ngFor="let brand of marcas">
+            <a href="" >{{brand.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <li><a (click)="dropCategorias()">Categorias <i class="pi pi-angle-down" style="color: white;" id="categorieIcon" id="categorieIcon"></i></a></li>
+      <div class="dropMenucategories" *ngIf="checkDropcategporias">
+        <ul>
+          <li *ngFor="let category of categories">
+            <a>{{category.name}}</a>
+          </li>
+        </ul>
+      </div>
       <li><a href="">Servicios</a></li>
       <li><a href="">Contactenos</a></li>
       <li><a href="">Promociones</a></li>

@@ -1,3 +1,4 @@
+import { ClientsModel } from './../../../Models/Clients.interface';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 
@@ -8,8 +9,10 @@ import { UsersService } from '../../services/users/users.service';
 })
 export class CrudsClientsComponent implements OnInit {
   products: Array<any> = [];
-  Clients: Array<any> = [];
-  titles: Array<any> = ['No', 'Codigo', 'Cliente', 'Fecha de nacimiento', 'Telefono', 'Ciudad', 'direccion', 'editar', 'eliminar']
+  Clients: ClientsModel[] = [];
+  titles: Array<any> = ['ID', 'EMAIL', 'ROL', 'ESTADO', 'TOKEN DE CONFIRMACION', 'TOKEN DE RECUPERACION', 'editar', 'eliminar']
+
+  filterClients = ''
   constructor(private userServices: UsersService) { }
 
   ngOnInit(): void {
@@ -32,7 +35,7 @@ export class CrudsClientsComponent implements OnInit {
   getClients(){
     this.userServices.getClients().subscribe({
       next: (data) => {
-        this.Clients = data
+        this.Clients = data.users
         console.log(this.Clients)
       }, error: (err) => {console.log(err)}
     })

@@ -1,5 +1,6 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesModels } from 'src/app/Models/CategoriesModel';
 import { ProductService } from '../../products/service/product.service';
@@ -12,6 +13,7 @@ import { UsersService } from '../../services/users/users.service';
 })
 export class EditCategoryComponent implements OnInit {
   idCategory!: any;
+  archivo: Array<any> = []
 
   //variables category
   category!: CategoriesModels;
@@ -20,9 +22,10 @@ export class EditCategoryComponent implements OnInit {
   image: any = '../../../../assets/default-thumbnail.jpg';
   images: any = '';
   disableButtonDelete: boolean = false;
-  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService) {
+  constructor( private productService: ProductService, private _router: ActivatedRoute, formBuilder: FormBuilder, private userService: UsersService, private sanitizer: DomSanitizer) {
     this.formCategory = formBuilder.group({
-      name: ['']
+      name: ['', Validators.required],
+      image: ['', Validators.required]
     })
    }
 
@@ -49,7 +52,8 @@ export class EditCategoryComponent implements OnInit {
         this.category = data;
         console.log(this.category)
         this.formCategory.setValue({
-          'name': data.name
+          'name': data.name,
+          'image': data.image,
         })
         this.image = data.image;
       }, error: (err)=> {console.log(err)}
@@ -57,11 +61,44 @@ export class EditCategoryComponent implements OnInit {
   }
 
   uploadImg(event: any){
-    
+
   }
+
+  //image capture
+  fileEvent(fileInput:any):any{
+    const file = fileInput.target.files[0]
+    this.extraerBase64(file).then(image => {
+      this.image = image
+      console.log(image)
+    })
+    this.archivo.push(file)
+  }
+
+  //extraer base64
+  extraerBase64 = async ($event:any) => new Promise((resolve:any) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event)
+      const image = this.sanitizer.bypassSecurityTrustHtml(unsafeImg)
+      const reader = new FileReader()
+      reader.readAsDataURL($event)
+      reader.onload = () => {
+        resolve(
+          reader.result
+        )
+      }
+      reader.onerror = error => {
+        resolve(
+          null
+        )
+      }
+      return
+    } catch (e) {
+      return null
+    }
+  })
 //Actualizar datos
   saveChange(){
-    const params = {name: this.formCategory.value.name, image: this.image}
+    const params = {name: this.formCategory.value.name, image: this.archivo[0]}
     this.productService.patchEditCategory(this.idCategory, params).subscribe({
       next: (data)=> {
         console.log(data)
@@ -71,7 +108,8 @@ export class EditCategoryComponent implements OnInit {
 
   //Crear Nuevo
   newItem(){
-    const params = {name: this.formCategory.value.name, image: this.image}
+    const params = {name: this.formCategory.value.name, image: this.archivo[0]}
+    console.log(params)
     this.productService.postNewCategory(params).subscribe({
       next: (data)=> {
         console.log(data)
