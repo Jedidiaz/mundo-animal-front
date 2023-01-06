@@ -1,3 +1,4 @@
+import { FooterComponent } from './../../shared/footer/footer.component';
 import { Component, Input, OnInit, NgModule } from '@angular/core';
 import {
   ReactiveFormsModule,
@@ -21,6 +22,7 @@ import { UsersService } from '../../services/users/users.service';
 })
 export class EditProductsComponent implements OnInit {
   options: Array<any> = [];
+  archivo: any
 
   name!: string;
   description!: string;
@@ -56,7 +58,7 @@ export class EditProductsComponent implements OnInit {
   ) {
     this.formProducts = fromBuilder.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
+      description: ['', [Validators.required, Validators.minLength(30)]],
       brands: ['', Validators.required],
       categories: ['', Validators.required],
       clasifications: ['', Validators.required],
@@ -65,7 +67,6 @@ export class EditProductsComponent implements OnInit {
       desc: ['', Validators.required],
       startPromo: ['', Validators.required],
       endPromo: ['', Validators.required],
-      image: ['', Validators.required],
     });
   }
 
@@ -141,19 +142,18 @@ export class EditProductsComponent implements OnInit {
 
   //nuevo
   addNew() {
-    const params = {
-      name: this.formProducts.value.name,
-      description: this.formProducts.value.description,
-      brandId: this.formProducts.value.brands,
-      discount: this.formProducts.value.desc,
-      clasificationId: this.formProducts.value.clasifications,
-      iva: this.formProducts.value.iva,
-      startDiscount: this.formProducts.value.startPromo,
-      endDiscount: this.formProducts.value.endPromo,
-      isActive: this.formProducts.value.state,
-      image: this.formProducts.value.image,
-    };
-    console.log(params)
+    const params = new FormData()
+    params.append('name', this.formProducts.value.name)
+    params.append('description', this.formProducts.value.description)
+    params.append('brandId', this.formProducts.value.brands)
+    params.append('discount', this.formProducts.value.desc)
+    params.append('clasificationId', this.formProducts.value.clasifications)
+    params.append('iva', this.formProducts.value.iva)
+    params.append('startDiscount', this.formProducts.value.startPromo)
+    params.append('endDiscount', this.formProducts.value.endPromo)
+    params.append('isActive', this.formProducts.value.state)
+    params.append('image', this.archivo.fileRaw, this.archivo.fileName)
+
     this.productService.postNewProduct(params).subscribe({
       next: (data) => {
         console.log(data);
@@ -176,7 +176,9 @@ export class EditProductsComponent implements OnInit {
   }
 
   //editar
-  editProduct() {}
+  editProduct() {
+
+  }
   //categorias
   getCategorias() {
     this.productService.getCategories().subscribe({
@@ -242,10 +244,9 @@ export class EditProductsComponent implements OnInit {
 
   //uploadIMAGE
 
-  uploadImg(event: any) {
-    const img = event.files[0].name;
-    console.log(img);
-    const params = { productid: this.id, image: img };
+  uploadImg($event: any) {
+    const [ file ] = $event.files;
+    const params = { productid: this.id, image: file };
     this.userService.postUploadImgProducts(params).subscribe({
       next: (data) => {
         console.log(data);
@@ -259,6 +260,15 @@ export class EditProductsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  //imageMain
+  fileEvent($event:any ) {
+    const [ file ] = $event.target.files;
+    this.archivo = {
+      fileRaw: file,
+      fileName: file.Name
+    }
   }
 
   addImageMain(event: any){

@@ -4,7 +4,7 @@
   <!-- Div de la card -->
   <div class="card">
     <div class="container-images">
-      <p-fileUpload  name="myfile[]" [customUpload]="true" accept="image/*"  (uploadHandler)="uploadImg($event)" [multiple]="true"></p-fileUpload>
+      <p-fileUpload  name="myfile[]" [customUpload]="true" accept="image/*"  (uploadHandler)="uploadImg($event)" [multiple]="true" [disabled]="switch"></p-fileUpload>
       <p-galleria
         [value]="imagenes"
         [responsiveOptions]="responsiveOptions"
@@ -105,7 +105,7 @@
         <div class="uploadMain">
           <button  class="btnAdd" type="button" (click)="uploadMain.click">
             <label for="uploadMain"><i class="pi pi-file-import"></i> Adjuntar imagen</label>
-            <input #uploadMain type="file" formControlName="image" id="uploadMain" accept="image/png, image/jpg, image/jpeg" required >
+            <input #uploadMain type="file" id="uploadMain" accept="image/png, image/jpg, image/jpeg" (change)="fileEvent($event)"  >
           </button>
           <p>{{uploadMain.value || 'Empty'}}</p>
         </div>

@@ -22,6 +22,10 @@ export class ProductService {
   headers = new HttpHeaders()
   .append('Content-Type', 'application/x-www-form-urlencoded')
   .append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+  headersImg = new HttpHeaders()
+  .append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
   private product: BehaviorSubject<any> = new BehaviorSubject<any>('0');
 
   private readonly URL = environment.api + 'api/v1/store/';
@@ -56,8 +60,8 @@ export class ProductService {
   }
 
   postNewProduct(params: any): Observable<any> {
-    return this.http.post<any>(`${this.URL}categories/new`, params, {
-      headers: this.headers,
+    return this.http.post<any>(`${this.URL}products/new`, params, {
+      headers: this.headersImg,
     });
   }
 
@@ -78,13 +82,13 @@ export class ProductService {
 
   patchEditCategory(id: number, params: any): Observable<any> {
     return this.http.patch<any>(`${this.URL}categories/${id}`, params, {
-      headers: this.headers,
+      headers: this.headersImg,
     });
   }
 
   postNewCategory(params: any): Observable<any> {
     return this.http.post<any>(`${this.URL}categories/new`, params, {
-      headers: this.headers,
+      headers: this.headersImg,
     });
   }
 
@@ -104,14 +108,14 @@ export class ProductService {
   }
 
   pacthEditSubcategory(id: number, params: any): Observable<any> {
-    return this.http.patch<any>(`${this.URL}subcategories/${id}`, params, {
-      headers: this.headers,
+    return this.http.patch<any>(`${this.URL}subcategorie/${id}`, params, {
+      headers: this.headersImg,
     });
   }
 
   postNewSubcategory(params: FormData): Observable<any> {
     return this.http.post(`${this.URL}subcategorie/new`, params, {
-      headers: this.headers,
+      headers: this.headersImg,
     });
   }
 
@@ -132,13 +136,13 @@ export class ProductService {
 
   patchEditClasification(id: number, params: any): Observable<any> {
     return this.http.patch<any>(`${this.URL}clasification/${id}`, params, {
-      headers: this.headers,
+      headers: this.headersImg,
     });
   }
 
   postNewClasification(params: any): Observable<any> {
     return this.http.post<any>(`${this.URL}clasification/new`, params, {
-      headers: this.headers,
+      headers: this.headersImg,
     });
   }
 
@@ -165,7 +169,7 @@ export class ProductService {
 
   postNewBrand(params: FormData): Observable<any> {
     return this.http.post<any>(`${this.URL}brands/new`, params, {
-      headers: this.headers
+      headers: this.headersImg
     });
   }
 

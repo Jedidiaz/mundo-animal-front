@@ -63,6 +63,11 @@ export class UsersService {
   getClients(): Observable<ClientResponseModel> {
     return this.http.get<ClientResponseModel>(this.url + 'api/v1/store/users', {headers: this.headers});
   }
+
+  getClientToken():Observable<any>{
+    return this.http.get<any>(`${this.url}api/v1/store/customers/info`, {headers: this.headers})
+  }
+
   //get order
   getOrder(): Observable<OrderModel> {
     return this.http.get<OrderModel>(this.url + 'api/v1/store/purchaseOrders', {headers: this.headers});

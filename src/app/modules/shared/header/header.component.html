@@ -141,6 +141,15 @@
         </div>
     </ng-template>
   </p-overlayPanel>
+  <p-overlayPanel #admin [dismissable]="true">
+    <ng-template pTemplate>
+        <div>
+          <button class="btn-desp" type="button"  [routerLink]="['crud-products']">Productos</button>
+          <button class="btn-desp" type="button"  [routerLink]="['crud-categories']">Etiquetas</button>
+          <button class="btn-desp" type="button"  [routerLink]="['crud-clients']">Customers</button>
+        </div>
+    </ng-template>
+  </p-overlayPanel>
   <ul>
     <li><button  class="btn"  type="button"  (click)="brands.toggle($event)">Marcas  <i class="pi pi-angle-down" style="color: white;"></i></button></li>
     <li><button  class="btn"  type="button"  (click)="category.toggle($event)">Categorias <i class="pi pi-angle-down" style="color: white;"></i></button></li>
@@ -149,6 +158,7 @@
     <li><a href="">Promociones</a></li>
     <li><a href="">Blog</a></li>
     <li><a >Contactenos</a></li>
+    <li><button  class="btn"  type="button"  (click)="admin.toggle($event)">Admin <i class="pi pi-angle-down" style="color: white;"></i></button></li>
   </ul>
   <!-- <p-megaMenu
     orientation="horizontal"

@@ -1,8 +1,9 @@
 <div class="container">
+  <p-toast></p-toast>
   <div class="content">
     <h2>Categoria</h2>
     <div class="upload_img">
-      <img [src]="formCategory.value.image || image" alt="image">
+      <img [src]="image" alt="image">
       <button pButton class="p-button-danger" label="Eliminar imagen" icon="pi pi-trash" [disabled]="disableButtonDelete" (click)="deleteImage()" ></button>
     </div>
     <form [formGroup]="formCategory">

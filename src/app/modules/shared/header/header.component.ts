@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
   checkDropMarcas: boolean = false
   checkDropcategporias: boolean = false
 
+  checkAdmin: boolean = false
+
   // categories!: CategoriesModels[];
   marcas: BarndsModels[] = [];
 
@@ -112,7 +114,14 @@ export class HeaderComponent implements OnInit {
     const token = localStorage.getItem('token');
     if (token){
       this.checked = true;
+      this.getSesion()
     }
+
+  }
+
+  getSesion(){
+    this.userService.getClientToken()
+    .subscribe(res => console.log(res))
   }
 
   logOut(){
