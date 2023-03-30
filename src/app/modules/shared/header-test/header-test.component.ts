@@ -1,20 +1,17 @@
-import { Router } from '@angular/router';
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { PrimeIcons } from 'primeng/api';
+import { UsersService } from './../../services/users/users.service';
+import { ProductService } from './../../products/service/product.service';
 import { MegaMenuItem } from 'primeng/api/megamenuitem';
-import { debounceTime, fromEvent, map } from 'rxjs';
-import { BarndsModels, CategoriesModels } from 'src/app/Models/CategoriesModel';
-import { ProductsModel } from 'src/app/Models/produts/productsModel';
-import { ProductService } from '../../products/service/product.service';
-import { UsersService } from '../../services/users/users.service';
+import { CategoriesModels, BarndsModels } from './../../../Models/CategoriesModel';
+import { ProductsModel } from './../../../Models/produts/productsModel';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  providers: [PrimeIcons],
+  selector: 'app-header-test',
+  templateUrl: './header-test.component.html',
+  styleUrls: ['./header-test.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderTestComponent implements OnInit {
   products: ProductsModel[] = [];
   display: any;
 
@@ -179,4 +176,5 @@ export class HeaderComponent implements OnInit {
   select(event: any) {
     this.router.navigate([`/products`], { queryParams: { id: event.id } });
   }
+
 }

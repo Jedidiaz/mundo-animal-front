@@ -1,3 +1,4 @@
+import { TestComponent } from './test/test.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/auth.component';
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'orden', component: OrdenComponent },
   { path: 'orden-detail-admin', component: OrdenDetailAdminComponent },
   { path: 'historial-compra', component: HistorialCompraComponent },
+  { path: 'test', component: TestComponent },
   // { path: '**', redirectTo: '' },
 ];
 

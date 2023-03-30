@@ -65,6 +65,8 @@ import { CrudPresentationsComponent } from './modules/CRUDS/crud-presentations/c
 import { EditPresentationsComponent } from './modules/edit/edit-presentations/edit-presentations.component';
 import { ChangePasswordComponent } from './modules/recovery-password/change-password/change-password.component';
 import { FilterPipe } from './modules/shared/pipes/filter.pipe';
+import { TestComponent } from './test/test.component';
+import { HeaderTestComponent } from './modules/shared/header-test/header-test.component';
 
 
 
@@ -104,6 +106,8 @@ import { FilterPipe } from './modules/shared/pipes/filter.pipe';
     EditPresentationsComponent,
     ChangePasswordComponent,
     FilterPipe,
+    TestComponent,
+    HeaderTestComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<div class="container">
+  <h5>Multiple</h5>
+  <span class="p-fluid">
+    <p-autoComplete
+      [showTransitionOptions]="'100ms'"
+      [hideTransitionOptions]="'100ms'"
+      [(ngModel)]="selectedCountries"
+      [suggestions]="filteredCountries"
+      (completeMethod)="filterCountry($event)"
+      field="name"
+      [multiple]="true"
+      (onSelect)="select($event)"
+    >
+    </p-autoComplete>
+  </span>
+  <div class="content">
+    hola
+  </div>
+</div>
